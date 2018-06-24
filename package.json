@@ -2,7 +2,7 @@
   "name": "gatsby-starter-default",
   "description": "Gatsby default starter",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Michael Hemingway",
   "dependencies": {
     "gatsby": "^1.9.273",
     "gatsby-link": "^1.6.40",
@@ -10,6 +10,7 @@
     "gatsby-plugin-sass": "^1.0.26",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
+    "pixi.js": "^4.8.1",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
@@ -19,10 +20,10 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "eslint 'src/**/*.jsx'"
   },
   "devDependencies": {
-    "prettier": "^1.12.0"
+    "@cherihung/eslint-config-gatsby": "^1.0.7",
+    "eslint": "^5.0.0"
   }
 }

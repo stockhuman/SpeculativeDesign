@@ -10,7 +10,7 @@ const path = require('path')
 exports.createPages = ({boundActionCreators, graphql}) => {
 	const {createPage} = boundActionCreators
 	const projectTemplate = path.resolve('src/templates/project.jsx')
-	// const personTemplate = path.resolve('src/templates/person.jsx')
+	const personTemplate = path.resolve('src/templates/person.jsx')
 
 	return graphql(`{
 		allMarkdownRemark {
@@ -21,6 +21,7 @@ exports.createPages = ({boundActionCreators, graphql}) => {
 					frontmatter {
 						path
 						title
+						name
 					}
 				}
 			}
@@ -32,10 +33,17 @@ exports.createPages = ({boundActionCreators, graphql}) => {
 		}
 
 		res.data.allMarkdownRemark.edges.forEach(({node}) => {
-			createPage({
-				path: node.frontmatter.path,
-				component: projectTemplate
-			})
+			if (node.frontmatter.path.startsWith('/people')) {
+				createPage({
+					path: node.frontmatter.path,
+					component: personTemplate
+				})
+			} else {
+				createPage({
+					path: node.frontmatter.path,
+					component: projectTemplate
+				})
+			}
 		})
 	})
 }

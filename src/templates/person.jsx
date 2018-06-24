@@ -3,12 +3,12 @@ import Helmet from 'react-helmet'
 
 
 export default function Template({ data }) {
-	const project = data.markdownRemark
+	const person = data.markdownRemark
 
 	return (
 		<div>
-			<h1>{project.frontmatter.name}</h1>
-			<div dangerouslySetInnerHTML={{__html: project.html}} />
+			<h1>{person.frontmatter.name}</h1>
+			<div dangerouslySetInnerHTML={{__html: person.html}} />
 		</div>
 	)
 }
