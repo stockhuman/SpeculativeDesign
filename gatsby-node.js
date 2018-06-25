@@ -4,7 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
- // You can delete this file if you're not using it
 const path = require('path')
 
 exports.createPages = ({boundActionCreators, graphql}) => {
@@ -46,4 +45,14 @@ exports.createPages = ({boundActionCreators, graphql}) => {
 			}
 		})
 	})
+}
+
+
+// via https://github.com/gatsbyjs/gatsby/issues/1494
+const po = require('./src/layouts/parse-options')
+const fs = require(`fs-extra`)
+
+exports.onCreatePage = async function({page}) {
+  const {attributes: {layout}} = po(await fs.readFile(page.component, 'utf8'))
+  page.layout = layout || 'index'
 }
