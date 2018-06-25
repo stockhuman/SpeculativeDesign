@@ -1,6 +1,4 @@
 
-
-
 /**
  * Makes all elements from the DOM inherit from the parent box-sizing
  * Since `*` has a specificity of 0, it does not override the `html` value
@@ -31,6 +29,14 @@ body {
 	scroll-behavior: smooth;
 	-webkit-font-smoothing: antialiased; /* 1 */ // sass-lint:disable-line no-vendor-prefixes
 	-moz-osx-font-smoothing: grayscale; /* 1 */ // sass-lint:disable-line no-vendor-prefixes
+	margin: 0;
+	font-weight: normal;
+	word-wrap: break-word;
+	font-kerning: normal;
+	-moz-font-feature-settings: "kern", "liga", "clig", "calt";
+	-ms-font-feature-settings: "kern", "liga", "clig", "calt";
+	-webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+	font-feature-settings: "kern", "liga", "clig", "calt";
 }
 
 
@@ -46,3 +52,15 @@ body {
 	// color: #000000;
 	text-shadow: none;
 }
+
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: .54;
+}
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+
+@import 'generics';
