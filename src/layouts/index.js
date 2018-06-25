@@ -13,6 +13,9 @@ const Layout = ({ children, data }) => (
         { name: 'description', content: 'Sample' },
         { name: 'keywords', content: 'sample, something' },
       ]}
+      link={[
+        { rel:'stylesheet', type:'text/css', href:'https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text'}
+      ]}
     />
     <Header siteTitle={data.site.siteMetadata.title} />
     <div
@@ -34,8 +37,9 @@ Layout.propTypes = {
 
 export default Layout
 
+// note the two => GQL qs must be unique..
 export const query = graphql`
-  query SiteTitleQuery {
+  query SiteTitleQuery2 {
     site {
       siteMetadata {
         title
