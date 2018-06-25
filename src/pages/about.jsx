@@ -1,3 +1,7 @@
+/* @meta
+layout: index
+*/
+
 import React from 'react'
 import Link from 'gatsby-link'
 
