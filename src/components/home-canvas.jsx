@@ -65,7 +65,6 @@ class HomeCanvas extends Component {
 				this.mouseMoveEvent = 'mousemove',
 				this.mouseUpEvent = 'mouseleave'
 		)
-		this.timer = null
 		this.firstRender = false
 		this.id = null
 
@@ -128,6 +127,7 @@ class HomeCanvas extends Component {
 		this.currentImageHeight = 0
 		this.currentImageWidth = 0
 
+		// keeps the loop going
 		this.handlers.requestAnimFrame = () => {
 			return updateCanvasByBrush()
 		}
