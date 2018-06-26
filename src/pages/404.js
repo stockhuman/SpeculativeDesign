@@ -1,10 +1,8 @@
 import React from 'react'
+import PageGenerator from '../components/page-generator'
 
 const NotFoundPage = () => (
-  <div>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </div>
+  <PageGenerator />
 )
 
 export default NotFoundPage
