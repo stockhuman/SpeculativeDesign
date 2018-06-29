@@ -12,8 +12,10 @@
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
     "js-yaml": "^3.12.0",
+    "react-anime": "^2.1.0",
     "react-flexbox-grid": "^2.1.2",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "react-images-loaded": "^2.0.0"
   },
   "keywords": [
     "gatsby"
