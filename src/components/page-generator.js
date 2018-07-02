@@ -40,7 +40,6 @@ class PageGenerator extends Component {
 		return (
 			<article>
 				<h1>{this.title()}</h1>
-				<img src="" alt=""/>
 				<p>{this.body()}</p>
 			</article>
 		)

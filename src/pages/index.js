@@ -10,7 +10,7 @@ import HomeShow from '../components/home-show'
 // Styles
 import '../scss/main.scss'
 import '../scss/pages/_home.scss'
-import Fonts from '../scss/style.js'
+// import Fonts from '../scss/style.js'
 
 
 const copy = {
@@ -19,7 +19,6 @@ const copy = {
 
 const IndexPage = ({data}) => (
   <div>
-  	<Fonts />
   	<section className="home-intro">
   		<div className="title"><h1>Speculative Play</h1></div>
   	</section>
