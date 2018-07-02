@@ -14,4 +14,5 @@ module.exports = {
   	},
   	'gatsby-transformer-remark'
   ],
+  pathPrefix: `/site/sp` // for live.arthem.co/site/sp
 }
