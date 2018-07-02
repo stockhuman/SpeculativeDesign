@@ -15,7 +15,7 @@ const HomeShow = ({data}) => (
 			 </Col>
 			  <Col xs={12} md={6}>
 			 	 <p>{data['about']}</p>
-			 	 	<Link to='projects' className="btn">Projects</Link>
+			 	 	<Link to='/projects' className="btn">Projects</Link>
 			  </Col>
 		 </Row>
 	 </Grid>
