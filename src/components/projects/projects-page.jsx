@@ -7,6 +7,7 @@ import helpers from './helpers'
 
 import isEqual from 'lodash.isequal';
 const anime = typeof window !== 'undefined' ? require('animejs') : _ => _;
+const imagesLoaded = typeof window !== 'undefined' ? require('imagesloaded') : _ => _;
 
 
 class ProjectsPageWrapper extends Component {
@@ -21,6 +22,7 @@ class ProjectsPageWrapper extends Component {
 	setActiveSlide(int) {
 		this.setState({ active : int })
 		console.log('Active slide:', int)
+		console.log('state.. =', this.state)
 	}
 
 	getActiveSlide() {
@@ -43,14 +45,15 @@ class ProjectsPageWrapper extends Component {
 			};
 			// Content slides.
 			DOM.slides = [].slice.call(DOM.content.querySelectorAll('.slides > .slide'))
-			// The menu overlay.
-			DOM.menuOverlay = DOM.content.querySelector('.overlay--menu')
 
 		this.currentRoom = 0
-		this.totalRooms = DOM.rooms.length
+		this.totalRooms = this.props.projects.length
+		this.tilt = false
+		this.isMoving = false
+		this.isNavigating = false
 
 		// Initial transform.
-		this.initTransform = {
+		const initTransform = {
 			translateX : 0,
 			translateY : 0,
 			translateZ : '500px',
@@ -58,8 +61,9 @@ class ProjectsPageWrapper extends Component {
 			rotateY : 0,
 			rotateZ : 0
 		}
+
 		// Reset transform.
-		this.resetTransform = {
+		const resetTransform = {
 			translateX : 0,
 			translateY : 0,
 			translateZ : 0,
@@ -68,16 +72,7 @@ class ProjectsPageWrapper extends Component {
 			rotateZ : 0
 		}
 
-		// View from top.
-		this.menuTransform = { translateX : 0,
-			translateY : '150%',
-			translateZ : 0,
-			rotateX : '15deg',
-			rotateY : 0,
-			rotateZ : 0
-		}
-
-		this.menuTransform = {
+		const menuTransform = {
 			translateX : 0,
 			translateY : '50%',
 			translateZ : 0,
@@ -86,24 +81,23 @@ class ProjectsPageWrapper extends Component {
 			rotateZ : 0
 		}
 
-		this.initTransition = { speed: '0.9s', easing: 'ease' }
+		const initTransition = { speed: '0.9s', easing: 'ease' }
 		// Room moving transition.
-		this.roomTransition = { speed: '0.4s', easing: 'ease' }
+		const roomTransition = { speed: '0.4s', easing: 'ease' }
 		// View from top transition.
-		this.menuTransition = { speed: '1.5s', easing: 'cubic-bezier(0.2,1,0.3,1)' }
+		const menuTransition = { speed: '1.5s', easing: 'cubic-bezier(0.2,1,0.3,1)' }
 		// Info transition.
-		this.infoTransition = { speed: '15s', easing: 'cubic-bezier(0.3,1,0.3,1)' }
+		const infoTransition = { speed: '15s', easing: 'cubic-bezier(0.3,1,0.3,1)' }
 		// Tilt transition
-		this.tiltTransition = { speed: '0.2s', easing: 'ease-out' }
-		this.tilt = false
+		const tiltTransition = { speed: '0.2s', easing: 'ease-out' }
 		// How much to rotate when the mouse moves.
-		this.tiltRotation = {
-			rotateX : 1, // a relative rotation of -1deg to 1deg on the x-axis
-			rotateY : -3  // a relative rotation of -3deg to 3deg on the y-axis
+		const tiltRotation = {
+			rotateX : 1,	 // a relative rotation of -1deg to 1deg on the x-axis
+			rotateY : -3   // a relative rotation of -3deg to 3deg on the y-axis
 		}
 
-		// Transition end event handler.
-		this.onEndTransition = function (el, callback) {
+		// Transition end event handler
+		this.onEndTransition = (el, callback) => {
 			const onEndCallbackFn = function (ev) {
 				this.removeEventListener('transitionend', onEndCallbackFn)
 				if ( callback && typeof callback === 'function' ) { callback.call() }
@@ -111,20 +105,17 @@ class ProjectsPageWrapper extends Component {
 			el.addEventListener('transitionend', onEndCallbackFn)
 		}
 
-		this.win = {
+		const win = {
 			width: window.innerWidth,
 			height: window.innerHeight
 		}
 
-		this.isMoving = false
-		this.isNavigating = false
-
 		this.init = () => {
 			// Move into the current room.
 			this.move({
-				transition: this.initTransition,
-				transform: this.initTransform}).then(() => {
-					initTilt();
+				transition: initTransition,
+				transform: initTransform}).then(() => {
+					this.initTilt();
 			})
 			// Animate the current slide in.
 			this.showSlide(100);
@@ -133,7 +124,7 @@ class ProjectsPageWrapper extends Component {
 		}
 
 		this.initTilt = () => {
-			this.applyRoomTransition(this.tiltTransition);
+			this.applyRoomTransition(tiltTransition);
 			this.tilt = true;
 		}
 
@@ -141,65 +132,67 @@ class ProjectsPageWrapper extends Component {
 			this.tilt = false
 		}
 
-		this.move = (opts) => {
-			return new Promise((resolve, reject) => {
-				if ( this.isMoving && !opts.stopTransition ) {
-					return false;
-				}
-				this.isMoving = true;
+		this.move = (opts) => new Promise((resolve, reject) => {
+			// if ( this.isMoving && !opts.stopTransition ) {
+			// 	return false;
+			// }
+			this.isMoving = true
 
-				if ( opts.transition ) {
-					this.applyRoomTransition(opts.transition);
-				}
+			if ( opts.transition ) {
+				this.applyRoomTransition(opts.transition);
+			}
 
-				if ( opts.transform ) {
-					this.applyRoomTransform(opts.transform);
-					const onEndFn = function() {
-						this.isMoving = false;
-						resolve()
-					}
-					this.onEndTransition(DOM.scroller, onEndFn)
-				}
-
-				else {
+			if ( opts.transform ) {
+				this.applyRoomTransform(opts.transform);
+				const onEndFn = () => {
+					this.isMoving = false
 					resolve()
 				}
-			})
-		}
+				this.onEndTransition(DOM.scroller, onEndFn)
+			}
+
+			else {
+				resolve()
+			}
+		})
+
+		this.debounceResizeFn = () => helpers.debounce(() => {
+			this.win = {width: window.innerWidth, height: window.innerHeight};
+		}, 10);
+
 
 		this.initEvents = () => {
 			// Mousemove event / Tilt functionality.
 			const onMouseMoveFn = (ev) => {
 				requestAnimationFrame(() => {
-					if (!this.tilt) return false;
-
+					// if (!this.tilt) return false;
 
 					let mousepos = helpers.getMousePos(ev)
+
 					// transform values
 					let rotX = tiltRotation.rotateX ?
-					initTransform.rotateX -  (2 * tiltRotation.rotateX / win.height * mousepos.y - tiltRotation.rotateX) : 0
+						initTransform.rotateX -
+						(2 * tiltRotation.rotateX / win.height * mousepos.y - tiltRotation.rotateX) : 0;
+
 					let rotY = tiltRotation.rotateY ?
-					initTransform.rotateY -  (2 * tiltRotation.rotateY / win.width * mousepos.x - tiltRotation.rotateY) : 0
+						initTransform.rotateY -
+						(2 * tiltRotation.rotateY / win.width * mousepos.x - tiltRotation.rotateY) : 0;
 
 					// apply transform
 					this.applyRoomTransform({
-						'translateX' : this.initTransform.translateX,
-						'translateY' : this.initTransform.translateY,
-						'translateZ' : this.initTransform.translateZ,
+						'translateX' : initTransform.translateX,
+						'translateY' : initTransform.translateY,
+						'translateZ' : initTransform.translateZ,
 						'rotateX' : rotX + 'deg',
 						'rotateY' : rotY + 'deg',
-						'rotateZ' : this.initTransform.rotateZ
+						'rotateZ' : initTransform.rotateZ
 					})
 				})
 			}
 
-				// Window resize
-				const debounceResizeFn = helpers.debounce(() => {
-					this.win = {width: window.innerWidth, height: window.innerHeight};
-				}, 10);
 
 			document.addEventListener('mousemove', onMouseMoveFn)
-			window.addEventListener('resize', debounceResizeFn)
+			window.addEventListener('resize', this.debounceResizeFn)
 
 			// Room navigation
 			const onNavigatePrevFn = () => { this.navigate('prev') }
@@ -221,7 +214,8 @@ class ProjectsPageWrapper extends Component {
 		}
 
 		this.applyRoomTransition = (transition) => {
-			DOM.scroller.style.transition = transition === 'none' ? transition : 'transform ' + transition.speed + ' ' + transition.easing;
+			DOM.scroller.style.transition = transition === 'none' ?
+				transition : 'transform ' + transition.speed + ' ' + transition.easing;
 		}
 
 		this.toggleSlide = (dir, delay) => {
@@ -270,10 +264,10 @@ class ProjectsPageWrapper extends Component {
 			this.toggleSlide('out', delay);
 		}
 
+		// Welcome to a horrible fusion of React and normal DOM manipulation
 		this.navigate = (dir) => {
-			console.log('navigating to', dir )
-
-			// if ( isMoving || isNavigating ) {
+			// if ( this.isMoving || this.isNavigating ) {
+			// 	console.log(this.isMoving, this.isNavigating)
 			// 	console.log('stuck')
 			// 	return false;
 			// }
@@ -294,7 +288,6 @@ class ProjectsPageWrapper extends Component {
 				this.currentRoom = this.currentRoom > 0 ? this.currentRoom - 1 : this.totalRooms - 1;
 			}
 
-			console.log(DOM.rooms)
 			// Position the next room.
 			var nextRoom = DOM.rooms[this.currentRoom]
 			nextRoom.style.transform = 'translate3d(' + (dir === 'next' ? 100 : -100) + '%,0,0) translate3d(' + (dir === 'next' ? 1 : -1) + 'px,0,0)' ;
@@ -304,7 +297,17 @@ class ProjectsPageWrapper extends Component {
 			this.move({transition: this.roomTransition, transform: this.resetTransform})
 			.then(() => {
 				// Move left or right.
-				return this.move({transform: { translateX : (dir === 'next' ? -100 : 100) + '%', translateY : 0, translateZ : 0, rotateX : 0, rotateY : 0, rotateZ : 0 }});
+				return this.move(
+					{ transform: {
+							translateX : (dir === 'next' ? -100 : 100) + '%',
+							translateY : 0,
+							translateZ : 0,
+							rotateX : 0,
+							rotateY : 0,
+							rotateZ : 0
+						}
+					}
+				)
 			})
 			.then(() => {
 				// Update current room class.
@@ -312,11 +315,20 @@ class ProjectsPageWrapper extends Component {
 				room.style.opacity = 0;
 
 				// Show the next slide.
-				this.showSlide();
+				this.showSlide()
 
 				// Move into room.
 				// Update final transform state:
-				return this.move({transform: { translateX : (dir === 'next' ? -100 : 100) + '%', translateY : 0, translateZ : '500px', rotateX : 0, rotateY : 0, rotateZ : 0 }});
+				return this.move(
+					{ transform: {
+						translateX : (dir === 'next' ? -100 : 100) + '%',
+						translateY : 0,
+						translateZ : '500px',
+						rotateX : 0,
+						rotateY : 0,
+						rotateZ : 0 }
+					}
+				)
 			})
 			.then(() => {
 				// Reset positions.
@@ -325,91 +337,10 @@ class ProjectsPageWrapper extends Component {
 				this.applyRoomTransform(initTransform);
 
 				setTimeout(() => {
-					this.initTilt();
+					this.initTilt()
 				}, 60);
 				this.isNavigating = false;
-			});
-		}
-
-		this.showMenu = () => {
-			// Button becomes cross.
-			DOM.menuCtrl.classList.add('btn--active');
-			// Remove tilt.
-			this.removeTilt();
-			// Add adjacent rooms.
-			//addAdjacentRooms();
-			// Hide current slide.
-			this.hideSlide();
-			// Apply menu transition.
-			this.applyRoomTransition(this.menuTransition);
-			// View from top:
-			move({transform: menuTransform, stopTransition: true});
-			// Show menu items
-			anime.remove(DOM.menuItems);
-			anime({
-				targets: DOM.menuItems,
-				duration: 500,
-				easing: [0.2,1,0.3,1],
-				delay: function(t,i) {
-					return 250+50*i;
-				},
-				translateY: [150, 0],
-				opacity: {
-					value: [0,1],
-					duration: 200,
-					easing: 'linear'
-				},
-				begin: function() {
-					DOM.menuOverlay.classList.add('overlay--active');
-				}
-			});
-			anime.remove(DOM.menuOverlay);
-			anime({
-				targets: DOM.menuOverlay,
-				duration: 1000,
-				easing: [0.25,0.1,0.25,1],
-				opacity: [0,1]
-			});
-		}
-
-		this.closeMenu = () => {
-			// Button becomes menu.
-			DOM.menuCtrl.classList.remove('btn--active');
-			// Apply room transition.
-			applyRoomTransition(roomTransition);
-			// Show current slide.
-			showSlide(150);
-			// back to room view:
-			move({transform: initTransform, stopTransition: true}).then(function() {
-				// Remove adjacent rooms.
-				//removeAdjacentRooms();
-				// Init tilt.
-				initTilt();
-			});
-			anime.remove(DOM.menuItems);
-			anime({
-				targets: DOM.menuItems,
-				duration: 250,
-				easing: [0.25,0.1,0.25,1],
-				delay: function(t,i,c) {
-					return 40*(c-i-1);
-				},
-				translateY: [0, 150],
-				opacity: {
-					value: [1,0],
-					duration: 250
-				},
-				complete: function() {
-					DOM.menuOverlay.classList.remove('overlay--active');
-				}
-			});
-			anime.remove(DOM.menuOverlay);
-			anime({
-				targets: DOM.menuOverlay,
-				duration: 400,
-				easing: [0.25,0.1,0.25,1],
-				opacity: [1,0]
-			});
+			})
 		}
 
 		this.addAdjacentRooms = () => {
@@ -440,25 +371,25 @@ class ProjectsPageWrapper extends Component {
 			prevRoom.style.opacity = 0;
 		}
 		// // Preload all the images.
-		// imagesLoaded(DOM.scroller, function() {
-		// 	var extradelay = 1000;
-		// 	// Slide out loader.
-		// 	anime({
-		// 		targets: DOM.loader,
-		// 		duration: 600,
-		// 		easing: 'easeInOutCubic',
-		// 		delay: extradelay,
-		// 		translateY: '-100%',
-		// 		begin: function() {
-		// 			init();
-		// 		},
-		// 		complete: function() {
-		// 			DOM.loader.classList.remove('overlay--active');
-		// 		}
-		// 	});
-		// });
+		imagesLoaded(DOM.scroller, () => {
+			let extradelay = 1000;
+			// Slide out loader.
+			anime({
+				targets: DOM.loader,
+				duration: 600,
+				easing: 'easeInOutCubic',
+				delay: extradelay,
+				translateY: '-100%',
+				begin: () => {
+					this.init();
+				},
+				complete: () => {
+					DOM.loader.classList.remove('overlay--active')
+				}
+			});
+		});
 
-		this.init()
+		// this.init()
 	}
 
 	componentDidMount() {
@@ -466,6 +397,7 @@ class ProjectsPageWrapper extends Component {
 	}
 
 	render () {
+		// console.log('Render called, and state =', this.state);
 		return (
 			<div id="projects">
 				<h1>projects</h1>
@@ -486,15 +418,7 @@ class ProjectsPageWrapper extends Component {
 						</svg>
 					</button>
 				</nav>
-
-				<div className="overlay overlay--loader overlay--active">
-					<div className="loader">
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-				</div>
-
+				<div className="overlay overlay--loader overlay--active"></div>
 			</div>
 		)
 	}
