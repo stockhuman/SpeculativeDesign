@@ -176,49 +176,9 @@
 	flex-direction: column;
 	width: 100%;
 	height: 100vh;
-	padding: 2vw;
-}
-
-/* Header */
-.codrops-header {
-	display: flex;
-	align-items: center;
-}
-
-.codrops-header__title {
-	font-size: 1.165em;
-	font-weight: normal;
-	margin: 0.5em 0 0 0;
-}
-
-/* Top Navigation Style */
-.codrops-links {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 2.75em;
-	margin: 0 2em 0 0;
-	text-align: center;
-	white-space: nowrap;
-	border: 2px solid;
-	background: #fff;
-}
-
-.codrops-links::after {
-	content: '';
-	position: absolute;
-	top: -5%;
-	left: calc(50% - 1px);
-	width: 2px;
-	height: 110%;
-	background: currentColor;
-	transform: rotate3d(0,0,1,22.5deg);
-}
-
-.codrops-icon {
-	display: inline-block;
-	padding: 0 0.65em;
+	// padding: 2vw;
+	z-index: -2;
+	// overflow: hidden;
 }
 
 .subject {
