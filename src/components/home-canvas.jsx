@@ -65,7 +65,7 @@ class HomeCanvas extends Component {
 				this.mouseMoveEvent = 'mousemove',
 				this.mouseUpEvent = 'mouseleave'
 		)
-		this.firstRender = false
+		this.canvasImageReady = false
 		this.id = null
 
 		this.handlers = {}
@@ -146,6 +146,7 @@ class HomeCanvas extends Component {
 
     // Changes the current image from the assets array
 		const updateImage = () => {
+			this.canvasImageReady = false
 			this.currentIndex = (this.currentIndex >= assets.length - 1) ? 0 : this.currentIndex += 1
 
 			let e = assets[this.currentIndex]
@@ -156,6 +157,10 @@ class HomeCanvas extends Component {
 			this.currentImage.width = e.width * r
 			this.currentImage.height = e.height * r
 			this.currentImage.src = e.url
+			this.currentImage.onload = () => {
+				console.log('image loaded') // I fear this is of no help with the _this2 issue
+				this.canvasImageReady = true
+			}
 		}
 
 		const updateMousePosition = (ctx) => {
@@ -206,9 +211,8 @@ class HomeCanvas extends Component {
 				let dx = oldmp.x + Math.sin(o) * l - this.currentImage.width / 2;
 				let dy = oldmp.y + Math.cos(o) * l - this.currentImage.height / 2;
 
-				// c is 'this' from the init() context
-				c.context.drawImage(this.currentImage, dx, dy, this.currentImage.width, this.currentImage.height);
-
+				if (this.canvasImageReady) // still fails
+					this.context.drawImage(this.currentImage, dx, dy, this.currentImage.width, this.currentImage.height);
 
 			}
 			this.id = window.requestAnimationFrame(this.handlers.requestAnimFrame)
@@ -222,6 +226,9 @@ class HomeCanvas extends Component {
 
 		// start capturing events
 		setTimeout( () => {
+			console.log(this.default.color)
+			this.context.fillStyle = this.default.color
+
 			this.context.fillStyle = this.default.color
 			this.context.fillRect(0, 0, canvas.width, canvas.height) // BG
 			updateOldMousePosition()
@@ -233,11 +240,18 @@ class HomeCanvas extends Component {
 		}, 0)
 	}
 
-
 	// begin!
 	componentDidMount() {
 		this.init()
 	}
+
+	// end
+	componentWillUnmount() {
+		document.removeEventListener('mousemove', this.handlers.mousemove)
+		window.removeEventListener('resize', this.handlers.resize)
+		document.removeEventListener('click', this.handlers.click)
+		window.cancelAnimationFrame(this.handlers.requestAnimFrame)
+  }
 
 	render () {
 		return (
