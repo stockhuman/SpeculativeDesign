@@ -25,7 +25,7 @@ class HomeCanvas extends Component {
 	}
 
 	init () {
-		const canvas = this.refs.canvas
+		const canvas = this.canvas
 					canvas.width = window.innerWidth
 					canvas.height = window.innerHeight
 					canvas.style.width = canvas.width + 'px'
@@ -36,8 +36,6 @@ class HomeCanvas extends Component {
 			x: 0,
 			y: 0
 		}
-
-		const c = this // to solve a few context errors with the canvas
 
 		this.default.color = this.getRandomColor()
 
@@ -132,7 +130,7 @@ class HomeCanvas extends Component {
 			return updateCanvasByBrush()
 		}
 
-		const distanceBetween2Points =  function(t, e) {
+		const distanceBetween2Points = function(t, e) {
       var n = e.x - t.x,
           r = e.y - t.y;
       return Math.sqrt(Math.pow(n, 2) + Math.pow(r, 2))
@@ -202,11 +200,8 @@ class HomeCanvas extends Component {
 			for (
 				let i = parseInt(distanceBetween2Points(oldmp, lastmp)),
 				o = angleBetween2Points(oldmp, lastmp),
-				s = undefined,
-				u = undefined,
 				l = 0;
-
-					l <= i || 0 === l; l += 1) {
+				l <= i || 0 === l; l += 1) { // mishaped for loop
 
 				let dx = oldmp.x + Math.sin(o) * l - this.currentImage.width / 2;
 				let dy = oldmp.y + Math.cos(o) * l - this.currentImage.height / 2;
@@ -226,9 +221,6 @@ class HomeCanvas extends Component {
 
 		// start capturing events
 		setTimeout( () => {
-			console.log(this.default.color)
-			this.context.fillStyle = this.default.color
-
 			this.context.fillStyle = this.default.color
 			this.context.fillRect(0, 0, canvas.width, canvas.height) // BG
 			updateOldMousePosition()
@@ -242,6 +234,7 @@ class HomeCanvas extends Component {
 
 	// begin!
 	componentDidMount() {
+		this.canvas = this.refs.canvas
 		this.init()
 	}
 
