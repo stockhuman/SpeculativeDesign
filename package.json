@@ -1,19 +1,22 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "gatsby-speculative-play",
+  "description": "Gatsby Speculative Play site",
   "version": "1.0.0",
   "author": "Michael Hemingway",
   "dependencies": {
     "fs-extra": "^6.0.1",
-    "gatsby": "^1.9.277",
-    "gatsby-link": "^1.6.40",
-    "gatsby-plugin-react-helmet": "^2.0.10",
-    "gatsby-plugin-sass": "^1.0.26",
-    "gatsby-source-filesystem": "^1.5.39",
+    "gatsby": "^2.0.41",
+    "gatsby-link": "^2.0.6",
+    "gatsby-plugin-manifest": "^2.0.8",
+    "gatsby-plugin-offline": "^2.0.13",
+    "gatsby-plugin-page-transitions": "^1.0.7",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-sass": "^2.0.4",
+    "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-remark": "^1.7.44",
     "js-yaml": "^3.12.0",
-    "react-anime": "^2.1.0",
-    "react-flexbox-grid": "^2.1.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
     "react-helmet": "^5.2.0",
     "react-images-loaded": "^2.0.0"
   },
@@ -24,10 +27,11 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop",
-    "format": "eslint 'src/**/*.jsx'"
+    "format": "prettier --write \"src/**/*.js\""
   },
   "devDependencies": {
-    "@cherihung/eslint-config-gatsby": "^1.0.7",
-    "eslint": "^5.0.0"
+    "node-sass": "^4.10.0",
+    "prettier": "^1.15.1",
+    "webpack": "^4.25.1"
   }
 }

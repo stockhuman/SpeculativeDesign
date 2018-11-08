@@ -6,10 +6,10 @@
 
 const path = require('path')
 
-exports.createPages = ({boundActionCreators, graphql}) => {
-	const {createPage} = boundActionCreators
-	const projectTemplate = path.resolve('src/templates/project.jsx')
-	const personTemplate = path.resolve('src/templates/person.jsx')
+exports.createPages = ({ actions, graphql }) => {
+	const {createPage} = actions
+	const projectTemplate = path.resolve('src/templates/project.js')
+	const personTemplate = path.resolve('src/templates/person.js')
 
 	return graphql(`{
 		allMarkdownRemark {
@@ -49,7 +49,7 @@ exports.createPages = ({boundActionCreators, graphql}) => {
 
 
 // via https://github.com/gatsbyjs/gatsby/issues/1494
-const po = require('./src/layouts/parse-options')
+const po = require('./src/components/layouts/parse-options')
 const fs = require(`fs-extra`)
 
 exports.onCreatePage = async function({page}) {
