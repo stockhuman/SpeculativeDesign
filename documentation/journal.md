@@ -23,3 +23,9 @@ This is again an exploration of an extant alternative form to the net - in this 
 A project I'm familiar on the decetralized network is that of Devine Lu Linevega's [_Rotonde_](dat://2f21e3c122ef0f2555d3a99497710cd875c7b0383f998a2d37c02c042d598485/). It's a 'webring' of artists and like-minded people (to Devine) functioning akin to Twitter. A neat and somewhat successful experiment with the medium.
 
 It's almost unbroken ground here. The platform is so far in it's infancy all one can find are little experiments and personal blogs, with maybe the odd whitepaper from some other crypto currency of the like.
+
+#### 3.
+
+
+### Play on the Web
+
