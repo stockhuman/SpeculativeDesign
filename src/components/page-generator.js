@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import chinese from './data/chinese'
 
 class PageGenerator extends Component {
 
@@ -28,10 +27,6 @@ class PageGenerator extends Component {
 		return this.titles('doot')
 	}
 
-	body () {
-		return chinese(Math.floor(Math.random() * 2000))
-	}
-
 	componentDidMount() {
 
 	}
@@ -40,7 +35,6 @@ class PageGenerator extends Component {
 		return (
 			<article>
 				<h1>{this.title()}</h1>
-				<p>{this.body()}</p>
 			</article>
 		)
 	}

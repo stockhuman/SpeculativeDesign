@@ -5,7 +5,7 @@ class ProjectsContent extends Component {
 	render () {
 		return (
 			<div className="content">
-				<h4 className="location"></h4>
+				<h4 className="location">loc</h4>
 				<div className="slides">
 					{this.props.projects.map((slide, i) =>
 						<div className="slide" key={i}>

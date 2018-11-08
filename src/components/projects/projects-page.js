@@ -3,12 +3,6 @@ import React, { Component } from 'react'
 import ProjectsContainer from './projects-container'
 import ProjectsContent from './projects-content'
 
-import helpers from './helpers'
-
-import isEqual from 'lodash.isequal';
-const anime = typeof window !== 'undefined' ? require('animejs') : _ => _;
-const imagesLoaded = typeof window !== 'undefined' ? require('imagesloaded') : _ => _;
-
 
 class ProjectsPageWrapper extends Component {
 
@@ -21,8 +15,6 @@ class ProjectsPageWrapper extends Component {
 
 	setActiveSlide(int) {
 		this.setState({ active : int })
-		console.log('Active slide:', int)
-		console.log('state.. =', this.state)
 	}
 
 	getActiveSlide() {
@@ -30,366 +22,339 @@ class ProjectsPageWrapper extends Component {
 	}
 
 	start () {
-		const DOM = {}
-			DOM.loader = document.querySelector('.overlay--loader')
-			// The room wrapper. This will be the element to be transformed in order to move around.
-			DOM.scroller = document.querySelector('.container > .scroller')
-			// The rooms.
-			DOM.rooms = [].slice.call(DOM.scroller.querySelectorAll('.room'))
-			// The content wrapper.
-			DOM.content = document.querySelector('.content')
-			// Rooms navigation controls.
-			DOM.nav = {
-				leftCtrl : this.refs.navLeft,
-				rightCtrl : this.refs.navRight
-			};
-			// Content slides.
-			DOM.slides = [].slice.call(DOM.content.querySelectorAll('.slides > .slide'))
+		// const DOM = {}
+		// 	DOM.loader = document.querySelector('.overlay--loader')
+		// 	// The room wrapper. This will be the element to be transformed in order to move around.
+		// 	DOM.scroller = document.querySelector('.container > .scroller')
+		// 	// The rooms.
+		// 	DOM.rooms = [].slice.call(DOM.scroller.querySelectorAll('.room'))
+		// 	// The content wrapper.
+		// 	DOM.content = document.querySelector('.content')
+		// 	// Rooms navigation controls.
+		// 	DOM.nav = {
+		// 		leftCtrl : this.refs.navLeft,
+		// 		rightCtrl : this.refs.navRight
+		// 	};
+		// 	// Content slides.
+		// 	DOM.slides = [].slice.call(DOM.content.querySelectorAll('.slides > .slide'))
 
-		this.currentRoom = 0
-		this.totalRooms = this.props.projects.length
-		this.tilt = false
-		this.isMoving = false
-		this.isNavigating = false
+		// this.currentRoom = 0
+		// this.totalRooms = this.props.projects.length
+		// this.tilt = false
+		// this.isMoving = false
+		// this.isNavigating = false
 
-		// Initial transform.
-		const initTransform = {
-			translateX : 0,
-			translateY : 0,
-			translateZ : '500px',
-			rotateX : 0,
-			rotateY : 0,
-			rotateZ : 0
-		}
+		// // Initial transform.
+		// const initTransform = {
+		// 	translateX : 0,
+		// 	translateY : 0,
+		// 	translateZ : '500px',
+		// 	rotateX : 0,
+		// 	rotateY : 0,
+		// 	rotateZ : 0
+		// }
 
-		// Reset transform.
-		const resetTransform = {
-			translateX : 0,
-			translateY : 0,
-			translateZ : 0,
-			rotateX : 0,
-			rotateY : 0,
-			rotateZ : 0
-		}
+		// const initTransition = { speed: '0.9s', easing: 'ease' }
+		// // Tilt transition
+		// const tiltTransition = { speed: '0.2s', easing: 'ease-out' }
+		// // How much to rotate when the mouse moves.
+		// const tiltRotation = {
+		// 	rotateX : 1,	 // a relative rotation of -1deg to 1deg on the x-axis
+		// 	rotateY : -3   // a relative rotation of -3deg to 3deg on the y-axis
+		// }
 
-		const menuTransform = {
-			translateX : 0,
-			translateY : '50%',
-			translateZ : 0,
-			rotateX : '-10deg',
-			rotateY : 0,
-			rotateZ : 0
-		}
+		// // Transition end event handler
+		// this.onEndTransition = (el, callback) => {
+		// 	const onEndCallbackFn = function () {
+		// 		this.removeEventListener('transitionend', onEndCallbackFn)
+		// 		if ( callback && typeof callback === 'function' ) { callback.call() }
+		// 	}
+		// 	el.addEventListener('transitionend', onEndCallbackFn)
+		// }
 
-		const initTransition = { speed: '0.9s', easing: 'ease' }
-		// Room moving transition.
-		const roomTransition = { speed: '0.4s', easing: 'ease' }
-		// View from top transition.
-		const menuTransition = { speed: '1.5s', easing: 'cubic-bezier(0.2,1,0.3,1)' }
-		// Info transition.
-		const infoTransition = { speed: '15s', easing: 'cubic-bezier(0.3,1,0.3,1)' }
-		// Tilt transition
-		const tiltTransition = { speed: '0.2s', easing: 'ease-out' }
-		// How much to rotate when the mouse moves.
-		const tiltRotation = {
-			rotateX : 1,	 // a relative rotation of -1deg to 1deg on the x-axis
-			rotateY : -3   // a relative rotation of -3deg to 3deg on the y-axis
-		}
+		// const win = {
+		// 	width: window.innerWidth,
+		// 	height: window.innerHeight
+		// }
 
-		// Transition end event handler
-		this.onEndTransition = (el, callback) => {
-			const onEndCallbackFn = function (ev) {
-				this.removeEventListener('transitionend', onEndCallbackFn)
-				if ( callback && typeof callback === 'function' ) { callback.call() }
-			}
-			el.addEventListener('transitionend', onEndCallbackFn)
-		}
+		// this.init = () => {
+		// 	// Move into the current room.
+		// 	this.move({
+		// 		transition: initTransition,
+		// 		transform: initTransform}).then(() => {
+		// 			this.initTilt();
+		// 	})
+		// 	// Animate the current slide in.
+		// 	this.showSlide(100);
+		// 	// Init/Bind events.
+		// 	this.initEvents()
+		// }
 
-		const win = {
-			width: window.innerWidth,
-			height: window.innerHeight
-		}
+		// this.initTilt = () => {
+		// 	this.applyRoomTransition(tiltTransition);
+		// 	this.tilt = true;
+		// }
 
-		this.init = () => {
-			// Move into the current room.
-			this.move({
-				transition: initTransition,
-				transform: initTransform}).then(() => {
-					this.initTilt();
-			})
-			// Animate the current slide in.
-			this.showSlide(100);
-			// Init/Bind events.
-			this.initEvents()
-		}
+		// this.removeTilt = () => {
+		// 	this.tilt = false
+		// }
 
-		this.initTilt = () => {
-			this.applyRoomTransition(tiltTransition);
-			this.tilt = true;
-		}
+		// this.move = (opts) => new Promise((resolve) => {
+		// 	// if ( this.isMoving && !opts.stopTransition ) {
+		// 	// 	return false;
+		// 	// }
+		// 	this.isMoving = true
 
-		this.removeTilt = () => {
-			this.tilt = false
-		}
+		// 	if ( opts.transition ) {
+		// 		this.applyRoomTransition(opts.transition);
+		// 	}
 
-		this.move = (opts) => new Promise((resolve, reject) => {
-			// if ( this.isMoving && !opts.stopTransition ) {
-			// 	return false;
-			// }
-			this.isMoving = true
+		// 	if ( opts.transform ) {
+		// 		this.applyRoomTransform(opts.transform);
+		// 		const onEndFn = () => {
+		// 			this.isMoving = false
+		// 			resolve()
+		// 		}
+		// 		this.onEndTransition(DOM.scroller, onEndFn)
+		// 	}
 
-			if ( opts.transition ) {
-				this.applyRoomTransition(opts.transition);
-			}
+		// 	else {
+		// 		resolve()
+		// 	}
+		// })
 
-			if ( opts.transform ) {
-				this.applyRoomTransform(opts.transform);
-				const onEndFn = () => {
-					this.isMoving = false
-					resolve()
-				}
-				this.onEndTransition(DOM.scroller, onEndFn)
-			}
-
-			else {
-				resolve()
-			}
-		})
-
-		this.debounceResizeFn = () => helpers.debounce(() => {
-			this.win = {width: window.innerWidth, height: window.innerHeight};
-		}, 10);
+		// this.debounceResizeFn = () => helpers.debounce(() => {
+		// 	this.win = {width: window.innerWidth, height: window.innerHeight};
+		// }, 10);
 
 
-		this.initEvents = () => {
-			// Mousemove event / Tilt functionality.
-			const onMouseMoveFn = (ev) => {
-				requestAnimationFrame(() => {
-					// if (!this.tilt) return false;
+		// this.initEvents = () => {
+		// 	// Mousemove event / Tilt functionality.
+		// 	const onMouseMoveFn = (ev) => {
+		// 		requestAnimationFrame(() => {
+		// 			// if (!this.tilt) return false;
 
-					let mousepos = helpers.getMousePos(ev)
+		// 			let mousepos = helpers.getMousePos(ev)
 
-					// transform values
-					let rotX = tiltRotation.rotateX ?
-						initTransform.rotateX -
-						(2 * tiltRotation.rotateX / win.height * mousepos.y - tiltRotation.rotateX) : 0;
+		// 			// transform values
+		// 			let rotX = tiltRotation.rotateX ?
+		// 				initTransform.rotateX -
+		// 				(2 * tiltRotation.rotateX / win.height * mousepos.y - tiltRotation.rotateX) : 0;
 
-					let rotY = tiltRotation.rotateY ?
-						initTransform.rotateY -
-						(2 * tiltRotation.rotateY / win.width * mousepos.x - tiltRotation.rotateY) : 0;
+		// 			let rotY = tiltRotation.rotateY ?
+		// 				initTransform.rotateY -
+		// 				(2 * tiltRotation.rotateY / win.width * mousepos.x - tiltRotation.rotateY) : 0;
 
-					// apply transform
-					this.applyRoomTransform({
-						'translateX' : initTransform.translateX,
-						'translateY' : initTransform.translateY,
-						'translateZ' : initTransform.translateZ,
-						'rotateX' : rotX + 'deg',
-						'rotateY' : rotY + 'deg',
-						'rotateZ' : initTransform.rotateZ
-					})
-				})
-			}
+		// 			// apply transform
+		// 			this.applyRoomTransform({
+		// 				'translateX' : initTransform.translateX,
+		// 				'translateY' : initTransform.translateY,
+		// 				'translateZ' : initTransform.translateZ,
+		// 				'rotateX' : rotX + 'deg',
+		// 				'rotateY' : rotY + 'deg',
+		// 				'rotateZ' : initTransform.rotateZ
+		// 			})
+		// 		})
+		// 	}
 
 
-			document.addEventListener('mousemove', onMouseMoveFn)
-			window.addEventListener('resize', this.debounceResizeFn)
+		// 	document.addEventListener('mousemove', onMouseMoveFn)
+		// 	window.addEventListener('resize', this.debounceResizeFn)
 
-			// Room navigation
-			const onNavigatePrevFn = () => { this.navigate('prev') }
-			const onNavigateNextFn = () => { this.navigate('next') }
+		// 	// Room navigation
+		// 	const onNavigatePrevFn = () => { this.navigate('prev') }
+		// 	const onNavigateNextFn = () => { this.navigate('next') }
 
-			DOM.nav.leftCtrl.addEventListener('click', onNavigatePrevFn);
-			DOM.nav.rightCtrl.addEventListener('click', onNavigateNextFn);
+		// 	DOM.nav.leftCtrl.addEventListener('click', onNavigatePrevFn);
+		// 	DOM.nav.rightCtrl.addEventListener('click', onNavigateNextFn);
 
-			// // Menu click.
-			// this.DOM.menuCtrl.addEventListener('click', toggleMenu);
+		// 	// // Menu click.
+		// 	// this.DOM.menuCtrl.addEventListener('click', toggleMenu);
 
-			// // Info click.
-			// this.DOM.infoCtrl.addEventListener('click', toggleInfo);
-		}
+		// 	// // Info click.
+		// 	// this.DOM.infoCtrl.addEventListener('click', toggleInfo);
+		// }
 
-		this.applyRoomTransform = (transform) => {
-			DOM.scroller.style.transform = 'translate3d(' + transform.translateX + ', ' + transform.translateY + ', ' + transform.translateZ + ') ' +
-										   'rotate3d(1,0,0,' + transform.rotateX + ') rotate3d(0,1,0,' + transform.rotateY + ') rotate3d(0,0,1,' + transform.rotateZ + ')';
-		}
+		// this.applyRoomTransform = (transform) => {
+		// 	DOM.scroller.style.transform = 'translate3d(' + transform.translateX + ', ' + transform.translateY + ', ' + transform.translateZ + ') ' +
+		// 								   'rotate3d(1,0,0,' + transform.rotateX + ') rotate3d(0,1,0,' + transform.rotateY + ') rotate3d(0,0,1,' + transform.rotateZ + ')';
+		// }
 
-		this.applyRoomTransition = (transition) => {
-			DOM.scroller.style.transition = transition === 'none' ?
-				transition : 'transform ' + transition.speed + ' ' + transition.easing;
-		}
+		// this.applyRoomTransition = (transition) => {
+		// 	DOM.scroller.style.transition = transition === 'none' ?
+		// 		transition : 'transform ' + transition.speed + ' ' + transition.easing;
+		// }
 
-		this.toggleSlide = (dir, delay) => {
-			const slide = DOM.slides[this.currentRoom]
-			const name  = slide.querySelector('.slide__name')
-			const title = slide.querySelector('.slide__title')
-			const date  = slide.querySelector('.slide__date')
+		// this.toggleSlide = (dir, delay) => {
+		// 	const slide = DOM.slides[this.currentRoom]
+		// 	const name  = slide.querySelector('.slide__name')
+		// 	const title = slide.querySelector('.slide__title')
+		// 	const date  = slide.querySelector('.slide__date')
 
-			delay = delay !== undefined ? delay : 0;
+		// 	delay = delay !== undefined ? delay : 0;
 
-			anime.remove([name, title, date]);
-			var animeOpts = {
-				targets: [name, title, date],
-				duration: dir === 'in' ? 400 : 400,
-				//delay: 0,//dir === 'in' ? 150 : 0,
-				delay: function(t, i, c) {
-					return delay + 75+i*75;
-				},
-				easing: [0.25,0.1,0.25,1],
-				opacity: {
-					value: dir === 'in' ? [0,1] : [1,0],
-					duration: dir === 'in' ? 550 : 250
-				},
-				translateY: function(t, i) {
-					return dir === 'in' ? [150,0] : [0,-150];
-				}
-			};
-			if( dir === 'in' ) {
-				animeOpts.begin = function() {
-					slide.classList.add('slide--current');
-				};
-			}
-			else {
-				animeOpts.complete = function() {
-					slide.classList.remove('slide--current');
-				};
-			}
-			anime(animeOpts)
-		}
+		// 	anime.remove([name, title, date]);
+		// 	var animeOpts = {
+		// 		targets: [name, title, date],
+		// 		duration: dir === 'in' ? 400 : 400,
+		// 		//delay: 0,//dir === 'in' ? 150 : 0,
+		// 		delay: function(t, i) {
+		// 			return delay + 75+i*75;
+		// 		},
+		// 		easing: [0.25,0.1,0.25,1],
+		// 		opacity: {
+		// 			value: dir === 'in' ? [0,1] : [1,0],
+		// 			duration: dir === 'in' ? 550 : 250
+		// 		},
+		// 		translateY: function() {
+		// 			return dir === 'in' ? [150,0] : [0,-150];
+		// 		}
+		// 	};
+		// 	if( dir === 'in' ) {
+		// 		animeOpts.begin = function() {
+		// 			slide.classList.add('slide--current');
+		// 		};
+		// 	}
+		// 	else {
+		// 		animeOpts.complete = function() {
+		// 			slide.classList.remove('slide--current');
+		// 		};
+		// 	}
+		// 	anime(animeOpts)
+		// }
 
-		this.showSlide = (delay) => {
-			this.toggleSlide('in', delay);
-		}
+		// this.showSlide = (delay) => {
+		// 	this.toggleSlide('in', delay);
+		// }
 
-		this.hideSlide = (delay) => {
-			this.toggleSlide('out', delay);
-		}
+		// this.hideSlide = (delay) => {
+		// 	this.toggleSlide('out', delay);
+		// }
 
-		// Welcome to a horrible fusion of React and normal DOM manipulation
-		this.navigate = (dir) => {
-			// if ( this.isMoving || this.isNavigating ) {
-			// 	console.log(this.isMoving, this.isNavigating)
-			// 	console.log('stuck')
-			// 	return false;
-			// }
+		// // Welcome to a horrible fusion of React and normal DOM manipulation
+		// this.navigate = (dir) => {
+		// 	// if ( this.isMoving || this.isNavigating ) {
+		// 	// 	console.log(this.isMoving, this.isNavigating)
+		// 	// 	console.log('stuck')
+		// 	// 	return false;
+		// 	// }
 
-			this.isNavigating = true;
+		// 	this.isNavigating = true;
 
-			var room = DOM.rooms[this.currentRoom]
+		// 	var room = DOM.rooms[this.currentRoom]
 
-			// Remove tilt.
-			this.removeTilt();
-			// Animate the current slide out - animate the name, title and date elements.
-			this.hideSlide();
+		// 	// Remove tilt.
+		// 	this.removeTilt();
+		// 	// Animate the current slide out - animate the name, title and date elements.
+		// 	this.hideSlide();
 
-			// Update currentRoom.
-			if ( dir === 'next' ) {
-				this.currentRoom = this.currentRoom < this.totalRooms - 1 ? this.currentRoom + 1 : 0;
-			} else {
-				this.currentRoom = this.currentRoom > 0 ? this.currentRoom - 1 : this.totalRooms - 1;
-			}
+		// 	// Update currentRoom.
+		// 	if ( dir === 'next' ) {
+		// 		this.currentRoom = this.currentRoom < this.totalRooms - 1 ? this.currentRoom + 1 : 0;
+		// 	} else {
+		// 		this.currentRoom = this.currentRoom > 0 ? this.currentRoom - 1 : this.totalRooms - 1;
+		// 	}
 
-			// Position the next room.
-			var nextRoom = DOM.rooms[this.currentRoom]
-			nextRoom.style.transform = 'translate3d(' + (dir === 'next' ? 100 : -100) + '%,0,0) translate3d(' + (dir === 'next' ? 1 : -1) + 'px,0,0)' ;
-			nextRoom.style.opacity = 1;
+		// 	// Position the next room.
+		// 	var nextRoom = DOM.rooms[this.currentRoom]
+		// 	nextRoom.style.transform = 'translate3d(' + (dir === 'next' ? 100 : -100) + '%,0,0) translate3d(' + (dir === 'next' ? 1 : -1) + 'px,0,0)' ;
+		// 	nextRoom.style.opacity = 1;
 
-			// Move back.
-			this.move({transition: this.roomTransition, transform: this.resetTransform})
-			.then(() => {
-				// Move left or right.
-				return this.move(
-					{ transform: {
-							translateX : (dir === 'next' ? -100 : 100) + '%',
-							translateY : 0,
-							translateZ : 0,
-							rotateX : 0,
-							rotateY : 0,
-							rotateZ : 0
-						}
-					}
-				)
-			})
-			.then(() => {
-				// Update current room class.
-				this.setActiveSlide(this.currentRoom)
-				room.style.opacity = 0;
+		// 	// Move back.
+		// 	this.move({transition: this.roomTransition, transform: this.resetTransform})
+		// 	.then(() => {
+		// 		// Move left or right.
+		// 		return this.move(
+		// 			{ transform: {
+		// 					translateX : (dir === 'next' ? -100 : 100) + '%',
+		// 					translateY : 0,
+		// 					translateZ : 0,
+		// 					rotateX : 0,
+		// 					rotateY : 0,
+		// 					rotateZ : 0
+		// 				}
+		// 			}
+		// 		)
+		// 	})
+		// 	.then(() => {
+		// 		// Update current room class.
+		// 		this.setActiveSlide(this.currentRoom)
+		// 		room.style.opacity = 0;
 
-				// Show the next slide.
-				this.showSlide()
+		// 		// Show the next slide.
+		// 		this.showSlide()
 
-				// Move into room.
-				// Update final transform state:
-				return this.move(
-					{ transform: {
-						translateX : (dir === 'next' ? -100 : 100) + '%',
-						translateY : 0,
-						translateZ : '500px',
-						rotateX : 0,
-						rotateY : 0,
-						rotateZ : 0 }
-					}
-				)
-			})
-			.then(() => {
-				// Reset positions.
-				this.applyRoomTransition('none');
-				nextRoom.style.transform = 'translate3d(0,0,0)';
-				this.applyRoomTransform(initTransform);
+		// 		// Move into room.
+		// 		// Update final transform state:
+		// 		return this.move(
+		// 			{ transform: {
+		// 				translateX : (dir === 'next' ? -100 : 100) + '%',
+		// 				translateY : 0,
+		// 				translateZ : '500px',
+		// 				rotateX : 0,
+		// 				rotateY : 0,
+		// 				rotateZ : 0 }
+		// 			}
+		// 		)
+		// 	})
+		// 	.then(() => {
+		// 		// Reset positions.
+		// 		this.applyRoomTransition('none');
+		// 		nextRoom.style.transform = 'translate3d(0,0,0)';
+		// 		this.applyRoomTransform(initTransform);
 
-				setTimeout(() => {
-					this.initTilt()
-				}, 60);
-				this.isNavigating = false;
-			})
-		}
+		// 		setTimeout(() => {
+		// 			this.initTilt()
+		// 		}, 60);
+		// 		this.isNavigating = false;
+		// 	})
+		// }
 
-		this.addAdjacentRooms = () => {
-			// Current room.
-			var room = DOM.rooms[currentRoom],
-				// Adjacent rooms.
-				nextRoom = DOM.rooms[currentRoom < totalRooms - 1 ? currentRoom + 1 : 0],
-				prevRoom = DOM.rooms[currentRoom > 0 ? currentRoom - 1 : totalRooms - 1];
+		// this.addAdjacentRooms = () => {
+		// 	// Current room.
+		// 	var // Adjacent rooms.
+		// 		nextRoom = DOM.rooms[currentRoom < totalRooms - 1 ? currentRoom + 1 : 0],
+		// 		prevRoom = DOM.rooms[currentRoom > 0 ? currentRoom - 1 : totalRooms - 1];
 
-			// Position the adjacent rooms.
-			nextRoom.style.transform = 'translate3d(100%,0,0) translate3d(3px,0,0)';
-			nextRoom.style.opacity = 1;
-			prevRoom.style.transform = 'translate3d(-100%,0,0) translate3d(-3px,0,0)';
-			prevRoom.style.opacity = 1;
-		}
+		// 	// Position the adjacent rooms.
+		// 	nextRoom.style.transform = 'translate3d(100%,0,0) translate3d(3px,0,0)';
+		// 	nextRoom.style.opacity = 1;
+		// 	prevRoom.style.transform = 'translate3d(-100%,0,0) translate3d(-3px,0,0)';
+		// 	prevRoom.style.opacity = 1;
+		// }
 
-		this.removeAdjacentRooms = () => {
-			// Current room.
-			var room = DOM.rooms[currentRoom],
-				// Adjacent rooms.
-				nextRoom = DOM.rooms[currentRoom < totalRooms - 1 ? currentRoom + 1 : 0],
-				prevRoom = DOM.rooms[currentRoom > 0 ? currentRoom - 1 : totalRooms - 1];
+		// this.removeAdjacentRooms = () => {
+		// 	// Current room.
+		// 	var // Adjacent rooms.
+		// 		nextRoom = DOM.rooms[currentRoom < totalRooms - 1 ? currentRoom + 1 : 0],
+		// 		prevRoom = DOM.rooms[currentRoom > 0 ? currentRoom - 1 : totalRooms - 1];
 
-			// Position the adjacent rooms.
-			nextRoom.style.transform = 'none';
-			nextRoom.style.opacity = 0;
-			prevRoom.style.transform = 'none';
-			prevRoom.style.opacity = 0;
-		}
-		// // Preload all the images.
-		imagesLoaded(DOM.scroller, () => {
-			let extradelay = 1000;
-			// Slide out loader.
-			anime({
-				targets: DOM.loader,
-				duration: 600,
-				easing: 'easeInOutCubic',
-				delay: extradelay,
-				translateY: '-100%',
-				begin: () => {
-					this.init();
-				},
-				complete: () => {
-					DOM.loader.classList.remove('overlay--active')
-				}
-			});
-		});
+		// 	// Position the adjacent rooms.
+		// 	nextRoom.style.transform = 'none';
+		// 	nextRoom.style.opacity = 0;
+		// 	prevRoom.style.transform = 'none';
+		// 	prevRoom.style.opacity = 0;
+		// }
+		// // // Preload all the images.
+		// imagesLoaded(DOM.scroller, () => {
+		// 	let extradelay = 1000;
+		// 	// Slide out loader.
+		// 	anime({
+		// 		targets: DOM.loader,
+		// 		duration: 600,
+		// 		easing: 'easeInOutCubic',
+		// 		delay: extradelay,
+		// 		translateY: '-100%',
+		// 		begin: () => {
+		// 			this.init();
+		// 		},
+		// 		complete: () => {
+		// 			DOM.loader.classList.remove('overlay--active')
+		// 		}
+		// 	});
+		// });
 
-		// this.init()
+		// // this.init()
 	}
 
 	componentDidMount() {
@@ -397,7 +362,6 @@ class ProjectsPageWrapper extends Component {
 	}
 
 	render () {
-		// console.log('Render called, and state =', this.state);
 		return (
 			<div id="projects">
 				<h1>projects</h1>

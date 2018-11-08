@@ -19,7 +19,7 @@ class Room extends Component {
 	}
 
 	getActiveClass () {
-		if (this.props.isActive == this.props.index) {
+		if (this.props.isActive === this.props.index) {
 			return 'room room--current'
 		} else {
 			return 'room'
@@ -27,7 +27,7 @@ class Room extends Component {
 	}
 
 	backWallColor () {
-		if ( this.props.project.wallColor[0] == "#" ) {
+		if ( this.props.project.wallColor[0] === "#" ) {
 		  return this.props.project.wallColor.slice(1)
 		} else {
 			return this.props.project.wallColor
@@ -36,7 +36,7 @@ class Room extends Component {
 
 	bottomWallColor (amt) {
 		let col = this.props.project.wallColor
-    if ( this.props.project.wallColor[0] == "#" ) {
+    if ( this.props.project.wallColor[0] === "#" ) {
       col =  this.props.wallColor.slice(1)
     }
 
@@ -62,7 +62,7 @@ class Room extends Component {
 	// via https://stackoverflow.com/questions/5560248/
 	sideWallColor (amt) {
 		let col = this.props.project.wallColor
-    if ( this.props.project.wallColor[0] == "#" ) {
+    if ( this.props.project.wallColor[0] === "#" ) {
       col =  this.props.project.wallColor.slice(1)
     }
 
@@ -100,18 +100,18 @@ class Room extends Component {
 		return (
 			<div className={this.state.roomCSS}>
 				<div className="room__side room__side--back" style={backStyle}>
-					<img className="room__img" src={this.props.project.img1} alt="Some image"/>
-					<img className="room__img" src={this.props.project.img2} alt="Some image"/>
+					<img className="room__img" src={this.props.project.img1} alt="Some"/>
+					<img className="room__img" src={this.props.project.img2} alt="Some"/>
 				</div>
 				<div className="room__side room__side--left" style={sideStyle}>
-					<img className="room__img" src={this.props.project.img3} alt="Some image"/>
-					<img className="room__img" src={this.props.project.img4} alt="Some image"/>
-					<img className="room__img" src={this.props.project.img5} alt="Some image"/>
+					<img className="room__img" src={this.props.project.img3} alt="Some"/>
+					<img className="room__img" src={this.props.project.img4} alt="Some"/>
+					<img className="room__img" src={this.props.project.img5} alt="Some"/>
 				</div>
 				<div className="room__side room__side--right" style={sideStyle}>
-					<img className="room__img" src={this.props.project.img6} alt="Some image"/>
-					<img className="room__img" src={this.props.project.img7} alt="Some image"/>
-					<img className="room__img" src={this.props.project.img8} alt="Some image"/>
+					<img className="room__img" src={this.props.project.img6} alt="Some"/>
+					<img className="room__img" src={this.props.project.img7} alt="Some"/>
+					<img className="room__img" src={this.props.project.img8} alt="Some"/>
 				</div>
 				<div className="room__side room__side--bottom" style={botmStyle}></div>
 			</div>
