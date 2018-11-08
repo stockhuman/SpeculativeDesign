@@ -23,28 +23,18 @@
 }
 
 
-.home-show {
-	background: #b6cac0;
-	margin-top: 100vh;
+.home-blurb {
+	background: #E4E4E4;
+	margin-top: 90vh;
 	width: 100%;
 	color: rgba(0,0,0,0.95);
-	// font-family: 'Maison Neue Mono', monospaced;
-	.row {
-		padding: 4rem 2.5rem;
+	display: flex;
+	min-height: 50vh;
+	justify-content: center;
 
-
-		// div{
-		// 	margin: 0 1rem;
-		// }
-
-		img {
-			border-radius: 4px;
-			margin-bottom: 2rem;
-		}
-
-		p {
-			margin: 0;
-			line-height: 1.4
-		}
+	p {
+		max-width: 300px;
+		align-self: center;
+		padding: 3rem;
 	}
 }
