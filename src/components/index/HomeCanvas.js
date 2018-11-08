@@ -132,6 +132,7 @@ class HomeCanvas extends Component {
 		}]
 
 		const clear = () => {
+			context.fillStyle = this.state.defaults.color
 			context.clearRect(0, 0, canvas.width, canvas.height)
 		}
 

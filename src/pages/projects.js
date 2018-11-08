@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'gatsby-link'
 
 import '../scss/pages/_projects.scss'
 import ProjectsPageWrapper from '../components/projects/projects-page'
@@ -20,6 +19,8 @@ import work4 from '../assets/img/work/Music.png'
 import work5 from '../assets/img/work/Promotion.png'
 import work6 from '../assets/img/work/Working_1.png'
 import work7 from '../assets/img/work/Working_2.png'
+
+import matches1 from '../assets/img/matches/Corridor.png'
 
 const projects = [
 	{
@@ -43,7 +44,7 @@ const projects = [
 		img4: work4,
 		img5: work5,
 		img6: work6,
-		img7: love6,
+		img7: work7,
 		img8: img1,
 		name: 'Work',
 		title: 'It is as if you were doing work',
@@ -51,7 +52,7 @@ const projects = [
 		wallColor: 'A7BBC3'
 	},
 	{
-		img1: img1,
+		img1: matches1,
 		img2: img1,
 		img3: img1,
 		img4: img1,
@@ -61,7 +62,6 @@ const projects = [
 		img8: img1,
 		name: 'Doot me good',
 		title: 'hey hey',
-		date: 'jan 3'
 	}
 ] // todo => query projects for data
 
