@@ -9,7 +9,7 @@
 
 ## About Speculative X
 - [One Shared House 2030](http://onesharedhouse2030.com/) | Anton & Irene + SPACE10., 2014 - 2016 <br>
-  A sort of polling site for the imagined future of co-habitation, and how people would imagine living in the more crouded, urban future. Space10 is a speculative design house & publication based in Denmark, and Anton & Irene are a design firm based in Manhattan. [A documentary](http://onesharedhouse.com/) produced with the data collected.
+  A sort of polling site for the imagined future of co-habitation, and how people would imagine living in the more crouded, urban future. Space10 is a speculative design house & publication based in Denmark, and Anton & Irene are a design firm based in Manhattan. [A documentary](http://onesharedhouse.com/) produced with the data collected. [About the site's design](https://www.awwwards.com/sites/one-shared-house-2030)
 - [Should you say ‘please’ and ‘thank you’ to your Amazon Echo or Google Home?](https://www.theverge.com/circuitbreaker/2017/12/10/16751232/) | Chaim Gartenberg for The Verge, Dec 2017 <br>
   "Demanding that my phone turn on and off the lights started feeling weird to say aloud, which got me to wondering: was I being rude to my smartphone?" Explores the notion that we may condition ourselves into rudeness should we omit thanking assistants that filter out politeness anyway.
 
@@ -33,6 +33,8 @@
 - [Random Access Character](https://glkitty.itch.io/random-acess-character) | GLKitty
 - [Impossible Architecture](https://inconvergent.net/app/impossible-architecture/) | Anders Hoff
 - [CSS Blobs](https://codepen.io/Olliebaba/pen/XVPewm?q=css%20blob&order=popularity&depth=everything&show_forks=false)
+- [Dwitter](https://www.dwitter.net/) | <br>
+  Twitter, but for code golf. 140 character HTML canvas JS art.
 
 ## Games
 - [Coloratura](http://www.maderealstories.com/games/Coloratura-twine.html) | Lynnea Glasser, 2013 <br>
@@ -48,9 +50,7 @@
 These are little links I found or kept around purely for their bizzare nature. I find things of the sort useful for imagining other ways things might be.
 - [Club Penguin Vietnam War](https://www.youtube.com/watch?v=Wl6utFejqOY)
 - [Shrek: A Marxist Analysis](https://www.youtube.com/watch?v=pWbaUnbo-_c)
-- []()
 
 ## Useful things
 Tools and resource collections, either for references to what is popular or what could be.
 - [Van Schneider's 'Color Claim'](https://www.vanschneider.com/colors)
-- []()
