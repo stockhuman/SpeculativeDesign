@@ -24,6 +24,8 @@ A project I'm familiar on the decetralized network is that of Devine Lu Linevega
 
 It's almost unbroken ground here. The platform is so far in it's infancy all one can find are little experiments and personal blogs, with maybe the odd whitepaper from some other crypto currency of the like.
 
+In the same vein, I've come across the [Open Bazaar Project](https://openbazaar.org/); a browser, protocol and ecommerce site rolled into one. It uses bitcoin to buy and sell things anonymously. This would seem ideal for drug trading, but that's curiously absent from the very polished homepage demo.
+
 #### 3. "Sneakernet" ([wikipedia](https://en.wikipedia.org/wiki/Sneakernet))
 A close relative of _dead drops_ and the like; the sneakernet is the notion of data transimission via physical transportation of the data to another place - to use your sneakers to walk to the destination.
 
