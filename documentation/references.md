@@ -1,8 +1,9 @@
 ## About the web
 - [All Websites look the same](http://www.novolume.co.uk/blog/all-websites-look-the-same/) | novolume.co.uk, 2015 <br>
   "When was the last time you saw a website that didn’t have a huge image fitting to the screen with some giant text overlaid on it?"
-
-- []
+- [Brutalist Websites](http://brutalistwebsites.com/)
+- [Material Design is a political choice](https://www.imaginarycloud.com/blog/material-design-is-a-political-choice/) | João Ribeiro, 2018-06-13 <br>
+  "We are representing Google, whatever that might mean."
 
 ## About Speculative X
 
