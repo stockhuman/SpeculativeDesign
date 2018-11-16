@@ -1,7 +1,6 @@
 ## About the web
 - [All Websites look the same](http://www.novolume.co.uk/blog/all-websites-look-the-same/) | novolume.co.uk, 2015
-
- "When was the last time you saw a website that didn’t have a huge image fitting to the screen with some giant text overlaid on it?"
+  "When was the last time you saw a website that didn’t have a huge image fitting to the screen with some giant text overlaid on it?"
 
 - []
 
