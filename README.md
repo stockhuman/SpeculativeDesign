@@ -1,7 +1,6 @@
-# gatsby-starter-default
-The default Gatsby starter.
+# Speculative Play
+Main branch currently builds to the halfway site, with `dev-main` containing progress to the final speculative play website.
 
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
 
 ## Install
 
@@ -10,17 +9,19 @@ Make sure that you have the Gatsby CLI program installed:
 npm install --global gatsby-cli
 ```
 
-And run from your CLI:
+And run from your CLI in the cloned repo
 ```sh
-gatsby new gatsby-example-site
+git clone https://github.com/stockHuman/SpeculativeDesign && cd SpeculativeDesign && npm install
 ```
 
-Then you can run it by:
+Then you can run it with
 ```sh
-cd gatsby-example-site
-npm run develop
+npm start
 ```
 
 ## Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+The site can be built into an optimised static site with:
+```sh
+npm run build
+```
