@@ -27,5 +27,13 @@ It's almost unbroken ground here. The platform is so far in it's infancy all one
 #### 3. "Sneakernet" ([wikipedia](https://en.wikipedia.org/wiki/Sneakernet))
 A close relative of _dead drops_ and the like; the sneakernet is the notion of data transimission via physical transportation of the data to another place - to use your sneakers to walk to the destination.
 
+
 ### Play on the Web
 
+
+
+### Directions
+
+---
+
+Following our discussion of the above, I've been exploring morality on the web. I feel like this project is a complete hounour and gift to be able to do. I'm very glad I can explore the web like this.
