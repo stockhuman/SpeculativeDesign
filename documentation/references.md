@@ -30,8 +30,9 @@
 - [Johan Nordberg](https://johan-nordberg.com/) | Johan Nordberg, 2017 <br>
   HTML comment leads to jn.cx, witha more traditional homepage. This site can (at times) lead to a live, web-socket connection to the developer.
 - [Canvas Blobs](http://www.herokidstudio.es/) | Herokidstudio.es
-- [Random Access Character](https://glkitty.itch.io/random-acess-character)
-- [Impossible Architecture](https://inconvergent.net/app/impossible-architecture/)
+- [Random Access Character](https://glkitty.itch.io/random-acess-character) | GLKitty
+- [Impossible Architecture](https://inconvergent.net/app/impossible-architecture/) | Anders Hoff
+- [CSS Blobs](https://codepen.io/Olliebaba/pen/XVPewm?q=css%20blob&order=popularity&depth=everything&show_forks=false)
 
 ## Games
 - [Coloratura](http://www.maderealstories.com/games/Coloratura-twine.html) | Lynnea Glasser, 2013 <br>
