@@ -14,9 +14,9 @@ class HomeCanvas extends Component {
 
 	getRandomColor () {
 		const dopecolors = [
-			'FACACO',
+			'FACAC0',
 			'F3C9DD',
-			'OBBCD6',
+			'0BBCD6',
 			'A6CFE2',
 			'F1C3B8'
 		]
@@ -156,7 +156,6 @@ class HomeCanvas extends Component {
 			this.currentImage.height = e.height * r
 			this.currentImage.src = e.url
 			this.currentImage.onload = () => {
-				console.log('image loaded') // I fear this is of no help with the _this2 issue
 				this.canvasImageReady = true
 			}
 		}
@@ -201,7 +200,7 @@ class HomeCanvas extends Component {
 				let i = parseInt(distanceBetween2Points(oldmp, lastmp)),
 				o = angleBetween2Points(oldmp, lastmp),
 				l = 0;
-				l <= i || 0 === l; l += 1) { // mishaped for loop
+				l <= i || 0 === l; l += 1) { // mishapen for loop
 
 				let dx = oldmp.x + Math.sin(o) * l - this.currentImage.width / 2;
 				let dy = oldmp.y + Math.cos(o) * l - this.currentImage.height / 2;
@@ -214,7 +213,7 @@ class HomeCanvas extends Component {
 		}
 
 		const clear = () => {
-			this.context.clearRect(0, 0, canvas.width, canvas.height)
+			this.context.rect(0, 0, canvas.width, canvas.height)
 		}
 
 		updateImage() // set the first image and params
