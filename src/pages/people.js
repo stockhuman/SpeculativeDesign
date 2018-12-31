@@ -6,7 +6,7 @@ import Layout from '../components/layouts/page'
 
 const People = ({ data }) => (
 	<Layout>
-		<h4> Posts</h4 >
+		<h4>Playful Speculators</h4 >
 		{
 			data.allMarkdownRemark.edges.map(({ node }) => (
 				<div key={node.id}>

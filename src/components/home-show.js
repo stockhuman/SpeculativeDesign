@@ -1,24 +1,24 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import img from '../assets/bboard.jpg'
 
 const HomeShow = ({data}) => (
 	<div>
 	<section className="home-show">
-		<Grid fluid>
-		 <Row>
-			{/*About Section */}
-			 <Col xs={12} md={6}>
-				 <img src={img} alt="Blackboard"/>
-			 </Col>
-			  <Col xs={12} md={6}>
-			 	 <p>{data['about']}</p>
-			 	 	<Link to='/projects' className="btn">Projects</Link>
-			  </Col>
-		 </Row>
-	 </Grid>
+
+		<div className="row">
+			<div className="col">
+				<img src={img} alt="Blackboard" />
+				<p>{data['about']}</p>
+			</div>
+
+			<div className="col">
+				<Link to='/projects' className="btn">Projects</Link>
+				<Link to='/bibliography' className="btn">Bibliography</Link>
+				<Link to='/people' className="btn">People</Link>
+			</div>
+		</div>
 	</section>
 	<footer id="site-footer">
 
