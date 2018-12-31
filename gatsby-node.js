@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -6,10 +7,11 @@
 
 const path = require('path')
 
-exports.createPages = ({boundActionCreators, graphql}) => {
-	const {createPage} = boundActionCreators
+exports.createPages = ({actions, graphql}) => {
+	const { createPage } = actions
 	const projectTemplate = path.resolve('src/templates/project.jsx')
 	const personTemplate = path.resolve('src/templates/person.jsx')
+	const defaultTemplate = path.resolve('src/templates/page.jsx')
 
 	return graphql(`{
 		allMarkdownRemark {
@@ -19,8 +21,6 @@ exports.createPages = ({boundActionCreators, graphql}) => {
 					id
 					frontmatter {
 						path
-						title
-						name
 					}
 				}
 			}
@@ -32,15 +32,26 @@ exports.createPages = ({boundActionCreators, graphql}) => {
 		}
 
 		res.data.allMarkdownRemark.edges.forEach(({node}) => {
-			if (node.frontmatter.path.startsWith('/people')) {
+			const pagePath = node.frontmatter.path
+			const layout = node.frontmatter.layout || 'index'
+
+			if (pagePath.startsWith('/people')) {
 				createPage({
-					path: node.frontmatter.path,
+					path: pagePath,
+					layout,
 					component: personTemplate
 				})
-			} else {
+			} else if (pagePath.startsWith('/project')) {
 				createPage({
-					path: node.frontmatter.path,
+					path: pagePath,
+					layout,
 					component: projectTemplate
+				})
+			}	else {
+				createPage({
+					path: pagePath,
+					layout,
+					component: defaultTemplate
 				})
 			}
 		})
@@ -49,10 +60,10 @@ exports.createPages = ({boundActionCreators, graphql}) => {
 
 
 // via https://github.com/gatsbyjs/gatsby/issues/1494
-const po = require('./src/layouts/parse-options')
-const fs = require(`fs-extra`)
+const po = require('./src/components/layouts/parse-options')
+const fs = require('fs-extra')
 
-exports.onCreatePage = async function({page}) {
-  const {attributes: {layout}} = po(await fs.readFile(page.component, 'utf8'))
-  page.layout = layout || 'index'
+exports.onCreatePage = function({page}) {
+  const {attributes: { layout }} = po( fs.readFile(page.component, 'utf8') )
+	page.layout = layout || 'index'
 }
