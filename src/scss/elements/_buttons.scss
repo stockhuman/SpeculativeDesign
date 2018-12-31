@@ -45,5 +45,7 @@ button, .btn {
 	display: block;
 	margin-top: 1em;
 	cursor: pointer;
-	pointer-events: all;
+  pointer-events: all;
+  margin: 6px;
+  display: inline-block;
 }
