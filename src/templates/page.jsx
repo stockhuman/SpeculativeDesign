@@ -4,18 +4,20 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layouts/page'
 
 export default function Template({ data }) {
-	const project = data.markdownRemark
+	const copy = data.markdownRemark
 
 	return (
 		<Layout>
-			<h1>{project.frontmatter.title}</h1>
-			<div dangerouslySetInnerHTML={{__html: project.html}} />
+			<main className="page">
+				<h1>{copy.frontmatter.title}</h1>
+				<div dangerouslySetInnerHTML={{ __html: copy.html }} />
+			</main>
 		</Layout>
 	)
 }
 
-export const projectQuery = graphql`
-	query ProjectByPath($path: String!) {
+export const personQuery = graphql`
+	query PageQuery($path: String!) {
 		markdownRemark(frontmatter: {path: { eq: $path } }) {
 			html
 			frontmatter {

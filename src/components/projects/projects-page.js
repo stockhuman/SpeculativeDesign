@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 
 import ProjectsContainer from './projects-container'
 import ProjectsContent from './projects-content'
+import Layout from '../layouts/page'
 
 import helpers from './helpers'
 
-import isEqual from 'lodash.isequal';
 const anime = typeof window !== 'undefined' ? require('animejs') : _ => _;
 const imagesLoaded = typeof window !== 'undefined' ? require('imagesloaded') : _ => _;
 
@@ -21,7 +21,6 @@ class ProjectsPageWrapper extends Component {
 
 	setActiveSlide(int) {
 		this.setState({ active : int })
-		console.log('Active slide:', int)
 		console.log('state.. =', this.state)
 	}
 
@@ -84,10 +83,6 @@ class ProjectsPageWrapper extends Component {
 		const initTransition = { speed: '0.9s', easing: 'ease' }
 		// Room moving transition.
 		const roomTransition = { speed: '0.4s', easing: 'ease' }
-		// View from top transition.
-		const menuTransition = { speed: '1.5s', easing: 'cubic-bezier(0.2,1,0.3,1)' }
-		// Info transition.
-		const infoTransition = { speed: '15s', easing: 'cubic-bezier(0.3,1,0.3,1)' }
 		// Tilt transition
 		const tiltTransition = { speed: '0.2s', easing: 'ease-out' }
 		// How much to rotate when the mouse moves.
@@ -132,7 +127,7 @@ class ProjectsPageWrapper extends Component {
 			this.tilt = false
 		}
 
-		this.move = (opts) => new Promise((resolve, reject) => {
+		this.move = (opts) => new Promise((resolve) => {
 			// if ( this.isMoving && !opts.stopTransition ) {
 			// 	return false;
 			// }
@@ -200,12 +195,6 @@ class ProjectsPageWrapper extends Component {
 
 			DOM.nav.leftCtrl.addEventListener('click', onNavigatePrevFn);
 			DOM.nav.rightCtrl.addEventListener('click', onNavigateNextFn);
-
-			// // Menu click.
-			// this.DOM.menuCtrl.addEventListener('click', toggleMenu);
-
-			// // Info click.
-			// this.DOM.infoCtrl.addEventListener('click', toggleInfo);
 		}
 
 		this.applyRoomTransform = (transform) => {
@@ -222,13 +211,12 @@ class ProjectsPageWrapper extends Component {
 			const slide = DOM.slides[this.currentRoom]
 			const name  = slide.querySelector('.slide__name')
 			const title = slide.querySelector('.slide__title')
-			const date  = slide.querySelector('.slide__date')
 
 			delay = delay !== undefined ? delay : 0;
 
-			anime.remove([name, title, date]);
+			anime.remove([name, title]);
 			var animeOpts = {
-				targets: [name, title, date],
+				targets: [name, title],
 				duration: dir === 'in' ? 400 : 400,
 				//delay: 0,//dir === 'in' ? 150 : 0,
 				delay: function(t, i, c) {
@@ -344,11 +332,9 @@ class ProjectsPageWrapper extends Component {
 		}
 
 		this.addAdjacentRooms = () => {
-			// Current room.
-			var room = DOM.rooms[currentRoom],
-				// Adjacent rooms.
-				nextRoom = DOM.rooms[currentRoom < totalRooms - 1 ? currentRoom + 1 : 0],
-				prevRoom = DOM.rooms[currentRoom > 0 ? currentRoom - 1 : totalRooms - 1];
+			// Adjacent rooms.
+			let nextRoom = DOM.rooms[currentRoom < totalRooms - 1 ? currentRoom + 1 : 0]
+			let prevRoom = DOM.rooms[currentRoom > 0 ? currentRoom - 1 : totalRooms - 1]
 
 			// Position the adjacent rooms.
 			nextRoom.style.transform = 'translate3d(100%,0,0) translate3d(3px,0,0)';
@@ -358,11 +344,9 @@ class ProjectsPageWrapper extends Component {
 		}
 
 		this.removeAdjacentRooms = () => {
-			// Current room.
-			var room = DOM.rooms[currentRoom],
-				// Adjacent rooms.
-				nextRoom = DOM.rooms[currentRoom < totalRooms - 1 ? currentRoom + 1 : 0],
-				prevRoom = DOM.rooms[currentRoom > 0 ? currentRoom - 1 : totalRooms - 1];
+			// Adjacent rooms.
+			let nextRoom = DOM.rooms[currentRoom < totalRooms - 1 ? currentRoom + 1 : 0]
+			let prevRoom = DOM.rooms[currentRoom > 0 ? currentRoom - 1 : totalRooms - 1]
 
 			// Position the adjacent rooms.
 			nextRoom.style.transform = 'none';
@@ -397,29 +381,30 @@ class ProjectsPageWrapper extends Component {
 	}
 
 	render () {
-		// console.log('Render called, and state =', this.state);
 		return (
-			<div id="projects">
-				<h1>projects</h1>
-				<ProjectsContainer projects={this.props.projects} isActive={this.state.active}/>
-				<ProjectsContent projects={this.props.projects} />
+			<Layout title='projects'>
+				<div id="projects">
+					<h1>projects</h1>
+					<ProjectsContainer projects={this.props.projects} isActive={this.state.active}/>
+					<ProjectsContent projects={this.props.projects} />
 
-				<nav className="nav" ref='nav'>
-					<button className="btn btn--nav btn--nav-left" ref='navLeft'>
-						<svg className="nav-icon nav-icon--left" width="42px" height="12px" viewBox="0 0 70 20">
-							<path className="nav__triangle" d="M52.5,10L70,0v20L52.5,10z"/>
-							<path className="nav__line" d="M55.1,11.4H0V8.6h55.1V11.4z"/>
-						</svg>
-					</button>
-					<button className="btn btn--nav btn--nav-right" ref='navRight'>
-						<svg className="nav-icon nav-icon--right" width="42px" height="12px" viewBox="0 0 70 20">
-							<path className="nav__triangle" d="M52.5,10L70,0v20L52.5,10z"/>
-							<path className="nav__line" d="M55.1,11.4H0V8.6h55.1V11.4z"/>
-						</svg>
-					</button>
-				</nav>
-				<div className="overlay overlay--loader overlay--active"></div>
-			</div>
+					<nav className="nav" ref='nav'>
+						<button className="btn btn--nav btn--nav-left" ref='navLeft'>
+							<svg className="nav-icon nav-icon--left" width="42px" height="12px" viewBox="0 0 70 20">
+								<path className="nav__triangle" d="M52.5,10L70,0v20L52.5,10z"/>
+								<path className="nav__line" d="M55.1,11.4H0V8.6h55.1V11.4z"/>
+							</svg>
+						</button>
+						<button className="btn btn--nav btn--nav-right" ref='navRight'>
+							<svg className="nav-icon nav-icon--right" width="42px" height="12px" viewBox="0 0 70 20">
+								<path className="nav__triangle" d="M52.5,10L70,0v20L52.5,10z"/>
+								<path className="nav__line" d="M55.1,11.4H0V8.6h55.1V11.4z"/>
+							</svg>
+						</button>
+					</nav>
+					<div className="overlay overlay--loader overlay--active"></div>
+				</div>
+			</Layout>
 		)
 	}
 }

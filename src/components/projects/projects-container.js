@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import ImagesLoaded from 'react-images-loaded'
-import Anime from 'react-anime'
-
 import Room from './projects-room'
 
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Link from 'gatsby-link'
 
 class ProjectsContent extends Component {
 
@@ -9,12 +10,10 @@ class ProjectsContent extends Component {
 				<div className="slides">
 					{this.props.projects.map((slide, i) =>
 						<div className="slide" key={i}>
-							<h2 className="slide__name">{slide.name}</h2>
+							<Link to={slide.link} className="slide__name">{slide.name}</Link>
 							<h3 className="slide__title">
-								<span>&ldquo;{slide.title}&rdquo;</span>
-								<div className="slide__number">{i}</div>
+								<span>{slide.title}</span>
 							</h3>
-							<p className="slide__date">{slide.date}</p>
 						</div>
 					)}
 				</div>
