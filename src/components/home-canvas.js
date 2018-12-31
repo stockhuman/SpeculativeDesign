@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { Component } from 'react'
 
 // Images for the mousemove canvas
@@ -56,8 +54,8 @@ class HomeCanvas extends Component {
 		this.objectIsDrawn = true
 		this.touchSupported ? (
 			this.mouseDownEvent = 'touchstart',
-		  this.mouseMoveEvent = 'touchmove',
-		  this.mouseUpEvent = 'touchend')
+			this.mouseMoveEvent = 'touchmove',
+			this.mouseUpEvent = 'touchend')
 			: (
 				this.mouseDownEvent = 'mouseenter',
 				this.mouseMoveEvent = 'mousemove',
@@ -160,11 +158,11 @@ class HomeCanvas extends Component {
 			}
 		}
 
-		const updateMousePosition = (ctx) => {
+		const updateMousePosition = () => {
 			this.lastMousePoint.x =
 				(this.default.mouse.x !== 0) ? this.default.mouse.x : window.innerWidth / 2;
 			this.lastMousePoint.y =
-			 (0 !== this.default.mouse.y) ? this.default.mouse.y : window.innerHeight / 2;
+				(0 !== this.default.mouse.y) ? this.default.mouse.y : window.innerHeight / 2;
 		}
 
 		const updateOldMousePosition = () => {
@@ -233,7 +231,7 @@ class HomeCanvas extends Component {
 
 	// begin!
 	componentDidMount() {
-		this.canvas = this.refs.canvas
+		this.canvas = document.getElementById('home-canvas')
 		this.init()
 	}
 
@@ -247,7 +245,7 @@ class HomeCanvas extends Component {
 
 	render () {
 		return (
-			<canvas id="home-canvas" ref='canvas' />
+			<canvas id="home-canvas" />
 		)
 	}
 }
