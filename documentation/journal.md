@@ -39,3 +39,12 @@ A close relative of _dead drops_ and the like; the sneakernet is the notion of d
 ---
 
 Following our discussion of the above, I've been exploring morality on the web. I feel like this project is a complete hounour and gift to be able to do. I'm very glad I can explore the web like this.
+
+
+### New Year; New Concepts.
+Over the break I'd moved into concepting the actual look and UX, all whilst trying to answer _"What is the alternative future web?"_
+I'd narrowed my interactions down to the URL as a talk-to-the-browser input method, and then the notion of religiosity as a pervasive theme. Architectureally, I wanted to explore an artistic and literal representation of the files on the server when this project is to go live, and to that end, I've envisioned a museum -- nay, a _monastery_ -- where one phisically (in 3D space) navigates the contents of the server.
+
+Pages and content are presented as rooms in the structure with artefacts within. the user will navigate and look around. Two other elements I wanted to play with were the aformentioned notion of power consumption, and the ability to edit or leave a mark on the site.
+
+I want this alternate web to both contain references to its real, physical nature, and to acknowledge the morality of actions taken within it. The default in the common understanding of the net is general anonymity and zero repercussions. I'd like to image a place that tallies your moral character, and gives guidance to the user.
