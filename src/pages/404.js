@@ -1,8 +1,8 @@
 import React from 'react'
-import PageGenerator from '../components/page-generator'
+import Layout from '../components/layouts/page'
 
 const NotFoundPage = () => (
-  <PageGenerator />
+  <Layout>404!</Layout>
 )
 
 export default NotFoundPage

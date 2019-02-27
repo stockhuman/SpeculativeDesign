@@ -1,25 +1,31 @@
 /* @meta
-	layout: layout
+	layout: home
 */
+
+import React from 'react'
+
+import Canvas from '../components/canvas'
+// import Caption from '../components/caption'
+import Layout from '../components/layouts/home'
 
 // Styles
 import '../scss/main.scss'
 import '../scss/pages/_home.scss'
 // import Fonts from '../scss/style.js'
 
-import React from 'react'
-import { Link } from 'gatsby'
 
-import Layout from '../components/layouts/layout'
-import HomeCanvas from '../components/index/HomeCanvas'
+// const copy = {
+// 	about: 'The Speculative Play project brings together the critical practices and forecasting of speculative design with the hands-on experience of play, and especially the play of interactive digital game-like things. The project operates out of the Technoculture, Art, and Games (TAG) Lab in the Milieux Institute for Arts, Culture, and Technology and the Department of Design and Computation Arts at Concordia University in Montréal and is funded by an FRQSC Team Research-Creation grant.'
+// }
 
 const IndexPage = () => (
-	<Layout>
-		<HomeCanvas />
-		<div className="home-blurb">
-			<p>Not fucking around, speculative play is an approach to critical design that involves creating interactive digital artifacts that propose to be from a future or an alternate present. When we step into the magic circle of a speculative play experience, we agree we are in that future or alternate present for the time being. The speculative play experience supports us in our imagining, reacts to us in our playing, speaks to us in a low voice about the world outside the magic circle. Within the magic circle, in that other time, we ask questions about the time and place outside the magic circle. Why is it like that when in here is is like this?</p>
-		</div>
-	</Layout>
+  <Layout>
+		<section className="home-intro">
+			{/* <Caption interval={80} /> */}
+			<div className="title"><h1>Speculative Play</h1></div>
+		</section>
+    <Canvas />
+  </Layout>
 )
 
 export default IndexPage

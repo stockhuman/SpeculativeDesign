@@ -1,38 +1,29 @@
+/* eslint-disable no-undef */
 module.exports = {
   siteMetadata: {
     title: 'Speculative Play'
   },
   plugins: [
-  	'gatsby-plugin-react-helmet',
-  	'gatsby-plugin-sass',
-  	{
-  		resolve: 'gatsby-source-filesystem',
-  		options: {
-  			path: `${__dirname}/src/pages/`,
-  			name: 'pages'
-			},
-		},
+		'gatsby-plugin-react-helmet',
+		'gatsby-plugin-sass',
+		'gatsby-remark-copy-linked-files',
+		'gatsby-transformer-sharp',
+		'gatsby-plugin-sharp',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
-				name: `images`,
-				path: `${__dirname}/src/assets/img/`,
+				path: `${__dirname}/src/pages/`,
+				name: 'pages'
 			}
 		},
 		{
-			resolve: `gatsby-plugin-manifest`,
+			resolve: 'gatsby-remark-images',
 			options: {
-				name: 'gatsby-starter-default',
-				short_name: 'starter',
-				start_url: '/',
-				background_color: '#663399',
-				theme_color: '#663399',
-				display: 'minimal-ui',
-				icon: 'src/assets/mono.png', // This path is relative to the root of the site.
+				maxWidth: 1080,
 			},
 		},
-		'gatsby-transformer-remark',
-		'gatsby-plugin-offline',
+		'gatsby-transformer-remark'
   ],
-  pathPrefix: `/site/sp` // for live.arthem.co/site/sp
+	pathPrefix: `/site/sp` // for live.arthem.co/site/sp
+	// pathPrefix: `/new` // for staging
 }

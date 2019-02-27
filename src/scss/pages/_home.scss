@@ -9,32 +9,65 @@
 
 .home-intro {
 	height: 100vh;
+	width: 100vw;
+	// background: #facac0;
 	position: fixed;
-	top: 0;
 	z-index: -1;
 	.title {
+		position: fixed;
+		bottom: 0;
+		right: 0;
 		margin: 1em;
-
 		h1 {
-			font-size: 5rem;
+			font-size: 4rem;
 			font-weight: normal;
 		}
+	}
+	.caption {
+		position: fixed;
+		bottom: 1em;
+		margin: 1em;
+		opacity: 0.3;
+		color: #fff;
+		font-size: 24px;
+		font-weight: bold;
+		max-width: 50%;
+		text-transform: uppercase;
 	}
 }
 
 
-.home-blurb {
+.home-show {
 	background: #E4E4E4;
-	margin-top: 90vh;
-	width: 100%;
+	margin-top: 100vh;
 	color: rgba(0,0,0,0.95);
-	display: flex;
-	min-height: 50vh;
-	justify-content: center;
+	font-family: monospace;
+		padding: 4rem 2.5rem;
 
-	p {
-		max-width: 300px;
-		align-self: center;
-		padding: 3rem;
-	}
+		img {
+			width: 200px;
+			border: inset 2px black;
+			margin-bottom: 2rem;
+			&:hover {
+				width: 500px;
+			}
+		}
+
+		p {
+			max-width: 500px;
+			margin: 0;
+			font-size: 18px;
+			line-height: 1.4
+		}
+
+		// the button to projects
+		a {
+			padding: 1em;
+			border: 2px solid;
+			color: black;
+		}
+		.row {
+			margin: 0 auto;
+			max-width: 1200px;
+		}
 }

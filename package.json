@@ -5,20 +5,28 @@
   "author": "Michael Hemingway",
   "dependencies": {
     "fs-extra": "^6.0.1",
-    "gatsby": "^2.0.41",
-    "gatsby-link": "^2.0.6",
-    "gatsby-plugin-manifest": "^2.0.8",
-    "gatsby-plugin-offline": "^2.0.13",
-    "gatsby-plugin-page-transitions": "^1.0.7",
-    "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-plugin-sass": "^2.0.4",
-    "gatsby-source-filesystem": "^2.0.8",
-    "gatsby-transformer-remark": "^1.7.44",
-    "js-yaml": "^3.12.0",
-    "react": "^16.6.1",
-    "react-dom": "^16.6.1",
+    "gatsby": "^2.0.119",
+    "gatsby-link": "^2.0.10",
+    "gatsby-plugin-react-helmet": "^3.0.6",
+    "gatsby-plugin-sass": "^2.0.10",
+    "gatsby-plugin-sharp": "^2.0.20",
+    "gatsby-remark-copy-linked-files": "^2.0.9",
+    "gatsby-remark-images": "^3.0.3",
+    "gatsby-source-filesystem": "^2.0.23",
+    "gatsby-transformer-remark": "^2.2.5",
+    "gatsby-transformer-sharp": "^2.1.13",
+    "js-yaml": "^3.12.1",
+    "node-sass": "^4.11.0",
+    "pex-context": "^2.8.0",
+    "pex-renderer": "^3.0.0-31",
+    "primitive-sphere": "^3.0.0",
+    "react": "^16.8.1",
+    "react-anime": "^2.2.0",
+    "react-dom": "^16.8.1",
+    "react-flexbox-grid": "^2.1.2",
     "react-helmet": "^5.2.0",
-    "react-images-loaded": "^2.0.0"
+    "react-images-loaded": "^2.0.0",
+    "webpack": "^4.29.3"
   },
   "keywords": [
     "gatsby"
@@ -26,12 +34,10 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "start": "gatsby develop",
-    "format": "prettier --write \"src/**/*.js\""
+    "start": "gatsby develop"
   },
   "devDependencies": {
-    "node-sass": "^4.10.0",
-    "prettier": "^1.15.1",
-    "webpack": "^4.25.1"
+    "eslint": "^5.13.0",
+    "eslint-plugin-react": "^7.12.4"
   }
 }

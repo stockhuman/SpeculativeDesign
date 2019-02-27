@@ -1,6 +1,7 @@
-# Speculative Play
-Main branch currently builds to the halfway site, with `dev-main` containing progress to the final speculative play website.
+# Speculative Play 2018-2019 interactive site
+The default Gatsby starter.
 
+For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
 
 ## Install
 
@@ -9,19 +10,8 @@ Make sure that you have the Gatsby CLI program installed:
 npm install --global gatsby-cli
 ```
 
-And run from your CLI in the cloned repo
+And run from your CLI in the downloaded project folder
 ```sh
-git clone https://github.com/stockHuman/SpeculativeDesign && cd SpeculativeDesign && npm install
-```
-
-Then you can run it with
-```sh
+npm i
 npm start
-```
-
-## Deploy
-
-The site can be built into an optimised static site with:
-```sh
-npm run build
 ```
