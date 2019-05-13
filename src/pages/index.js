@@ -4,8 +4,9 @@
 
 import React from 'react'
 
-import Canvas from '../components/canvas'
-// import Caption from '../components/caption'
+import HomeCanvas from '../components/home-canvas'
+import HomeShow from '../components/home-show'
+import Caption from '../components/caption'
 import Layout from '../components/layouts/home'
 
 // Styles
@@ -21,10 +22,11 @@ import '../scss/pages/_home.scss'
 const IndexPage = () => (
   <Layout>
 		<section className="home-intro">
-			{/* <Caption interval={80} /> */}
+			<Caption interval={80} />
 			<div className="title"><h1>Speculative Play</h1></div>
 		</section>
-    <Canvas />
+    <HomeCanvas />
+    <HomeShow data={copy} />
   </Layout>
 )
 
