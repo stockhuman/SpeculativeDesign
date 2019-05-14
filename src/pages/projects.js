@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../scss/pages/_projects.scss'
+import '../scss/layout/_projects.scss'
 import ProjectsPageWrapper from '../components/projects/projects-page'
 
 // Project Images
