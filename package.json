@@ -23,6 +23,7 @@
     "react-flexbox-grid": "^2.1.2",
     "react-helmet": "^5.2.1",
     "react-images-loaded": "^2.0.0",
+    "three": "^0.104.0",
     "webpack": "^4.31.0"
   },
   "keywords": [

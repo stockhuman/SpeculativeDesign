@@ -4,7 +4,7 @@ import ProjectsContainer from './projects-container'
 import ProjectsContent from './projects-content'
 import Layout from '../layouts/page'
 
-import helpers from './helpers'
+// import helpers from './helpers'
 
 const anime = typeof window !== 'undefined' ? require('animejs') : _ => _;
 const imagesLoaded = typeof window !== 'undefined' ? require('imagesloaded') : _ => _;
@@ -61,28 +61,7 @@ class ProjectsPageWrapper extends Component {
 			rotateZ : 0
 		}
 
-		// Reset transform.
-		const resetTransform = {
-			translateX : 0,
-			translateY : 0,
-			translateZ : 0,
-			rotateX : 0,
-			rotateY : 0,
-			rotateZ : 0
-		}
-
-		const menuTransform = {
-			translateX : 0,
-			translateY : '50%',
-			translateZ : 0,
-			rotateX : '-10deg',
-			rotateY : 0,
-			rotateZ : 0
-		}
-
 		const initTransition = { speed: '0.9s', easing: 'ease' }
-		// Room moving transition.
-		const roomTransition = { speed: '0.4s', easing: 'ease' }
 		// Tilt transition
 		const tiltTransition = { speed: '0.2s', easing: 'ease-out' }
 		// How much to rotate when the mouse moves.

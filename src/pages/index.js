@@ -4,8 +4,7 @@
 
 import React from 'react'
 
-import HomeCanvas from '../components/home-canvas'
-import HomeShow from '../components/home-show'
+import HomeCanvas from '../components/canvas/canvas'
 import Caption from '../components/caption'
 import Layout from '../components/layouts/home'
 
@@ -21,12 +20,7 @@ import '../scss/pages/_home.scss'
 
 const IndexPage = () => (
   <Layout>
-		<section className="home-intro">
-			<Caption interval={80} />
-			<div className="title"><h1>Speculative Play</h1></div>
-		</section>
-    <HomeCanvas />
-    <HomeShow data={copy} />
+    <HomeCanvas scene='' />
   </Layout>
 )
 
