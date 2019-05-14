@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import '../../scss/main.scss'
 
 const Layout = ({ children }) => (
-  <div>
+  <>
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
@@ -29,7 +29,7 @@ const Layout = ({ children }) => (
         />)}
     />
       {children}
-  </div>
+  </>
 )
 
 export default Layout
