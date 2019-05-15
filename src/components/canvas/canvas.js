@@ -11,7 +11,7 @@ export default function View (props) {
 		<div id="viewport" onMouseMove={ onMouseMove }>
 			<Canvas
 				style={{ background: '#A2CCB6' }}
-				camera={{ fov: 75, position: [0, 0, 50] }}
+				camera={{ fov: 75, position: [0, 1, 10] }}
 				children={ props.children }
 				pixelRatio={ window.devicePixelRatio || 1 }
 				invalidateFrameloop
