@@ -4,6 +4,7 @@ import { navigate } from 'gatsby'
 import View from '../components/canvas/canvas'
 import Scene from '../components/canvas/scene'
 import Layout from '../components/layouts'
+import Caption from '../components/caption'
 
 // Styles
 import '../scss/main.scss'
@@ -24,8 +25,9 @@ const IndexPage = () => (
         <planeBufferGeometry attach="geometry" args={[2, 2]} />
         <meshLambertMaterial attach="material" transparent />
       </mesh>
-      <Scene url={'meshes/SP_index2.glb'} />
+      <Scene url={'meshes/SP_index3.glb'} />
     </View>
+    <Caption />
   </Layout>
 )
 
