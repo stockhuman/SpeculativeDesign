@@ -1,4 +1,5 @@
 import React from 'react'
+import { navigate } from 'gatsby'
 
 import View from '../components/canvas/canvas'
 import Scene from '../components/canvas/scene'
@@ -19,7 +20,7 @@ const IndexPage = () => (
     <View>
       <mesh
         position={[0, 1, -4]}
-        onClick={e => console.log('click')}>
+        onClick={ () => navigate("/people/") }>
         <planeBufferGeometry attach="geometry" args={[2, 2]} />
         <meshLambertMaterial attach="material" transparent />
       </mesh>
