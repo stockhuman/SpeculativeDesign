@@ -25,7 +25,8 @@ const IndexPage = () => (
         <planeBufferGeometry attach="geometry" args={[2, 2]} />
         <meshLambertMaterial attach="material" transparent />
       </mesh>
-      <Scene url={'meshes/SP_index3.glb'} />
+      <Scene url={'meshes/SP_index5.glb'} />
+      <spotLight intensity={0.2} position={[0, 2, 10]} angle={0.4} penumbra={1} castShadow />
     </View>
     <Caption />
   </Layout>
