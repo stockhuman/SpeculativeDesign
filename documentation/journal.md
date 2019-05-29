@@ -56,4 +56,7 @@ After completing the temporary site (somehow that's not up yet?) I've broken gro
 ![Gatsby integrated index](../img/index-00.png)
 
 Building on the knowledge gained in the 'temp' site related to React, I've built a foundation that integrates a fully-reactive Three.js environment overtop a Gatsby base. glTF model loading, lights, rendering and all that fancy jazz now work in the same framework.
+
 The index model was built in Blender, and exported with [this](https://github.com/KhronosGroup/glTF-Blender-Exporter) handy exporter. I've built my node setup to work with the native material module so as to not have to load the additional glass/specular addon, though I may if need be.
+
+Having built this base to go on, my next major feature is of course the memory of the site, and the integration or religiosity, which I very much still intend to pursue. I realise at this point it's been a very long time since the inception of this project and even since the last meeting, nevertheless, things are shaping up.
