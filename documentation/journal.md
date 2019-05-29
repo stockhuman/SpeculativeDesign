@@ -48,3 +48,11 @@ I'd narrowed my interactions down to the URL as a talk-to-the-browser input meth
 Pages and content are presented as rooms in the structure with artefacts within. the user will navigate and look around. Two other elements I wanted to play with were the aformentioned notion of power consumption, and the ability to edit or leave a mark on the site.
 
 I want this alternate web to both contain references to its real, physical nature, and to acknowledge the morality of actions taken within it. The default in the common understanding of the net is general anonymity and zero repercussions. I'd like to image a place that tallies your moral character, and gives guidance to the user.
+
+
+### Building on concepts
+After completing the temporary site (somehow that's not up yet?) I've broken ground on the site that implements the ideas above proper. It was unfortunate to learn that URL communication is unfortunately rather difficult to implement without side effects in certain browser, though I've found [this library](https://github.com/KidkArolis/location-bar) that may help with that in the future.
+
+![Rotonde](../img/index-00.png)
+
+Building on the knowledge gained in the 'temp' site related to React, I've built a foundation that integrates a fully-reactive Three.js environment overtop a Gatsby base. glTF model loading, lights, rendering and all that fancy jazz now work in the same framework.
