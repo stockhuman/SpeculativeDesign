@@ -53,6 +53,7 @@ I want this alternate web to both contain references to its real, physical natur
 ### Building on concepts
 After completing the temporary site (somehow that's not up yet?) I've broken ground on the site that implements the ideas above proper. It was unfortunate to learn that URL communication is unfortunately rather difficult to implement without side effects in certain browser, though I've found [this library](https://github.com/KidkArolis/location-bar) that may help with that in the future.
 
-![Rotonde](../img/index-00.png)
+![Gatsby integrated index](../img/index-00.png)
 
 Building on the knowledge gained in the 'temp' site related to React, I've built a foundation that integrates a fully-reactive Three.js environment overtop a Gatsby base. glTF model loading, lights, rendering and all that fancy jazz now work in the same framework.
+The index model was built in Blender, and exported with [this](https://github.com/KhronosGroup/glTF-Blender-Exporter) handy exporter. I've built my node setup to work with the native material module so as to not have to load the additional glass/specular addon, though I may if need be.
