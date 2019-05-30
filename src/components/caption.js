@@ -14,23 +14,29 @@ class Caption extends Component {
 	}
 
 	// writes one character and calls itself until the text is done
-	tick(text, i) {
+	tick (text, i) {
 		if (i < (text.length)) {
 			this.setState({copy: text.substring(0, i + 1)})
 
-			setTimeout(() => {
+			this.timerHandle = setTimeout(() => {
 				this.tick(text, i + 1)
 			}, this.props.interval || 100)
 		}
 	}
 
-	componentDidMount() {
+	componentDidMount () {
 		this.tick(this.data, 0)
 	}
 
-	render() {
+	componentWillUnmount () {
+		if (this.timerHandle) {
+			clearTimeout(this.timerHandle)
+		}
+	}
+
+	render () {
 		return (
-			<p className="caption">{this.state.copy}</p>
+			<p className="caption-component">{this.state.copy}</p>
 		)
 	}
 }
