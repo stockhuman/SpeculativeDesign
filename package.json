@@ -36,6 +36,7 @@
     "start": "gatsby develop"
   },
   "devDependencies": {
+    "@hot-loader/react-dom": "^16.8.6",
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.13.0"
   }
