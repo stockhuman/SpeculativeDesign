@@ -1,19 +1,21 @@
-import React, { useCallback, useRef, useEffect  } from 'react'
+import React, { useCallback, useRef, useEffect } from 'react'
 import { apply, Canvas, useRender, useThree } from 'react-three-fiber'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { OrbitControls } from './controls/OrbitControls'
 
 // Make OrbitControls known as <orbitControls />
 apply({ OrbitControls })
 
-function Controls() {
+// This function is abstracted from the view method so as to let size variables instantiate
+function Content (props) {
 	const camera = useRef()
 	const controls = useRef()
+	const scene = useRef()
 	const { size, setDefaultCamera } = useThree()
 
 	useEffect(() => void setDefaultCamera(camera.current), [])
-	useRender(() => {
-		controls.current.update()
-	})
+	useRender(() => { (controls.current) ? controls.current.update() : null })
 
 	return (
 		<>
@@ -21,13 +23,18 @@ function Controls() {
 				ref={camera}
 				aspect={size.width / size.height}
 				radius={(size.width + size.height) / 4}
-				fov={55}
-				position={[0, 0, 300]}
-				onUpdate={self => self.updateProjectionMatrix()}
+				fov={75}
+				position={[1, 0.3, 10]}
+				onUpdate={ self => {self.updateProjectionMatrix() }}
 			/>
 			{ camera.current && (
-				<orbitControls ref={controls} args={[camera.current]} enableDamping dampingFactor={0.1} rotateSpeed={0.1} />
-			) }
+				<>
+					<orbitControls ref={controls} args={[camera.current]} enableDamping dampingFactor={0.1} rotateSpeed={0.1} />
+					<scene ref={scene} camera={camera.current}>
+						{props.children}
+					</scene>
+				</>
+			)}
 		</>
 	)
 }
@@ -40,14 +47,14 @@ export default function View (props) {
 	return (
 		<div id="viewport" onMouseMove={ onMouseMove }>
 			<Canvas
-				style={{ background: props.background || '#A2CCB6' }}
-				camera={{ fov: 75, position: [0, 1, 10] }}
+				style={{ background: props.background || '#eee' }}
 				pixelRatio={ window.devicePixelRatio || 1 }
 				invalidateFrameloop
 			>
-				{/* <Controls /> */}
-				{props.children}
+				<Content>{props.children}</Content>
 			</Canvas>
 		</div>
 	)
 }
+
+// note: https://codesandbox.io/s/mo0xrqrj79
