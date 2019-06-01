@@ -2,11 +2,10 @@ import React, { useState, useMemo } from 'react'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 export default function Scene ({ url }) {
-
-	const loader = new GLTFLoader()
 	const [gltf, set] = useState()
 
 	useMemo(() => {
+		const loader = new GLTFLoader()
 		loader.load(url, set)
 	}, [url])
 
