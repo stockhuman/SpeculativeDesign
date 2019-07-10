@@ -24,7 +24,7 @@
     "react-helmet": "^5.2.1",
     "react-images-loaded": "^2.0.0",
     "react-three-fiber": "^2.2.11",
-    "three": "^0.104.0",
+    "three": "^0.106.2",
     "webpack": "^4.35.3"
   },
   "keywords": [
