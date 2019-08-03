@@ -1,21 +1,26 @@
 import React, { useCallback, useRef, useEffect } from 'react'
-import { apply, Canvas, useRender, useThree } from 'react-three-fiber'
+import { extend, Canvas, useRender, useThree } from 'react-three-fiber'
+import { invalidate } from 'react-three-fiber'
 
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { OrbitControls } from './controls/OrbitControls'
 
 // Make OrbitControls known as <orbitControls />
-apply({ OrbitControls })
+extend({ OrbitControls })
 
 // This function is abstracted from the view method so as to let size variables instantiate
 function Content (props) {
-	const camera = useRef()
 	const controls = useRef()
-	const scene = useRef()
-	const { size, setDefaultCamera } = useThree()
+	const axis = useRef()
+	const { size, camera, setDefaultCamera } = useThree()
+	camera.up.set(0, 0, 1)
+	// const controls = useRef()
+	// const scene = useRef()
 
-	useEffect(() => void setDefaultCamera(camera.current), [])
+	useEffect(() => void setDefaultCamera(camera), [])
 	useRender(() => { (controls.current) ? controls.current.update() : null })
+	camera.up.set(0, 0, 1)
+
 
 	return (
 		<>
@@ -24,17 +29,14 @@ function Content (props) {
 				aspect={size.width / size.height}
 				radius={(size.width + size.height) / 4}
 				fov={75}
-				position={[1, 0.3, 10]}
-				onUpdate={ self => {self.updateProjectionMatrix() }}
+				position={[2, 0.2, 14]}
+				onUpdate={ self => self.updateProjectionMatrix() }
 			/>
-			{ camera.current && (
-				<>
-					<orbitControls ref={controls} args={[camera.current]} enableDamping dampingFactor={0.1} rotateSpeed={0.1} />
-					<scene ref={scene} camera={camera.current}>
-						{props.children}
-					</scene>
-				</>
-			)}
+			<axesHelper ref={axis} />
+			<orbitControls ref={controls} args={[camera]} enableDamping dampingFactor={0.1} rotateSpeed={0.1} />
+			<scene camera={camera}>
+				{props.children}
+			</scene>
 		</>
 	)
 }
@@ -42,16 +44,15 @@ function Content (props) {
 export default function View (props) {
 
 	const mouse = useRef([0, 0])
-	const onMouseMove = useCallback(({ clientX: x, clientY: y }) => (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), [])
 
 	return (
-		<div id="viewport" onMouseMove={ onMouseMove }>
+		<div id="viewport" >
 			<Canvas
 				style={{ background: props.background || '#eee' }}
 				pixelRatio={ window.devicePixelRatio || 1 }
-				invalidateFrameloop
+
 			>
-				<Content>{props.children}</Content>
+				<Content mouse={ mouse }>{props.children}</Content>
 			</Canvas>
 		</div>
 	)
