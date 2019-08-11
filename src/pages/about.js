@@ -14,7 +14,7 @@ const About = () => (
 		<Link to='projects'><h3>Projects</h3></Link>
 
 
-			<View>
+			<View center={[0,0,6]}>
 				<mesh
 					position={[0, 1, -4]}
 					onClick={() => navigate("/about/")}>

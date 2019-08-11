@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react'
 import { extend, Canvas, useRender, useThree } from 'react-three-fiber'
-// import { FirstPersonControls } from './controls/FirstPersonControls'
+import { Vector3 } from 'three/src/Three'
 import { OrbitControls } from './controls/OrbitControls'
 
 // Make OrbitControls known as <orbitControls />
@@ -12,10 +12,12 @@ function Content (props) {
 	const axis = useRef()
 	const { camera } = useThree()
 
-	// see https://codesandbox.io/s/j3yrl1k9rw
+	const center = new Vector3(props.center[0], props.center[1], props.center[2])
+	console.log(center);
 
+
+	// see https://codesandbox.io/s/j3yrl1k9rw
 	useRender(() => { (controls.current) ? controls.current.update() : null })
-	camera.up.set(0, 1, 1)
 
 	return (
 		<>
@@ -24,8 +26,13 @@ function Content (props) {
 				ref={controls}
 				args={[camera]}
 				enableDamping
+				enableZoom={false}
+				enablePan={false}
+				maxPolarAngle={Math.PI / 2}
+				minPolarAngle={Math.PI / 2}
 				dampingFactor={0.1}
-				rotateSpeed={0.1} />
+				target={center}
+				rotateSpeed={0.01} />
 			<scene camera={camera}>
 				{props.children}
 			</scene>
@@ -34,20 +41,14 @@ function Content (props) {
 }
 
 export default function View (props) {
-
-	const mouse = useRef([0, 0])
-	const onMouseMove = useCallback(
-		({ clientX: x, clientY: y }) =>
-			(mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), []
-	)
-
+	const center = props.center ? props.center : [0,0,0]
 	return (
 		<div id="viewport">
 			<Canvas
 				style={{ background: props.background || '#eee' }}
 				pixelRatio={ window.devicePixelRatio || 1 }
 			>
-				<Content>{props.children}</Content>
+				<Content center={center}>{props.children}</Content>
 			</Canvas>
 		</div>
 	)
