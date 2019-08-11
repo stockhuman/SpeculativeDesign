@@ -21,7 +21,7 @@ const IndexPage = () => (
     <View>
       <mesh
         position={[0, 1, -4]}
-        onClick={ () => navigate("/people/") }>
+        onClick={ () => navigate("/about/") }>
         <planeBufferGeometry attach="geometry" args={[2, 2]} />
         <meshLambertMaterial attach="material" transparent />
       </mesh>

@@ -1,8 +1,6 @@
-import React, { useCallback, useRef, useEffect } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { extend, Canvas, useRender, useThree } from 'react-three-fiber'
-import { invalidate } from 'react-three-fiber'
-
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+// import { FirstPersonControls } from './controls/FirstPersonControls'
 import { OrbitControls } from './controls/OrbitControls'
 
 // Make OrbitControls known as <orbitControls />
@@ -12,28 +10,22 @@ extend({ OrbitControls })
 function Content (props) {
 	const controls = useRef()
 	const axis = useRef()
-	const { size, camera, setDefaultCamera } = useThree()
-	camera.up.set(0, 0, 1)
-	// const controls = useRef()
-	// const scene = useRef()
+	const { camera } = useThree()
 
-	useEffect(() => void setDefaultCamera(camera), [])
+	// see https://codesandbox.io/s/j3yrl1k9rw
+
 	useRender(() => { (controls.current) ? controls.current.update() : null })
-	camera.up.set(0, 0, 1)
-
+	camera.up.set(0, 1, 1)
 
 	return (
 		<>
-			<perspectiveCamera
-				ref={camera}
-				aspect={size.width / size.height}
-				radius={(size.width + size.height) / 4}
-				fov={75}
-				position={[2, 0.2, 14]}
-				onUpdate={ self => self.updateProjectionMatrix() }
-			/>
 			<axesHelper ref={axis} />
-			<orbitControls ref={controls} args={[camera]} enableDamping dampingFactor={0.1} rotateSpeed={0.1} />
+			<orbitControls
+				ref={controls}
+				args={[camera]}
+				enableDamping
+				dampingFactor={0.1}
+				rotateSpeed={0.1} />
 			<scene camera={camera}>
 				{props.children}
 			</scene>
@@ -44,15 +36,18 @@ function Content (props) {
 export default function View (props) {
 
 	const mouse = useRef([0, 0])
+	const onMouseMove = useCallback(
+		({ clientX: x, clientY: y }) =>
+			(mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), []
+	)
 
 	return (
-		<div id="viewport" >
+		<div id="viewport">
 			<Canvas
 				style={{ background: props.background || '#eee' }}
 				pixelRatio={ window.devicePixelRatio || 1 }
-
 			>
-				<Content mouse={ mouse }>{props.children}</Content>
+				<Content>{props.children}</Content>
 			</Canvas>
 		</div>
 	)
