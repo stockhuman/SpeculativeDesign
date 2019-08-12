@@ -7,14 +7,12 @@ import { OrbitControls } from './controls/OrbitControls'
 extend({ OrbitControls })
 
 // This function is abstracted from the view method so as to let size variables instantiate
-function Content (props) {
+function Camera (props) {
 	const controls = useRef()
 	const axis = useRef()
 	const { camera } = useThree()
 
 	const center = new Vector3(props.center[0], props.center[1], props.center[2])
-	console.log(center);
-
 
 	// see https://codesandbox.io/s/j3yrl1k9rw
 	useRender(() => { (controls.current) ? controls.current.update() : null })
@@ -32,6 +30,7 @@ function Content (props) {
 				minPolarAngle={Math.PI / 2}
 				dampingFactor={0.1}
 				target={center}
+				position={props.cameraPlacement}
 				rotateSpeed={0.01} />
 			<scene camera={camera}>
 				{props.children}
@@ -42,13 +41,14 @@ function Content (props) {
 
 export default function View (props) {
 	const center = props.center ? props.center : [0,0,0]
+	const cameraPlacement = props.cameraPosition ? props.cameraPosition : [1, 0, 2]
 	return (
 		<div id="viewport">
 			<Canvas
 				style={{ background: props.background || '#eee' }}
 				pixelRatio={ window.devicePixelRatio || 1 }
 			>
-				<Content center={center}>{props.children}</Content>
+				<Camera center={center} cameraPlacement={cameraPlacement}>{props.children}</Camera>
 			</Canvas>
 		</div>
 	)
