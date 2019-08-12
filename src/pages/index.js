@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { navigate } from 'gatsby'
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 import View from '../components/canvas/canvas'
-import Scene from '../components/canvas/scene'
+import Model from '../components/canvas/Model'
 import Layout from '../components/layouts'
 import Caption from '../components/caption'
+
+import { MeshPhysicalMaterial } from "three/src/materials/MeshPhysicalMaterial";
+import { MeshMatcapMaterial } from 'three/src/materials/MeshMatcapMaterial'
+import { MeshNormalMaterial } from 'three/src/materials/MeshNormalMaterial'
+
 
 // Styles
 import '../scss/main.scss'
@@ -25,8 +31,19 @@ const IndexPage = () => (
         <planeBufferGeometry attach="geometry" args={[2, 2]} />
         <meshLambertMaterial attach="material" transparent />
       </mesh>
-      <Scene url={'meshes/SP_index5.glb'} />
-      <spotLight intensity={0.2} position={[0, 2, 10]} angle={0.4} penumbra={1} castShadow />
+      <Model
+        url={'meshes/entrance_facade.glb'}
+        material={new MeshMatcapMaterial({
+          matcap: useMemo(() => new TextureLoader().load('textures/Bronze.png'), ['textures/Shiny_Fire_1c.png'])
+          })
+      } />
+      <Model url={'meshes/entrance_index.glb'} />
+      <Model url={'meshes/entrance_lattice.glb'} material={new MeshNormalMaterial()} />
+      <Model url={'meshes/floorplane.glb'} material={new MeshPhysicalMaterial({color:0x2194ce, roughness: 0})}/>
+
+      <ambientLight color={0x401020}/>
+      <directionalLight intensity={0.5} position={[-25, 25, -25]} />
+      <spotLight intensity={0.4} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
     </View>
     <Caption />
   </Layout>
