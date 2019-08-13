@@ -1,16 +1,17 @@
 import React, { useMemo } from 'react'
 import { navigate } from 'gatsby'
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
+// Page Structure
 import View from '../components/canvas/canvas'
 import Model from '../components/canvas/Model'
 import Layout from '../components/layouts'
 import Caption from '../components/caption'
 
+// Materials and Loaders from Three
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { MeshPhysicalMaterial } from "three/src/materials/MeshPhysicalMaterial";
 import { MeshMatcapMaterial } from 'three/src/materials/MeshMatcapMaterial'
 import { MeshNormalMaterial } from 'three/src/materials/MeshNormalMaterial'
-
 
 // Styles
 import '../scss/main.scss'
