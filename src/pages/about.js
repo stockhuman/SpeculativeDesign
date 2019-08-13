@@ -14,9 +14,8 @@ const About = () => (
 		<Link to='/projects'><h3>Projects</h3></Link>
 
 		<View center={[0,0,0]}>
-			<Model url={'/meshes/about/about.004.glb'} />
-			<ambientLight color={0xFFFFFF} intensity={0.4}/>
-			<spotLight intensity={0.71} position={[0.1, 1, 1]} angle={-1} penumbra={1} castShadow />
+			<Model url={'/meshes/about/about2_003.glb'} />
+			<directionalLight intensity={2} position={[0, 2, 2]} />
 		</View>
 	</Layout>
 )
