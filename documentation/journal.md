@@ -51,7 +51,7 @@ I want this alternate web to both contain references to its real, physical natur
 
 
 ### Building on concepts
-After completing the temporary site (somehow that's not up yet?) I've broken ground on the site that implements the ideas above proper. It was unfortunate to learn that URL communication is unfortunately rather difficult to implement without side effects in certain browser, though I've found [this library](https://github.com/KidkArolis/location-bar) that may help with that in the future.
+After completing the temporary site (somehow that's not up yet?) I've broken ground on the site that implements the ideas above proper. It was unfortunate to learn that URL communication is unfortunately rather difficult to implement without side effects in certain browsers, though I've found [this library](https://github.com/KidkArolis/location-bar) that may help with that in the future.
 
 ![Gatsby integrated index](../img/index-00.png)
 
@@ -60,3 +60,13 @@ Building on the knowledge gained in the 'temp' site related to React, I've built
 The index model was built in Blender, and exported with [this](https://github.com/KhronosGroup/glTF-Blender-Exporter) handy exporter. I've built my node setup to work with the native material module so as to not have to load the additional glass/specular addon, though I may if need be.
 
 Having built this base to go on, my next major feature is of course the memory of the site, and the integration or religiosity, which I very much still intend to pursue. I realise at this point it's been a very long time since the inception of this project and even since the last meeting, nevertheless, things are shaping up.
+
+### React-three-Fiber
+
+![Index Temple](../img/index-02.png)
+
+Finally, progress. I had been stuck on a camera movement bug for the longest time, and I have to blame myself for using a fairly advanced framework for the entire thing. All the same, the performance I am getting out of [react-three-fiber](https://github.com/drcmda/react-three-fiber) (a library that marries React.js with Three.js) is fantastic.
+
+Right now (as of mid August) I'm working on a vertical slice, going from index to hallway to generated art room with the side interface (religiosity meter etc. underway).
+
+![About page](../img/about-00.png)
