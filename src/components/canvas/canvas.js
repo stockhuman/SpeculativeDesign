@@ -19,7 +19,7 @@ function Camera (props) {
 
 	return (
 		<>
-			<axesHelper ref={axis} />
+			{/* <axesHelper ref={axis} /> */}
 			<orbitControls
 				ref={controls}
 				args={[camera]}
