@@ -1,7 +1,6 @@
 import React from 'react'
 
 import '../scss/layout/_projects.scss'
-import ProjectsPageWrapper from '../components/projects/projects-page'
 
 // Project Images
 import love1 from '../assets/img/love/about.png'

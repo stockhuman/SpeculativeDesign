@@ -1,4 +1,3 @@
-import React from 'react'
 import fonts from '../components/fonts'
 
 // This is such a massive pain for custom fonts, but hey
@@ -22,9 +21,4 @@ const f = `
 }
 `
 
-
-const Fonts = () => (
-	<style>{f}</style>
-)
-
-export default Fonts
+export default () => `<style>${f}</style>`
