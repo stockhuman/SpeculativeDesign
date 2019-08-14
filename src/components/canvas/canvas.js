@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useRef } from 'react'
 import { extend, Canvas, useRender, useThree } from 'react-three-fiber'
 import { Vector3 } from 'three/src/Three'
 import { OrbitControls } from './controls/OrbitControls'
