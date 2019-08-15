@@ -10,6 +10,7 @@ import Text from '../canvas/Text'
 
 // Links and data
 import queries from '../data/queries'
+import Sculpture from '../canvas/Sculpture'
 
 export default ({ data }) => {
 	const title = data.markdownRemark.frontmatter.title
@@ -38,6 +39,7 @@ export default ({ data }) => {
 				<meshLambertMaterial attach="material" transparent />
 			</mesh>
 			<Model url={'/meshes/room7.glb'} />
+			<Sculpture />
 			<Text
 				string={title}
 				options={
