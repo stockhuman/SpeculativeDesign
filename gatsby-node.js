@@ -58,16 +58,6 @@ exports.createPages = ({actions, graphql}) => {
 	})
 }
 
-
-// via https://github.com/gatsbyjs/gatsby/issues/1494
-const po = require('./src/components/layouts/parse-options')
-const fs = require('fs-extra')
-
-exports.onCreatePage = function({page}) {
-  const {attributes: { layout }} = po( fs.readFile(page.component, 'utf8') )
-	page.layout = layout || 'index'
-}
-
 // via https://github.com/gatsbyjs/gatsby/issues/11934
 exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
 	const config = getConfig()
