@@ -25,12 +25,12 @@ import '../scss/layout/_base.scss'
 // are not natively supported by webpack, and cannot be imported as the css above.
 const IndexPage = () => (
   <Layout>
-    <View center={[0, 0.5, 8]}>
+    <View center={[0, 0.2, 8]}>
       <mesh
         position={[0, 1, -4]}
         onClick={ () => navigate("/about/") }>
         <planeBufferGeometry attach="geometry" args={[2, 2]} />
-        <meshLambertMaterial attach="material" transparent />
+        <meshLambertMaterial attach="material" visible={false} />
       </mesh>
       <Model
         url={'meshes/entrance_facade.glb'}
@@ -40,11 +40,10 @@ const IndexPage = () => (
       } />
       <Model url={'meshes/entrance_index.glb'} />
       <Model url={'meshes/entrance_lattice.glb'} material={new MeshNormalMaterial()} />
-      <Model url={'meshes/floorplane.glb'} material={new MeshPhysicalMaterial({color:0x2194ce, roughness: 0})}/>
+      <Model url={'meshes/floorplane.glb'} material={new MeshPhysicalMaterial({color:0x2194ce, roughness: 0.9})}/>
 
-      <ambientLight color={0x401020}/>
       <directionalLight intensity={0.5} position={[-25, 25, -25]} />
-      <spotLight intensity={0.4} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
+      <spotLight intensity={2} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
     </View>
     <Caption />
   </Layout>

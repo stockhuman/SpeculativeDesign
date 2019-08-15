@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
+import Header from './Header'
 
 export default ({ useHeader = true }) => {
 	const data = useStaticQuery(graphql`

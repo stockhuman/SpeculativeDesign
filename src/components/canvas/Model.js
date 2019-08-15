@@ -7,10 +7,13 @@ export default function Model({ url, material }) {
 	useMemo(() =>
 		new GLTFLoader().load(url, gltf => {
 			gltf.scene.traverse(obj => {
-				if (obj.isMesh && material) {
-					obj.material.dispose()
-					obj.material = material
-					console.log(obj.material)
+				if (obj.isMesh) {
+					if (material) {
+						obj.material.dispose()
+						obj.material = material
+					} else {
+						obj.material.color.convertSRGBToLinear()
+					}
 				}
 			})
 			set(gltf.scene)
