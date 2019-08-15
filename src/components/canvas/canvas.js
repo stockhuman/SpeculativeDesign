@@ -20,6 +20,7 @@ function Camera (props) {
 	gl.gammaFactor = 2.2
 	gl.gammaOutput = true
 	gl.physicallyCorrectLights = true
+	camera.far = 60
 
 	return (
 		<>
