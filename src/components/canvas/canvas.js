@@ -20,7 +20,7 @@ function Camera (props) {
 	gl.gammaFactor = 2.2
 	gl.gammaOutput = true
 	gl.physicallyCorrectLights = true
-	camera.far = 60
+	camera.far = props.far || 60
 
 	return (
 		<>
@@ -28,10 +28,10 @@ function Camera (props) {
 				ref={controls}
 				args={[camera]}
 				enableDamping
-				enableZoom={false}
-				enablePan={false}
-				maxPolarAngle={Math.PI / 1.6} // bigger divisor = more you can look up
-				minPolarAngle={Math.PI / 2.3} // bigger divisor = more you can look down
+				enableZoom={props.enableZoom || false}
+				enablePan={props.enablePan || false}
+				maxPolarAngle={props.maxPolarAngle || Math.PI / 1.6} // bigger divisor = more you can look up
+				minPolarAngle={props.minPolarAngle || Math.PI / 2.3} // bigger divisor = more you can look down
 				dampingFactor={0.1}
 				target={center}
 				position={props.cameraPlacement}
@@ -53,7 +53,17 @@ export default function View (props) {
 				style={{ background: props.background || '#eee' }}
 				pixelRatio={ Math.min(window.devicePixelRatio, 3) || 1 }
 			>
-				<Camera center={center} cameraPlacement={cameraPlacement}>{props.children}</Camera>
+				<Camera
+					center={center}
+					cameraPlacement={cameraPlacement}
+					enableZoom={props.debug}
+					enablePan={props.debug}
+					maxPolarAngle={props.maxPolarAngle}
+					minPolarAngle={props.minPolarAngle}
+					far={props.far}
+				>
+					{props.children}
+				</Camera>
 			</Canvas>
 		</div>
 	)
