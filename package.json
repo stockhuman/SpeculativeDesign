@@ -1,31 +1,29 @@
 {
-  "name": "gatsby-speculative-play",
+  "name": "speculative-play",
   "description": "Gatsby Speculative Play site",
-  "version": "1.0.0",
+  "version": "2.0.4",
   "author": "Michael Hemingway",
   "dependencies": {
     "fs-extra": "^8.1.0",
-    "gatsby": "^2.13.57",
-    "gatsby-link": "^2.2.4",
-    "gatsby-plugin-react-helmet": "^3.1.3",
-    "gatsby-plugin-sass": "^2.1.6",
-    "gatsby-plugin-sharp": "^2.2.11",
-    "gatsby-remark-copy-linked-files": "^2.1.5",
-    "gatsby-remark-images": "^3.1.8",
-    "gatsby-source-filesystem": "^2.1.9",
-    "gatsby-transformer-remark": "^2.6.12",
-    "gatsby-transformer-sharp": "^2.2.6",
+    "gatsby": "^2.13.74",
+    "gatsby-link": "^2.2.6",
+    "gatsby-plugin-react-helmet": "^3.1.4",
+    "gatsby-plugin-sass": "^2.1.10",
+    "gatsby-plugin-sharp": "^2.2.14",
+    "gatsby-remark-copy-linked-files": "^2.1.8",
+    "gatsby-remark-images": "^3.1.14",
+    "gatsby-source-filesystem": "^2.1.12",
+    "gatsby-transformer-remark": "^2.6.16",
+    "gatsby-transformer-sharp": "^2.2.8",
     "js-yaml": "^3.13.1",
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
-    "react-anime": "^2.2.0",
     "react-dom": "^16.9.0",
-    "react-flexbox-grid": "^2.1.2",
     "react-helmet": "^5.2.1",
     "react-images-loaded": "^2.0.0",
-    "react-three-fiber": "^2.2.17",
+    "react-three-fiber": "^2.3.6",
     "three": "^0.107.0",
-    "webpack": "^4.39.1"
+    "webpack": "^4.39.2"
   },
   "keywords": [
     "gatsby"
@@ -36,8 +34,8 @@
     "start": "gatsby develop"
   },
   "devDependencies": {
-    "@hot-loader/react-dom": "^16.8.6",
-    "eslint": "^6.1.0",
+    "@hot-loader/react-dom": "^16.9.0",
+    "eslint": "^6.2.1",
     "eslint-plugin-react": "^7.14.3"
   }
 }
