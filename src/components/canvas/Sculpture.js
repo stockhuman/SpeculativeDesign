@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
-import { CylinderGeometry, Vector2, BufferGeometry, BufferAttribute, DoubleSide  } from 'three'
+import {
+	CylinderGeometry,
+	Vector2,
+	BufferGeometry,
+	BufferAttribute,
+	DoubleSide
+} from 'three'
 
 export default function Sculpture ({ seed = 'default' }) {
 
@@ -9,13 +15,15 @@ export default function Sculpture ({ seed = 'default' }) {
 		s % seed.charCodeAt(i)
 	}
 
-	const fn = (a, b, target) => {
-		let x = -Math.random() * a  + Math.random() * a
-		let y = -Math.random() * a + Math.random() * b
-		let z = (Math.sin(s * Math.PI) + Math.sin(s * Math.PI)) * -a/b + Math.random()
+	const fn = useCallback((a, b, target) => {
+		let x = -Math.random() * a + Math.random() * a;
+		let y = -Math.random() * a + Math.random() * b;
+		let z =
+			((Math.sin(s * Math.PI) + Math.sin(s * Math.PI)) * -a) / b +
+			Math.random();
 
-		target.set(x, y, z)
-	}
+		target.set(x, y, z);
+	}, []);
 
 	return (
 		<mesh position={[0,0,0]}>
