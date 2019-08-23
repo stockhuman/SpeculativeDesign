@@ -1,18 +1,16 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layouts/project'
+import Layout from '../components/layouts/page'
 import Room from '../components/layouts/Room'
+import Log from '../components/log'
 
 
 export default function Template({ data }) {
-	const project = data.markdownRemark
-
 	return (
 		<Layout>
-			<h1>{project.frontmatter.title}</h1>
-			<div dangerouslySetInnerHTML={{__html: project.html}} />
 			<Room data={data} />
+			<Log />
 		</Layout>
 	)
 }

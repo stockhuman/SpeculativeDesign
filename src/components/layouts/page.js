@@ -1,20 +1,35 @@
 import React from 'react'
+import Helmet from 'react-helmet'
+import { StaticQuery, graphql } from 'gatsby'
 
-import Head from './Head'
 import '../../scss/main.scss'
 
-export default (props) => (
-	<>
-		<Head/>
-		<div
-			style={{
-				margin: '0 auto',
-				maxWidth: 960,
-				padding: '0px 1.0875rem 1.45rem',
-				paddingTop: 0,
-			}}
-		>
-			{props.children}
-		</div>
-	</>
+const Layout = ({ children }) => (
+  <>
+    <StaticQuery
+      query={graphql`
+        query SiteTitleQuery {
+          site {
+            siteMetadata {
+              title
+            }
+          }
+        }
+      `}
+      render={data => (
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[
+            { name: 'description', content: 'Sample' },
+            { name: 'keywords', content: 'sample, something' },
+          ]}
+          link={[
+            { rel:'stylesheet', type:'text/css', href:'https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text'}
+          ]}
+        />)}
+    />
+      {children}
+  </>
 )
+
+export default Layout

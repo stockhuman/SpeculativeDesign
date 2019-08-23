@@ -4,8 +4,8 @@ import { navigate } from 'gatsby'
 // Page Structure
 import View from '../components/canvas/canvas'
 import Model from '../components/canvas/Model'
-import Layout from '../components/layouts'
-import Caption from '../components/caption'
+import Layout from '../components/layouts/page'
+import Log from '../components/log'
 
 // Materials and Loaders from Three
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -45,7 +45,7 @@ const IndexPage = () => (
       <directionalLight intensity={0.5} position={[-25, 25, -25]} />
       <spotLight intensity={2} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
     </View>
-    <Caption />
+    <Log />
   </Layout>
 )
 
