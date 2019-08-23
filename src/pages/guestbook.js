@@ -3,9 +3,8 @@ import React from 'react'
 // Page Structure
 import View from '../components/canvas/canvas'
 import Model from '../components/canvas/Model'
-import Layout from '../components/layouts'
+import Layout from '../components/layouts/page'
 
-import Caption from '../components/caption'
 import Log from '../components/log'
 
 // Materials and Loaders from Three
