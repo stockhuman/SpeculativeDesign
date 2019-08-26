@@ -18,7 +18,7 @@
 	position: fixed;
 	right: 0;
 	left: 70vw;
-	background: rgb(228, 227, 226); // temp
+	// background: rgb(235, 174, 219); // temp
 	bottom: 0;
 	top: 0;
 	padding: 1em;
@@ -34,7 +34,8 @@
 		);
 		padding: .5em;
 		height: 400px;
-		border: inset;
+		border-radius: 5px;
+		border: 5px inset;
 		text-shadow: 0 0 5px #C8C8C8;
 		position: relative;
 
@@ -54,7 +55,7 @@
 			);
 		}
 
-		span {
+		span, p {
 			font-family: monospace;
 			color: white;
 			overflow: visible;
@@ -75,9 +76,11 @@
 
 @keyframes blink {
   from, to {
-    color: transparent;
+		color: transparent;
+		text-shadow: none;
   }
   50% {
-    color: white;
+		color: white;
+		text-shadow: 0 0 5px #C8C8C8;
   }
 }
