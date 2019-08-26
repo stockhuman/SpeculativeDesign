@@ -33,7 +33,6 @@ const Guestbook = () => (
 			<directionalLight intensity={0.5} position={[-25, 25, -25]} />
 			<spotLight intensity={2} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
 		</View>
-		{/* <Caption /> */}
 		<Log />
 	</Layout>
 )

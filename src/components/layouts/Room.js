@@ -38,7 +38,9 @@ export default ({ data }) => {
 				<planeBufferGeometry attach="geometry" args={[2, 2]} />
 				<meshLambertMaterial attach="material" transparent />
 			</mesh>
-			<Model url={'/meshes/room7.glb'} />
+			<Model url={'/meshes/room0.glb'} />
+			<ambientLight intensity={0.01} />
+			<directionalLight intensity={0.5} position={[-1, 1, -1]} />
 			<Sculpture />
 			<Text
 				string={title}
@@ -49,13 +51,13 @@ export default ({ data }) => {
 						color: 'yellow'
 					}
 				}
-				size={0.4 + Math.random()}
+				size={0.2 + (Math.random() / 2)}
 				bevelEnabled={true}
 				height={0.1}
 				bevelThickness={0.01}
 				bevelSize={0.01}
-				bevelSegments={2}
-				curveSegments={2}
+				bevelSegments={1}
+				curveSegments={4}
 		/>
 		</View>
 	)
