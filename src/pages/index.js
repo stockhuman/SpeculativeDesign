@@ -25,7 +25,7 @@ import '../scss/layout/_base.scss'
 // are not natively supported by webpack, and cannot be imported as the css above.
 const IndexPage = () => (
   <Layout>
-    <View center={[0, 0.2, 8]}>
+    <View center={[0, 1.3, 8]}>
       <mesh
         position={[0, 1, -4]}
         onClick={ () => navigate("/about/") }>
