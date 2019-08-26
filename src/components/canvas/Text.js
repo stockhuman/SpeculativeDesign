@@ -5,7 +5,9 @@ import { Font } from 'three/src/extras/core/Font'
 // implements https://threejs.org/docs/#api/en/geometries/TextGeometry
 export default ({ string, options = { position: [0,0,0] }, ...props }) => (
 	<mesh position={ options.position } rotation={ options.rotation || [0,0,0] }>
-		<textGeometry attach="geometry" args={[string, { ...{font: new Font(helvetica)}, ...props}]} />
+		<textGeometry attach="geometry"
+			args={[string, { ...{font: new Font(helvetica)}, ...props}]}
+			onUpdate={geo => geo.center()}/>
 		<meshPhongMaterial attach="material" color={options.color || 'white'} />
 	</mesh>
 )
