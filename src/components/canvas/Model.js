@@ -8,6 +8,8 @@ export default function Model({ url, material }) {
 		new GLTFLoader().load(url, gltf => {
 			gltf.scene.traverse(obj => {
 				if (obj.isMesh) {
+					obj.castShadow = true
+					obj.receiveShadow = true
 					if (material) {
 						obj.material.dispose()
 						obj.material = material
