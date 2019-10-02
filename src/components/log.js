@@ -9,7 +9,9 @@ class Log extends Component {
 		super(props)
 		this.data = randomCaption()
 		this.state = {
-			copy: ''
+			copy: '',
+			userInput: '',
+			locked: true
 		}
 	}
 
@@ -21,6 +23,8 @@ class Log extends Component {
 			this.timerHandle = setTimeout(() => {
 				this.tick(text, i + 1)
 			}, this.props.interval || 100)
+		} else {
+			this.setState({locked: false})
 		}
 	}
 
@@ -38,8 +42,9 @@ class Log extends Component {
 		return (
 			<aside id="log">
 				<div className="crt">
-					<span>{this.state.copy}</span>
-					<span class="blinking-cursor">|</span>
+					<p>> {this.state.copy}</p>
+					<span id='user-input'>{this.state.locked ? null : '> ' + this.state.userInput}</span>
+					<span className="blinking-cursor">{this.state.locked ? null : '|'}</span>
 				</div>
 				<div></div>
 				<h1 className="title">

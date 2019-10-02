@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { extend, Canvas, useRender, useThree } from 'react-three-fiber'
-import { Vector3 } from 'three/src/Three'
+import { Vector3, PCFSoftShadowMap } from 'three/src/Three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 // Make OrbitControls known as <orbitControls />
@@ -53,6 +53,7 @@ export default function View(props) {
 			<Canvas
 				style={{ background: props.background || '#eee' }}
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
+				onCreated={({ gl }) => ((gl.shadowMap.enabled = true), (gl.shadowMap.type = PCFSoftShadowMap))}>
 			>
 				<Camera
 					center={center}
