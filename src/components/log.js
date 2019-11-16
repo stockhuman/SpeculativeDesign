@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Link from 'gatsby-link'
 
 
 import randomCaption from './data/captions'
@@ -40,17 +39,11 @@ class Log extends Component {
 
 	render() {
 		return (
-			<aside id="log">
-				<div className="crt">
-					<p>> {this.state.copy}</p>
-					<span id='user-input'>{this.state.locked ? null : '> ' + this.state.userInput}</span>
-					<span className="blinking-cursor">{this.state.locked ? null : '|'}</span>
-				</div>
-				<div></div>
-				<h1 className="title">
-					<Link to="/">Speculative Play</Link>
-				</h1>
-			</aside>
+			<div className="crt">
+				<p>> {this.state.copy}</p>
+				<span id='user-input'>{this.state.locked ? null : '> ' + this.state.userInput}</span>
+				<span className="blinking-cursor">{this.state.locked ? null : '|'}</span>
+			</div>
 		)
 	}
 }

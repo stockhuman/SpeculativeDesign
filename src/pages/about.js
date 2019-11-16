@@ -4,6 +4,7 @@ import { navigate } from 'gatsby'
 import View from '../components/canvas/canvas'
 import Model from '../components/canvas/Model'
 import Layout from '../components/layouts/page'
+import Sidebar from '../components/layouts/Sidebar'
 import queries from '../components/data/queries'
 
 // The about page serves to branch the two paths: one to artists and the other
@@ -43,6 +44,7 @@ const About = () => {
 				<Model url={'/meshes/about/about2_002.glb'} />
 				<directionalLight intensity={2} position={[0, 2, 2]} />
 			</View>
+			<Sidebar />
 		</Layout>
 	)
 }
