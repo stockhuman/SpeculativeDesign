@@ -5,7 +5,7 @@
 	bottom:0;
 	left: 0;
 	z-index: -2;
-	background: #333;
+	background: rgb(35, 35, 36);
 	padding: 10px;
 
 	// canvas wrapper element
@@ -15,6 +15,7 @@
 }
 
 #log {
+	background: rgb(206, 207, 196);
 	position: fixed;
 	right: 0;
 	left: 70vw;
