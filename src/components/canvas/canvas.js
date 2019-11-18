@@ -1,10 +1,31 @@
-import React, { useRef } from 'react'
-import { extend, Canvas, useRender, useThree } from 'react-three-fiber'
-import { Vector3, PCFSoftShadowMap } from 'three/src/Three'
+import React, { useRef, useEffect } from 'react'
+import { extend, Canvas, useThree, useRender } from 'react-three-fiber'
+import { Vector3, Uncharted2ToneMapping } from 'three/src/Three'
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
+import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
-// Make OrbitControls known as <orbitControls />
-extend({ OrbitControls })
+extend({ OrbitControls, EffectComposer, RenderPass, ShaderPass })
+
+function Effects () {
+	const { gl, scene, camera, size } = useThree()
+	const composer = useRef()
+
+	useEffect(() => {
+		composer.current.setSize(size.width, size.height)
+	}, [size])
+
+	return (
+		<>
+			<effectComposer ref={composer} args={[gl]}>
+				<renderPass attachArray="passes" args={[scene, camera]} />
+				<shaderPass attachArray="passes" args={[FXAAShader]} uniforms-resolution-value={[1 / size.width, 1 / size.height]} renderToScreen />
+			</effectComposer>
+		</>
+	)
+}
 
 // This function is abstracted from the view method so as to let size variables instantiate
 // Many performance optimisations derived from https://discoverthreejs.com/tips-and-tricks/
@@ -23,7 +44,6 @@ function Camera(props) {
 	camera.far = props.far || 60
 
 	return (
-		<>
 			<orbitControls
 				ref={controls}
 				args={[camera, gl.domElement]}
@@ -31,14 +51,12 @@ function Camera(props) {
 				enableZoom={props.enableZoom || false}
 				enablePan={props.enablePan || false}
 				maxPolarAngle={props.maxPolarAngle || Math.PI / 1.6} // bigger divisor = more you can look up
-				minPolarAngle={props.minPolarAngle || Math.PI / 2.3} // bigger divisor = more you can look down
+				minPolarAngle={props.minPolarAngle || Math.PI / 2.0} // bigger divisor = more you can look down
 				dampingFactor={0.1}
 				target={center}
 				position={props.cameraPlacement}
 				rotateSpeed={0.5}
 			/>
-			<scene camera={camera}>{props.children}</scene>
-		</>
 	)
 }
 
@@ -49,12 +67,15 @@ export default function View(props) {
 		: [1, 0, 2];
 
 	return (
-		<div id='viewport'>
+		<main id='viewport'>
 			<Canvas
-				style={{ background: props.background || '#eee' }}
+				style={{ background: props.background || '#f1b4fa' }}
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
-				onCreated={({ gl }) => ((gl.shadowMap.enabled = true), (gl.shadowMap.type = PCFSoftShadowMap))}>
-			>
+				gl2
+				shadowMap
+				onCreated={({ gl }) => {
+					gl.toneMapping = Uncharted2ToneMapping
+				}}>
 				<Camera
 					center={center}
 					cameraPlacement={cameraPlacement}
@@ -63,11 +84,11 @@ export default function View(props) {
 					maxPolarAngle={props.maxPolarAngle}
 					minPolarAngle={props.minPolarAngle}
 					far={props.far}
-				>
-					{props.children}
-				</Camera>
+				/>
+					<Effects />
+					<scene>{props.children}</scene>
 			</Canvas>
-		</div>
+		</main>
 	)
 }
 
