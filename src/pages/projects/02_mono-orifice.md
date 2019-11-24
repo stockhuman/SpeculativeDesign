@@ -1,6 +1,8 @@
 ---
 path: '/projects/mono-orifice'
 title: 'Mono Orifice™'
+linkto: '/projects/deep-time-jam'
+linkfrom: ''
 ---
 
 Recognizing contemporary trends in technology, the Mono-Orifice™ applies functional aggregation to human physiology. Just as smart phones and personal devices have combined multiple utilities within a single product for the sake of convenience and efficiency, the Mono-Orifice™ attempts to simplify the body’s input and output functions. Foregoing the body’s specialized sensory responses—sight, hearing, smell, taste—along with ingestion, excretion, respiration, and perspiration—this device aggregates these individual functions within a single face-mounted system.

@@ -22,6 +22,11 @@ export const projectQuery = graphql`
 			frontmatter {
 				path
 				title
+				cover
+				room
+				linkto
+				linkfrom
+				linkalt
 			}
 		}
 	}

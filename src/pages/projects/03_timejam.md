@@ -1,6 +1,9 @@
 ---
 path: '/projects/deep-time-jam'
 title: 'Deep Time Jam'
+linkto: '/projects/neoqab'
+linkfrom: ''
+linkalt: ''
 ---
 
 The Deep Time Jam was run between 24 – 25 September 2016 in the TAG Lab. The jam was focused on producing games and playful experiences based around the notion of “deep time” – scales of time and futures that are generally not imagined by us in day to day life.

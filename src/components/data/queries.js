@@ -11,6 +11,10 @@ export default () => {
 							path
 							name
 							cover
+							room
+							linkto
+							linkfrom
+							linkalt
 						}
 					}
 				}
@@ -22,30 +26,16 @@ export default () => {
 							path
 							title
 							cover
+							room
+							linkto
+							linkfrom
+							linkalt
 						}
-					}
-				}
-			}
-			indeces: allSitePage(filter: {isCreatedByStatefulCreatePages: {eq: false}}) {
-				edges {
-					node {
-						path
-					}
-					next {
-						path
-					}
-					previous {
-						path
 					}
 				}
 			}
 		}
 	`)
-
-	// remove thie first item (biblio)
-	let indeces = data.indeces.edges
-	indeces.shift()
-	indeces[0].previous = null
 
 	let projects = []
 	let people = []
@@ -62,7 +52,6 @@ export default () => {
 	// where indeces { previous, node, next } leads from people into projects
 
 	return {
-		indeces,
 		people,
 		projects
 	}
