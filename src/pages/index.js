@@ -1,16 +1,14 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { navigate } from 'gatsby'
 
 // Page Structure
 import View from '../components/canvas/canvas'
 import Model from '../components/canvas/Model'
 import Layout from '../components/layouts/page'
-import Log from '../components/log'
+import Sidebar from '../components/layouts/Sidebar'
 
 // Materials and Loaders from Three
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { MeshPhysicalMaterial } from "three/src/materials/MeshPhysicalMaterial";
-import { MeshMatcapMaterial } from 'three/src/materials/MeshMatcapMaterial'
 import { MeshNormalMaterial } from 'three/src/materials/MeshNormalMaterial'
 
 // Styles
@@ -33,19 +31,18 @@ const IndexPage = () => (
         <meshLambertMaterial attach="material" visible={false} />
       </mesh>
       <Model
-        url={'meshes/entrance_facade.glb'}
-        material={new MeshMatcapMaterial({
-          matcap: useMemo(() => new TextureLoader().load('textures/Bronze.png'), ['textures/Shiny_Fire_1c.png'])
-          })
-      } />
+        url={'meshes/entrance_facade.003.glb'}
+      />
       <Model url={'meshes/entrance_index.glb'} />
       <Model url={'meshes/entrance_lattice.glb'} material={new MeshNormalMaterial()} />
       <Model url={'meshes/floorplane.glb'} material={new MeshPhysicalMaterial({color:0x2194ce, roughness: 0.9})}/>
 
-      <directionalLight intensity={0.5} position={[-25, 25, -25]} />
-      <spotLight intensity={2} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
+      <ambientLight intensity={0.1}/>
+      <spotLight intensity={4} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
+      <spotLight intensity={2} position={[3, 4, 10]} angle={2} penumbra={2} />
+      <fog attach="fog" args={['black', 0.01, 6000]} />
     </View>
-    <Log />
+    <Sidebar />
   </Layout>
 )
 
