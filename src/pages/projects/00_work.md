@@ -1,7 +1,7 @@
 ---
 path: '/projects/it-is-as-if-you-were-doing-work'
 title: 'It is as if you were doing work'
-room: 'room1.glb'
+room: 'room0.glb'
 linkto: '/projects/drift-workshop'
 linkfrom: '/about'
 linkalt: ''
