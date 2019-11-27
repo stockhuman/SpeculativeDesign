@@ -1,6 +1,7 @@
-import React, { useState, useMemo, Suspense } from 'react'
+import React, { useState, useMemo } from 'react'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { navigate } from 'gatsby'
+import { ConeBufferGeometry } from 'three'
 
 export default function Model({ url, material }) {
 	const [scene, set] = useState()
@@ -35,28 +36,27 @@ export function SceneLinks({ url, linkto, linkfrom, linkalt }) {
 	const [dataFrom, setFrom] = useState({})
 	const [dataAlt, setAlt] = useState({})
 
+	console.log(dataTo)
+
 	useMemo(() =>
 		new GLTFLoader().load(url, gltf => {
 			gltf.scene.traverse(obj => {
 				if (linkto && obj.name === 'linkto') {
 					setTo({
 						position: obj.position,
-						rotation: obj.geometry,
-						scale: obj.scale
+						geometry: obj.geometry,
 					})
 				}
 				if (linkfrom && obj.name === 'linkfrom') {
 					setFrom({
 						position: obj.position,
-						rotation: obj.geometry,
-						scale: obj.scale
+						geometry: obj.geometry,
 					})
 				}
 				if (linkalt && obj.name === 'linkalt') {
 					setAlt({
 						position: obj.position,
-						rotation: obj.geometry,
-						scale: obj.scale
+						geometry: obj.geometry,
 					})
 				}
 			})
@@ -68,11 +68,14 @@ export function SceneLinks({ url, linkto, linkfrom, linkalt }) {
 	// it is still clickable.
 	return scene ? <>
 		{linkto ?
+			// <mesh position={dataTo.position}><boxBufferGeometry attach="geometry" args={[2, 3, 1]} />
+			// 	<meshNormalMaterial attach="material" /></mesh>
 			<mesh
 				onClick={() => navigate(linkto)}
 				position={dataTo.position}
 				geometry={dataTo.geometry}>
-				<meshLambertMaterial attach="material" visible={true} />
+				{/* <meshLambertMaterial attach="material" visible={true} /> */}
+				{/* <meshNormalMaterial attach="material" /> */}
 			</mesh>
 		: null}
 		{linkfrom ?
