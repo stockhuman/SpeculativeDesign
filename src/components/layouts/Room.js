@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 // Page Structure & Scene components
 import View from '../canvas/canvas'
@@ -25,12 +25,15 @@ export default ({ data }) => {
 
 	return (
 		<View center={[0, 0, 0]}>
-			<SceneLinks url={`/meshes/room1.temp.001.glb`}
+			<SceneLinks url={`/meshes/tests/room1.temp.001.glb`}
 				linkto={next}
 				linkfrom={prev}
 				linkalt={alt}
 			/>
-			<Model url={`/meshes/${room}`} />
+			<Suspense fallback={null}>
+				<Model url={`/meshes/rooms/${room}`} />
+				<Model url={`/meshes/rooms/plinths/plinth-0.glb`} />
+			</Suspense>
 			<ambientLight intensity={0.01} />
 			<directionalLight intensity={0.5} position={[-1, 1, -1]} />
 			<Sculpture />

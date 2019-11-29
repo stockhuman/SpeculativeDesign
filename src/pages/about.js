@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { navigate } from 'gatsby'
 
 import View from '../components/canvas/canvas'
@@ -41,7 +41,9 @@ const About = () => {
 					<planeBufferGeometry attach="geometry" args={[2, 2]} />
 					<meshLambertMaterial attach="material" color="blue" />
 				</mesh>
-				<Model url={'/meshes/about/about2_002.glb'} />
+				<Suspense fallback={null}>
+					<Model url={'/meshes/about/about2_002.glb'} />
+				</Suspense>
 				<directionalLight intensity={2} position={[0, 2, 2]} />
 			</View>
 			<Sidebar />

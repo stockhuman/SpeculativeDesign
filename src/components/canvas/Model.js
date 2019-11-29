@@ -1,30 +1,12 @@
 import React, { useState, useMemo } from 'react'
+import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { navigate } from 'gatsby'
-import { ConeBufferGeometry } from 'three'
 
-export default function Model({ url, material }) {
-	const [scene, set] = useState()
-
-	useMemo(() =>
-		new GLTFLoader().load(url, gltf => {
-			gltf.scene.traverse(obj => {
-				if (obj.isMesh) {
-					obj.castShadow = true
-					obj.receiveShadow = true
-					if (material) {
-						obj.material.dispose()
-						obj.material = material
-					} else {
-						obj.material.color.convertSRGBToLinear()
-					}
-				}
-			})
-			set(gltf.scene)
-		}), [url]
-	)
-
-	return scene ? <primitive object={scene} /> : null
+// Drastically simplified Model importer no longer takes custom material parameters
+export default function Model({ url }) {
+	const gltf = useLoader(GLTFLoader, url)
+	return <primitive object={gltf.scene} />
 }
 
 // loads corresponding interactive elements within a scene.
@@ -35,8 +17,6 @@ export function SceneLinks({ url, linkto, linkfrom, linkalt }) {
 	const [dataTo, setTo] = useState({})
 	const [dataFrom, setFrom] = useState({})
 	const [dataAlt, setAlt] = useState({})
-
-	console.log(dataTo)
 
 	useMemo(() =>
 		new GLTFLoader().load(url, gltf => {
@@ -74,8 +54,7 @@ export function SceneLinks({ url, linkto, linkfrom, linkalt }) {
 				onClick={() => navigate(linkto)}
 				position={dataTo.position}
 				geometry={dataTo.geometry}>
-				{/* <meshLambertMaterial attach="material" visible={true} /> */}
-				{/* <meshNormalMaterial attach="material" /> */}
+				<meshLambertMaterial attach="material" visible={true} />
 			</mesh>
 		: null}
 		{linkfrom ?

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { navigate } from 'gatsby'
 
 // Page Structure
@@ -30,13 +30,12 @@ const IndexPage = () => (
         <planeBufferGeometry attach="geometry" args={[2, 2]} />
         <meshLambertMaterial attach="material" visible={false} />
       </mesh>
-      <Model
-        url={'meshes/entrance_facade.003.glb'}
-      />
-      <Model url={'meshes/entrance_index.glb'} />
-      <Model url={'meshes/entrance_lattice.glb'} material={new MeshNormalMaterial()} />
-      <Model url={'meshes/floorplane.glb'} material={new MeshPhysicalMaterial({color:0x2194ce, roughness: 0.9})}/>
-
+      <Suspense fallback={null}>
+        <Model url={'meshes/entrance_facade.003.glb'} />
+        <Model url={'meshes/entrance_index.glb'} />
+        <Model url={'meshes/entrance_lattice.glb'} />
+        <Model url={'meshes/floorplane.glb'} />
+      </Suspense>
       <ambientLight intensity={0.1}/>
       <spotLight intensity={4} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
       <spotLight intensity={2} position={[3, 4, 10]} angle={2} penumbra={2} />
