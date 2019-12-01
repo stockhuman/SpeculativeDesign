@@ -39,7 +39,6 @@ const IndexPage = () => (
       <ambientLight intensity={0.1}/>
       <spotLight intensity={4} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
       <spotLight intensity={2} position={[3, 4, 10]} angle={2} penumbra={2} />
-      <fog attach="fog" args={['black', 0.01, 6000]} />
     </View>
     <Sidebar />
   </Layout>

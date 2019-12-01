@@ -5,6 +5,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
 import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader'
+// import { SSAOShader } from 'three/examples/jsm/shaders/SSAOShader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 extend({ OrbitControls, EffectComposer, RenderPass, ShaderPass })
@@ -21,7 +22,8 @@ function Effects () {
 		<>
 			<effectComposer ref={composer} args={[gl]}>
 				<renderPass attachArray="passes" args={[scene, camera]} />
-				<shaderPass attachArray="passes" args={[FXAAShader]} uniforms-resolution-value={[1 / size.width, 1 / size.height]} renderToScreen />
+				<shaderPass attachArray="passes" args={[FXAAShader]}
+				uniforms-resolution-value={[1 / size.width, 1 / size.height]} renderToScreen />
 			</effectComposer>
 		</>
 	)
@@ -85,8 +87,9 @@ export default function View(props) {
 					minPolarAngle={props.minPolarAngle}
 					far={props.far}
 				/>
-					<Effects />
-					<scene>{props.children}</scene>
+				<Effects />
+				<fog attach="fog" args={['#2a7fb9', 16, 40]} />
+				<scene>{props.children}</scene>
 			</Canvas>
 		</main>
 	)
