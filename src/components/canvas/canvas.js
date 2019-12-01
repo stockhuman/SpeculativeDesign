@@ -44,19 +44,19 @@ function Camera(props) {
 	camera.far = props.far || 60
 
 	return (
-			<orbitControls
-				ref={controls}
-				args={[camera, gl.domElement]}
-				enableDamping
-				enableZoom={props.enableZoom || false}
-				enablePan={props.enablePan || false}
-				maxPolarAngle={props.maxPolarAngle || Math.PI / 1.6} // bigger divisor = more you can look up
-				minPolarAngle={props.minPolarAngle || Math.PI / 2.0} // bigger divisor = more you can look down
-				dampingFactor={0.1}
-				target={center}
-				position={props.cameraPlacement}
-				rotateSpeed={0.5}
-			/>
+		<orbitControls
+			ref={controls}
+			args={[camera, gl.domElement]}
+			enableDamping
+			enableZoom={props.enableZoom || false}
+			enablePan={props.enablePan || false}
+			maxPolarAngle={props.maxPolarAngle || Math.PI / 1.6} // bigger divisor = more you can look up
+			minPolarAngle={props.minPolarAngle || Math.PI / 2.0} // bigger divisor = more you can look down
+			dampingFactor={0.1}
+			target={center}
+			position={props.cameraPlacement}
+			rotateSpeed={0.5}
+		/>
 	)
 }
 
