@@ -32,7 +32,7 @@ const NotFoundPage = () => (
 
       />
     </View>
-    <Sidebar intro={'Seems like the absecence of things is still a constant, no matter the world imagined. [404]'}/>
+    <Sidebar intro={'Seems like the abscence of things is still a constant, no matter the world imagined. [404]'}/>
   </Layout>
 )
 
