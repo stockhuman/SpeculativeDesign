@@ -10,7 +10,7 @@ export default function Template({ data }) {
 	return (
 		<Layout>
 			<Room data={data} />
-			<Sidebar />
+			<Sidebar intro={'Project: ' + data.markdownRemark.frontmatter.title}/>
 		</Layout>
 	)
 }
