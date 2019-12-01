@@ -1,17 +1,43 @@
 import React, { useState, useMemo } from 'react'
 import { useLoader } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { TextureLoader } from 'three'
 import { navigate } from 'gatsby'
 
-// Drastically simplified Model importer no longer takes custom material parameters
+/**
+ * Drastically simplified Model importer no longer takes custom material parameters
+ * @param {string} url The path to a .glb, .gltf file to load
+ */
 export default function Model({ url }) {
 	const gltf = useLoader(GLTFLoader, url)
 	return <primitive object={gltf.scene} />
 }
 
-// loads corresponding interactive elements within a scene.
-// could be combined into a monolithic function
-// Currently creates invisible meshes.
+/**
+ * 'Frames' an image texture as a painting
+ * @param {string} url path to an image texture
+ */
+export function Frame({ url }) {
+	const texture = useMemo(() => new TextureLoader().load(url), [url])
+	return (
+		<mesh>
+			<planeBufferGeometry attach="geometry" args={[5, 5]} />
+			<meshLambertMaterial attach="material" transparent>
+				<primitive attach="map" object={texture} />
+			</meshLambertMaterial>
+		</mesh>
+	)
+}
+
+/**
+ * For ease of room creation, export a gltf scene with named objects
+ * corresponding to positions of interactive elements within a scene.
+ * Creates invisible meshes that link to other urls.
+ * @param {string} url GLTF scene containing named geometry
+ * @param {string} linkto url to navigate to when clicking the linkto model
+ * @param {string} linkfrom url to navigate to when clicking the linkfrom model
+ * @param {string} linkalt url to navigate to when clicking the linkalt model
+ */
 export function SceneLinks({ url, linkto, linkfrom, linkalt }) {
 	const [scene, set] = useState()
 	const [dataTo, setTo] = useState({})

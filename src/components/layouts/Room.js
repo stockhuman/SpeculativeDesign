@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 
 // Page Structure & Scene components
 import View from '../canvas/canvas'
-import Model, { SceneLinks } from '../canvas/Model'
+import Model, { SceneLinks, Frame } from '../canvas/Model'
 import Text from '../canvas/Text'
 
 // Materials and Loaders from Three
@@ -41,7 +41,7 @@ export default ({ data }) => {
 				string={title}
 				options={
 					{
-						position: [-1,1,Math.random()],
+						position: [-2,2,Math.random()],
 						rotation: [Math.random(),Math.random(),Math.random()],
 						color: 'yellow'
 					}
