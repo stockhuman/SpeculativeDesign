@@ -34,11 +34,13 @@
 			black 120%
 		);
 		padding: .5em;
-		height: 400px;
+		height: 470px;
 		border-radius: 5px;
 		border: 5px inset;
-		text-shadow: 0 0 5px #C8C8C8;
+
 		position: relative;
+		overflow: hidden;
+		pointer-events: none;
 
 		&::after {
 			content: "";
@@ -56,11 +58,22 @@
 			);
 		}
 
-		span, p {
+		#user-input {
+			width: 100%;
+			background: transparent;
+			pointer-events: all;
+			border: 1px solid white;
+			padding: .5em 0;
+			min-height: 1rem;
+		}
+
+		span, p, #user-input {
+			text-shadow: 0 0 5px #C8C8C8;
 			font-family: monospace;
 			color: white;
 			overflow: visible;
-			overflow-wrap: break-word;
+			overflow-wrap: break-all;
+			font-size: larger;
 		}
 	}
 
