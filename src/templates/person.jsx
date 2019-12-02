@@ -2,15 +2,16 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layouts/page'
+import Sidebar from '../components/layouts/Sidebar'
+import Room from '../components/layouts/Room'
 
 export default function Template({ data }) {
 	const person = data.markdownRemark
 
 	return (
 		<Layout>
-			{/* <img src={person.frontmatter.cover} alt="profile image"/> */}
-			<h1>{person.frontmatter.name}</h1>
-			<div dangerouslySetInnerHTML={{__html: person.html}} />
+			<Room data={data} />
+			<Sidebar intro={'Introducing: ' + person.frontmatter.name} />
 		</Layout>
 	)
 }
