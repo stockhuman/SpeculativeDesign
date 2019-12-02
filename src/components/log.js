@@ -37,13 +37,14 @@ class Log extends Component {
 				this.tick(text, i + 1)
 			}, this.props.interval || 80)
 		} else {
+			this.addLog({ system: true, copy: this.state.terminalOutput })
 			// if there is more than one intro line
-			if (this.state.termQueuePlace !== this.state.termQueue.length) {
+			if (this.state.termQueuePlace < this.state.termQueue.length) {
 				this.setState({ termQueuePlace: this.state.termQueuePlace + 1 })
 				this.setState({ locked: false, terminalOutput: '' })
-				this.tick(this.state.termQueue[this.state.termQueuePlace], 0)
+				if (this.state.termQueuePlace < this.state.termQueue.length)
+				  this.tick(this.state.termQueue[this.state.termQueuePlace], 0)
 			} else {
-				this.addLog({ system: true, copy: this.state.terminalOutput })
 				this.setState({ locked: false, terminalOutput: '' })
 			}
 		}
