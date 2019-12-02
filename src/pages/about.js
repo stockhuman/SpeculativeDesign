@@ -46,7 +46,7 @@ const About = () => {
 				</Suspense>
 				<directionalLight intensity={2} position={[0, 2, 2]} />
 			</View>
-			<Sidebar />
+			<Sidebar intro="Welcome welcome welcome welcome, you!"/>
 		</Layout>
 	)
 }
