@@ -58,16 +58,30 @@
 			);
 		}
 
+		.crt-actions-container {
+			position: absolute;
+			bottom: 1em;
+		}
+
+		.crt-btn {
+			border:none;
+			background: transparent;
+
+			&:hover, &:focus {
+				background: rgba(6, 252, 6, 0.295);
+			}
+		}
+
 		#user-input {
 			width: 100%;
 			background: transparent;
 			pointer-events: all;
-			border: 1px solid white;
-			padding: .5em 0;
+			border: none;
+			padding: 1em 0;
 			min-height: 1rem;
 		}
 
-		span, p, #user-input {
+		span, p, .crt-btn, #user-input {
 			text-shadow: 0 0 5px #C8C8C8;
 			font-family: monospace;
 			color: white;
