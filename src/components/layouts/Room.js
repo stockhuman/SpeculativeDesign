@@ -11,16 +11,17 @@ import Text from '../canvas/Text'
 import Sculpture from '../canvas/Sculpture'
 
 export default ({ data }) => {
-	const title = data.markdownRemark.frontmatter.title
+	const d = data.markdownRemark.frontmatter
+	const title = d.title || d.name
 
 	// gets the link to previous and next rooms
-	const next = data.markdownRemark.frontmatter.linkto
-	const prev = data.markdownRemark.frontmatter.linkfrom
-	const alt = data.markdownRemark.frontmatter.linkalt
+	const next = d.linkto
+	const prev = d.linkfrom
+	const alt = d.linkalt
 
 	// gets a random room shape
-	const room = data.markdownRemark.frontmatter.room
-		? data.markdownRemark.frontmatter.room
+	const room = d.room
+		? d.room
 		: `room${Math.floor(Math.random() * 1)}.glb`
 
 	return (
