@@ -22,7 +22,7 @@ export default ({ data }) => {
 	// gets a random room shape
 	const room = d.room
 		? d.room
-		: `room${Math.floor(Math.random() * 1)}.glb`
+		: `room${Math.floor(Math.random() * 2)}.glb`
 
 	return (
 		<View center={[0, 0, 0]}>
