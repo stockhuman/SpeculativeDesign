@@ -6,7 +6,7 @@ import {
 	MeshPhongMaterial,
 	Mesh,
 	Matrix4,
-	SplineCurve3,
+	CatmullRomCurve3,
 	ExtrudeGeometry,
 	IcosahedronGeometry,
 	CubeGeometry,
@@ -95,7 +95,7 @@ function Cannister(radius, height, capHeight, detail) {
 
 function Ribbon(path, shape, steps) {
 	let _steps = steps ? steps : 32;
-	let splineCurve = new SplineCurve3(path);
+	let splineCurve = new CatmullRomCurve3(path);
 	let extrudeSettings = {
 		bevelEnabled: false,
 		steps: _steps,
