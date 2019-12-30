@@ -2,9 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import Header from './Header'
-
-export default ({ useHeader = true }) => {
+export default () => {
 	const data = useStaticQuery(graphql`
 		query PageTitleQuery($path: String!) {
 			markdownRemark(frontmatter: { path: { eq: $path } }) {
@@ -25,23 +23,18 @@ export default ({ useHeader = true }) => {
 	const title = pageTitle ? pageTitle : data.site.siteMetadata.title
 
 	return (
-		<>
-			<Helmet
-				title={title}
-				meta={[
-					{ name: 'description', content: 'Sample' },
-				]}
-				link={[
-					{
-						rel: 'stylesheet',
-						type: 'text/css',
-						href: 'https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text'
-					}
-				]}
-			/>
-			{ useHeader ?
-				<Header siteTitle={data.site.siteMetadata.title} />
-			: null }
-		</>
+		<Helmet
+			title={title}
+			meta={[
+				{ name: 'description', content: 'Sample' },
+			]}
+			link={[
+				{
+					rel: 'stylesheet',
+					type: 'text/css',
+					href: 'https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text'
+				}
+			]}
+		/>
 	)
 }
