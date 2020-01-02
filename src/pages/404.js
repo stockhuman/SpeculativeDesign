@@ -1,7 +1,7 @@
 import React from 'react'
 import { navigate } from 'gatsby'
 
-import Layout from '../components/layouts/page'
+import Layout from '../components/layouts/Page'
 import Sidebar from '../components/layouts/Sidebar'
 import Text from '../components/canvas/Text'
 import View from '../components/canvas/canvas'

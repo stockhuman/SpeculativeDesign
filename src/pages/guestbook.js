@@ -3,7 +3,7 @@ import React from 'react'
 // Page Structure
 import View from '../components/canvas/canvas'
 import Model from '../components/canvas/Model'
-import Layout from '../components/layouts/page'
+import Layout from '../components/layouts/Page'
 
 import Log from '../components/log'
 

@@ -3,7 +3,7 @@ import { navigate } from 'gatsby'
 
 import View from '../components/canvas/canvas'
 import Model from '../components/canvas/Model'
-import Layout from '../components/layouts/page'
+import Layout from '../components/layouts/Page'
 import Sidebar from '../components/layouts/Sidebar'
 import queries from '../components/data/queries'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layouts/page'
+import Layout from '../components/layouts/Page'
 
 export default function Template({ data }) {
 	const copy = data.markdownRemark
