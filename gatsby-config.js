@@ -4,7 +4,6 @@ module.exports = {
     title: 'Speculative Play'
   },
   plugins: [
-		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-sass',
 		'gatsby-remark-copy-linked-files',
 		'gatsby-transformer-sharp',
