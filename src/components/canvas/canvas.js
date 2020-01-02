@@ -54,7 +54,7 @@ function Camera(props) {
 			enablePan={props.enablePan || false}
 			maxPolarAngle={props.maxPolarAngle || Math.PI / 1.6} // bigger divisor = more you can look up
 			minPolarAngle={props.minPolarAngle || Math.PI / 2.0} // bigger divisor = more you can look down
-			dampingFactor={0.1}
+			dampingFactor={0.07}
 			target={center}
 			position={props.cameraPlacement}
 			rotateSpeed={0.5}
@@ -75,9 +75,7 @@ export default function View(props) {
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
 				gl2
 				shadowMap
-				onCreated={({ gl }) => {
-					gl.toneMapping = Uncharted2ToneMapping
-				}}>
+				>
 				<Camera
 					center={center}
 					cameraPlacement={cameraPlacement}
