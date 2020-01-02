@@ -5,6 +5,7 @@ room: 'room2.glb'
 linkto: '/projects/mono-orifice'
 linkfrom: ''
 linkalt: ''
+images: ['drift/drift.jpg']
 ---
 
 The DRIFT workshop was held at the TAG lab between 20 – 24 June 2016. The workshop was the Montréal satellite edition of a larger project between TAG and London-based artist duo Jorge Lopes Ramos and Persis Jade Maravala of ZU-UK. The core brief was to make games and playful experiences based loosely around a scene from the Georg Büchner play Woyzeck combined with a focusing on the setting of a dinner date.

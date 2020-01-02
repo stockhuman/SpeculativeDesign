@@ -4,6 +4,10 @@ title: 'NEO//QAB'
 linkto: '/projects/burnt-matches'
 linkfrom: ''
 linkalt: ''
+images: [
+	'neoqab/Neoqab.jpg',
+	'neoqab/Neoqab2.png'
+]
 ---
 
 The neoqab is a speculative niqab-based outfit of digitally manipulable fabric. For the wearer of the neoqab, they’re covered by an all-enveloping garment. But due to the special fabric, others around neoqab wearers can modify its appearance.

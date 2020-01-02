@@ -5,6 +5,15 @@ room: 'room0.glb'
 linkto: '/projects/drift-workshop'
 linkfrom: '/about'
 linkalt: ''
+images: [
+	'work/About.png',
+	'work/Break.png',
+	'work/Login.png',
+	'work/Music.png',
+	'work/Promotion.png',
+	'work/Working_1.png',
+	'work/Working_2.png',
+]
 ---
 
 The robots are here! No more work! It’s great! Is it great?! Wait! You feel apathetic and unproductive! You miss clicking buttons! You miss waiting for progress bars! You miss checkboxes! You miss work! But it’s going to be okay! Use this handy application and it is as if you were doing work!

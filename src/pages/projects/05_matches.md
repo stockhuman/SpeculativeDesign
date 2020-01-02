@@ -4,6 +4,16 @@ title: 'Burnt Matches'
 linkto: '/projects/love'
 linkfrom: ''
 linkalt: ''
+images: [
+	'matches/Chess-UI.png',
+	'matches/Corridor.png',
+	'matches/Ramp.png',
+	'matches/Room2.png',
+	'matches/Snow.png',
+	'matches/Stairs.png',
+	'matches/UI.jpg',
+	'matches/Room.png'
+]
 ---
 Burnt Matches is a hypertext fiction representing a nuclear waste storage facility of the sort discussed in the Deep Time design jam. The jam, held by the Speculative Play project in September 2016,  focused on the documentary Into Eternity by Michael Madsen and its discussion of the Onkalo disposal facility in Finland.
 
