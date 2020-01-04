@@ -71,7 +71,7 @@ export default function View(props) {
 	return (
 		<main id='viewport'>
 			<Canvas
-				style={{ background: props.background || '#f1b4fa' }}
+				style={{ background: props.background || '#f9f9f9' }}
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
 				gl2
 				shadowMap
@@ -86,7 +86,7 @@ export default function View(props) {
 					far={props.far}
 				/>
 				<Effects />
-				<fog attach="fog" args={['#2a7fb9', 16, 40]} />
+				<fog attach="fog" args={['#fbf7f5', 16, 40]} />
 				<scene>{props.children}</scene>
 			</Canvas>
 		</main>
