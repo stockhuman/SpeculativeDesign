@@ -10,7 +10,7 @@ export default function Template({ data }) {
 	return (
 		<Layout>
 			<Room data={data} />
-			<Sidebar intro={'Project: ' + data.markdownRemark.frontmatter.title}/>
+			<Sidebar intro={['Project: ' + data.markdownRemark.frontmatter.title]}/>
 		</Layout>
 	)
 }
@@ -22,11 +22,18 @@ export const projectQuery = graphql`
 			frontmatter {
 				path
 				title
-				cover
+				cover {
+					childImageSharp {
+						sizes {
+							src
+						}
+					}
+				}
 				room
 				linkto
 				linkfrom
 				linkalt
+				images
 			}
 		}
 	}
