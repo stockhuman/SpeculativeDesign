@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { extend, Canvas, useThree, useRender } from 'react-three-fiber'
-import { Vector3, Uncharted2ToneMapping } from 'three/src/Three'
+import { Vector3, sRGBEncoding } from 'three/src/Three'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
@@ -41,7 +41,7 @@ function Camera(props) {
 
 	// Better colors!
 	gl.gammaFactor = 2.2
-	gl.gammaOutput = true
+	gl.outputEncoding = sRGBEncoding
 	gl.physicallyCorrectLights = true
 	camera.far = props.far || 60
 
