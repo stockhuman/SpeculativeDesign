@@ -42,14 +42,14 @@ export default ({ data }) => {
 				string={title}
 				options={
 					{
-						position: [-2,2,Math.random()],
-						rotation: [Math.random(),Math.random(),Math.random()],
-						color: 'yellow'
+						position: [0,4,0],
+						rotation: [0, 0, 0],
+						color: '#fce867'
 					}
 				}
-				size={0.2 + (Math.random() / 2)}
+				size={0.2}
 				bevelEnabled={true}
-				height={0.1}
+				height={0.2}
 				bevelThickness={0.01}
 				bevelSize={0.01}
 				bevelSegments={1}

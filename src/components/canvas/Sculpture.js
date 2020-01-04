@@ -25,10 +25,10 @@ export default function Sculpture({ seed = 'default' }) {
 
 	return (
 		<mesh
-			position={[0, 1, 0]}
+			position={[0, 1, -0.3]}
 			geometry={Spring(Math.random(), Math.random() * 2, 11)}
 		>
-			<meshPhongMaterial flatShading={false} shininess={1} color='blue' attach="material" side={DoubleSide} castShadows={true} flatShading={false} />
+			<meshPhongMaterial receiveShadows flatShading={false} shininess={1} color='blue' attach="material" side={DoubleSide} castShadows />
 		</mesh>
 	)
 }
