@@ -10,7 +10,13 @@ export default () => {
 						frontmatter {
 							path
 							name
-							cover
+							cover {
+								childImageSharp {
+									sizes {
+										src
+									}
+								}
+							}
 							room
 							linkto
 							linkfrom
@@ -25,11 +31,29 @@ export default () => {
 						frontmatter {
 							path
 							title
-							cover
+							cover {
+								childImageSharp {
+									sizes {
+										src
+									}
+								}
+							}
 							room
 							linkto
 							linkfrom
 							linkalt
+							images
+						}
+					}
+				}
+			}
+			images: allFile(filter: {sourceInstanceName: {eq: "images"}}) {
+				edges {
+					node {
+						childImageSharp {
+							fixed {
+								src
+							}
 						}
 					}
 				}
@@ -39,6 +63,7 @@ export default () => {
 
 	let projects = []
 	let people = []
+	let images = []
 
 	data.projects.edges.forEach(page => {
 		projects.push(page.node.frontmatter)
@@ -48,11 +73,16 @@ export default () => {
 		people.push(page.node.frontmatter)
 	})
 
+	data.images.allFile.edges.forEach(image => {
+		people.push(image.node.childImageSharp)
+	})
+
 	// The returned object consists of three arrays,
 	// where indeces { previous, node, next } leads from people into projects
 
 	return {
 		people,
-		projects
+		projects,
+		images
 	}
 }
