@@ -111,7 +111,8 @@ class Log extends Component {
 					disabled={this.state.locked ? true : false}
 					 />
 				<div className="crt-actions-container">
-					<button className="crt-btn">help</button>
+					<button className="crt-btn" onClick={() => {
+						this.inputNode.current.innerText = 'help';}}>help</button>
 					<button className="crt-btn">info</button>
 					<button className="crt-btn">goto</button>
 					<button className="crt-btn" onClick={() => navigate('/')}>home</button>
