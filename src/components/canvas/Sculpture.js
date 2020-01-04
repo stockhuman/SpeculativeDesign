@@ -14,7 +14,8 @@ import {
 	TorusGeometry,
 	Shape,
 	Object3D,
-	DoubleSide
+	DoubleSide,
+	FlatShading
 } from 'three'
 
 export default function Sculpture({ seed = 'default' }) {
@@ -26,7 +27,7 @@ export default function Sculpture({ seed = 'default' }) {
 	return (
 		<mesh
 			position={[0, 1, -0.3]}
-			geometry={Spring(Math.random(), Math.random() * 2, 11)}
+			geometry={Wheel(Math.random(), 2, 1)}
 		>
 			<meshPhongMaterial receiveShadows flatShading={false} shininess={1} color='blue' attach="material" side={DoubleSide} castShadows />
 		</mesh>
@@ -37,11 +38,6 @@ export default function Sculpture({ seed = 'default' }) {
 // http://www.smartjava.org/ltjs3/src/chapter-10/22-canvas-texture.html
 // https://mattdesl.svbtle.com/shaping-curves-with-parametric-equations
 // https://machines.chromeexperiments.com/
-
-//	Each component is a thing like a turbine or
-//	a screw or wire. These generally have a start
-//	position and some properties that can be assigned.
-//	Some components will include other components.
 
 //	makes a circle three.js shape
 function makeCircleShape(radius, segments) {
@@ -82,7 +78,7 @@ function Cannister(radius, height, capHeight, detail) {
 	let geo = new LatheGeometry(points, _detail, Math.PI * 2);
 	geo.computeVertexNormals();
 	geo.computeFaceNormals();
-	let mat = new MeshPhongMaterial({ color: componentColor['cannister'], shininess: shininess['cannister'], specular: specular['cannister'], metal: true, ambient: ambientColor, wireframe: false, shading: FlatShading });
+	let mat = new MeshPhongMaterial({ color: componentColor['cannister'], shininess: shininess['cannister'], specular: specular['cannister'], metal: true, ambient: 0xf6f6f6, wireframe: false, shading: FlatShading });
 	let mesh = new Mesh(geo, mat);
 
 	mesh.generatedPath = points;
@@ -113,7 +109,7 @@ function Nexus(radius = 1) {
 function Pin(size) {
 
 	let geo = new CubeGeometry(1 * size, 1 * size, 3 * size, 1, 1, 1);
-	let mat = new MeshPhongMaterial({ color: componentColor['pin'], shininess: shininess['pin'], ambient: ambientColor, specular: specular['pin'], shading: FlatShading });
+	let mat = new MeshPhongMaterial({ color: 0xffffff, shininess: 1, ambient: 0xf6f6f6, specular: 1, shading: FlatShading });
 	let mesh = new Mesh(geo, mat);
 
 	let capGeo = new CylinderGeometry(2 * size, 2 * size, size, 6, 1, false);
@@ -128,7 +124,7 @@ function Pin(size) {
 function Armature(size, length, detail) {
 
 	let geo = new CylinderGeometry(size * 6, size * 6, length, detail, 1, false);
-	let material = new MeshPhongMaterial({ color: componentColor['armature'], shininess: shininess['armature'], ambient: ambientColor, specular: specular['armature'], shading: FlatShading });
+	let material = new MeshPhongMaterial({ color: componentColor['armature'], shininess: shininess['armature'], ambient: 0xf6f6f6, specular: specular['armature'], shading: FlatShading });
 	let mesh = new Mesh(geo, material);
 	mesh.rotation.x = Math.PI / 2;
 	mesh.position.z += length / 2;
@@ -157,12 +153,11 @@ function GasCan(size) {
 	return container;
 }
 
-function SecureRing(size, thicknessRatio, detail) {
+function SecureRing(size = 1, thicknessRatio, detail = 8) {
 	let _size = size ? size : 1;
 	let _thicknessRatio = thicknessRatio ? thicknessRatio : _size;
-	let _detail = detail ? detail : 8;
-	let ringGeo = new TorusGeometry(_size, _size * _thicknessRatio, 6, _detail, Math.PI * 2);
-	let material = new MeshPhongMaterial({ color: componentColor['securering'], shininess: shininess['securering'], ambient: ambientColor, specular: specular['securering'], shading: FlatShading });
+	let ringGeo = new TorusGeometry(_size, _size * _thicknessRatio, 6, detail, Math.PI * 2);
+	let material = new MeshPhongMaterial({ color: 0xf6f6f6, shininess: 1, ambient: 0xf6f6f6, specular: 1, shading: FlatShading });
 	let ringMesh = new Mesh(ringGeo, material);
 
 	let pinCount = Math.floor(detail * 0.25);
@@ -185,9 +180,6 @@ function SecureRing(size, thicknessRatio, detail) {
 		ringMesh.add(pin);
 	}
 
-	SceneUtils.traverseHierarchy(ringMesh, getSetMaterial(material));
-
-	attachLabel(ringMesh, "G", 1.0);
 	return ringMesh;
 }
 
@@ -208,8 +200,6 @@ function GasArray(size, count, spacing) {
 		};
 		container.add(can);
 	}
-
-	// SceneUtils.traverseHierarchy( container, getSetMaterial(material) );
 
 	return container;
 }
@@ -264,110 +254,4 @@ function Spring(size, height, iterations) {
 	let shape = makeCircleShape(1, 4);
 	let ribbon = new Ribbon(path, shape, _iterations * (detail * detail) * 0.5);
 	return ribbon;
-}
-
-function Turbine(size, height, shellCount, margin) {
-
-	let _size = size ? size : 1;
-	if (_size < 1)
-		_size = 1;
-
-	let _height = height ? height : 10
-
-	let _shellCount = shellCount ? shellCount : 12;
-
-	let waistCount = 5;
-
-	let _margin = margin ? margin : 20;
-
-	let points = [];
-	let spacing = _height / waistCount;
-	let geoWide = _size;
-
-
-	let zpos = 0;
-	let w = _size;
-	let u = 0;
-	for (let i = 0; i < waistCount; i++) {
-		zpos -= spacing;
-		points.push(new Vector3(w, u, zpos));
-		w -= Math.random() * _size * .4;
-		u += spacing * 0.2;
-	}
-
-	//	make the material and the geometry
-	let mat = new MeshPhongMaterial({ color: componentColor['turbine'], shininess: shininess['turbine'], ambient: ambientColor, specular: specular['turbine'], wireframe: false, shading: SmoothShading });
-
-	let sliceAngle = Math.PI / 6 + Math.PI / 10 * Math.random();
-
-	let smoothing = 3 + Math.floor(Math.random() * 2)
-	let geo = new LatheGeometry(points, smoothing, sliceAngle);
-
-	let matrix = new Matrix4();
-	matrix.rotateX(Math.random() * Math.PI * 2 * 0.1);
-	geo.applyMatrix(matrix);
-	geo.autoSmoothFaceNormals(0.0);
-
-	this.containingMesh = new Object3D();
-
-	//	generate a bunch of them in a ring
-	let dupeCount = _shellCount;
-	for (let i = 0; i < dupeCount; i++) {
-		let g = GeometryUtils.clone(geo);
-		let m = new Mesh(g, mat);
-		m.doubleSided = true;
-		m.castShadow = true;
-		m.receiveShadow = true;
-
-		let ang = (i) / dupeCount * Math.PI * 2;
-		m.position.x = Math.cos(ang) * _margin;
-		m.position.y = Math.sin(ang) * _margin;
-
-		m.start = _margin;
-		m.end = 0;
-		m.ang = ang;
-		m.update = function (percentage) {
-
-			let rad = this.start + (this.end - this.start) * percentage;
-			let ang = this.ang;
-			this.position.x = Math.cos(ang) * rad;
-			this.position.y = Math.sin(ang) * rad;
-		};
-
-		m.rotation.z = ang;
-		this.containingMesh.add(m);
-		m.margin = _margin;
-	}
-
-	this.containingMesh.generatedPath = points;
-
-	attachLabel(this.containingMesh, "I", 1.0);
-	return this.containingMesh;
-}
-
-function ArmFan(size, count) {
-	let _size = size ? size : 1;
-	let _count = count ? count : 16;
-	let arms = new Object3D();
-	for (let i = 0; i < _count; i++) {
-
-		let arm = new Armature(.2, _size, 4);
-		arm.rotation.x = Math.PI + Math.random() * 0.1;
-		arm.start = _size * 2;
-		arm.end = _size * 0.75;;
-
-		arm.update = function (percentage) {
-			this.position.y = this.start + (this.end - this.start) * percentage;
-		};
-
-		let armContainer = new Object3D();
-		armContainer.add(arm);
-
-		let ang = i / _count * Math.PI * 2;
-		armContainer.rotation.z = ang;
-		arms.add(armContainer);
-	}
-
-	attachLabel(arms, "J", 1.0);
-	return arms;
 }
