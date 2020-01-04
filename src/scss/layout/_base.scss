@@ -1,3 +1,7 @@
+// note that styling is imported on a per-component basis,
+// which enables quicker downloads for essential styling
+@import '../util/util';
+
 #viewport {
 	position: fixed;
 	top: 0;
@@ -5,17 +9,19 @@
 	bottom:0;
 	left: 0;
 	z-index: -2;
-	background: rgb(35, 35, 36);
-	padding: 10px;
+	background: rgb(17, 17, 17);
+	padding: 9px;
 
 	// canvas wrapper element
+	// creates the CRT-style inner-bevel effect
 	div {
-		border-radius: 10px;
+		border-radius: 14px;
+		box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.29);
 	}
 }
 
 #sidebar {
-	background: rgb(206, 207, 196);
+	background: #1f2233;
 	position: fixed;
 	right: 0;
 	left: 70vw;
@@ -93,7 +99,8 @@
 
 	.title a {
 		text-decoration: none;
-		color: rgba(136, 136, 136, .6);
+		color: rgba(214, 214, 214, 0.6);
+
 	}
 }
 
@@ -111,4 +118,30 @@
 		color: white;
 		text-shadow: 0 0 5px #C8C8C8;
   }
+}
+
+// Tablet & smaller: This site was designed desktop-first
+// see util, vendor/media & settings for query information
+
+@include media('<=tabletH') {
+	#viewport {
+		right: 0;
+	}
+	#sidebar {
+		left: 100%;
+	}
+
+	.crt-actions-container {
+		bottom: 0;
+		left: 0;
+		display: grid;
+		width: 100%;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+}
+
+@include media('<=mobile') {
+	.crt-actions-container {
+		grid-template-columns: 1fr 1fr;
+	}
 }
