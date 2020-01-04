@@ -6,12 +6,14 @@ import Log from '../log'
 class Sidebar extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			opened : true
+		}
 	}
 
 	render() {
 		return (
-			<aside id="sidebar">
+			<aside id="sidebar" className={this.state.opened ? 'open' : ''}>
 				<Log intro={this.props.intro || null}/>
 				<div></div>
 				<h1 className="title">

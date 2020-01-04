@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 
 // Page Structure & Scene components
 import View from '../canvas/canvas'
-import Model, { SceneLinks, Frame } from '../canvas/Model'
+import Model, { SceneLinks } from '../canvas/Model'
 import Text from '../canvas/Text'
 
 // Materials and Loaders from Three
@@ -11,6 +11,7 @@ import Text from '../canvas/Text'
 import Sculpture from '../canvas/Sculpture'
 
 export default ({ data }) => {
+	console.log(data)
 	const d = data.markdownRemark.frontmatter
 	const title = d.title || d.name
 
@@ -33,16 +34,16 @@ export default ({ data }) => {
 			/>
 			<Suspense fallback={null}>
 				<Model url={`/meshes/rooms/${room}`} />
-				<Model url={`/meshes/rooms/plinths/plinth-0.glb`} />
+				<Model url={`/meshes/rooms/plinths/plinth-2.glb`} />
 			</Suspense>
-			<ambientLight intensity={0.01} />
+			<ambientLight intensity={0.1} />
 			<directionalLight intensity={0.5} position={[-1, 1, -1]} />
 			<Sculpture />
 			<Text
 				string={title}
 				options={
 					{
-						position: [0,4,0],
+						position: [0,-0.2,1.5],
 						rotation: [0, 0, 0],
 						color: '#fce867'
 					}
