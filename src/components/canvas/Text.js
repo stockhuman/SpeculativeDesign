@@ -11,14 +11,14 @@ export default ({ string, options = { position: [0,0,0] }, ...props }) => {
 	useRender(() => {
 		t += speed
 		const s = Math.cos(t)
-		ref.current.rotation.set(s * -2, s, s * 0.05)
+		ref.current.rotation.set(s * -2, 0, s * 0.05)
 	})
 	return (
 		<mesh ref={ref} position={ options.position } rotation={ options.rotation || [0,0,0] }>
 			<textGeometry attach="geometry"
 				args={[string, { ...{font: new Font(helvetica)}, ...props}]}
 				onUpdate={geo => geo.center()}/>
-			<meshPhongMaterial attach="material" color={options.color || 'white'} />
+			<meshNormalMaterial attach="material" />
 		</mesh>
 	)
 }
