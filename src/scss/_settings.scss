@@ -1,7 +1,9 @@
-mobile: 640,
-tablet: 768,
-tabletH: 1024,
-desktop: 1280,
-desktopM: 1440,
-desktopL: 1680,
-desktopXL: 1920
+$breakpoints: (
+	'mobile': 640px,
+	'tablet': 768px,
+	'tabletH': 1024px,
+	'desktop': 1280px,
+	'desktopM': 1440px,
+	'desktopL': 1680px,
+	'desktopXL': 1920px
+)
