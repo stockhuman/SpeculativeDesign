@@ -1,0 +1,18 @@
+
+#viewport {
+	position: fixed;
+	top: 0;
+	right: 30vw;
+	bottom:0;
+	left: 0;
+	z-index: -2;
+	background: rgb(17, 17, 17);
+	padding: 9px;
+
+	// canvas wrapper element
+	// creates the CRT-style inner-bevel effect
+	div {
+		border-radius: 14px;
+		box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.29);
+	}
+}
