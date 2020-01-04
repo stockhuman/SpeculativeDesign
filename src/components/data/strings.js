@@ -20,7 +20,8 @@ export function commands (command) {
 			return 'Hello there!';
 		case 'sup': return 'yo';
 		case 'yo': return 'sup';
-		case 'help': return '';
+		case 'help':
+			return "Lost? There's always the site name to click on - that'll send you home. Else, each room has interactive areas you can click on to navigate this space. you can click or tap and drag to look about.";
 		default: return null;
 	}
 }
