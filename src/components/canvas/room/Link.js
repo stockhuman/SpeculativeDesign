@@ -3,7 +3,7 @@ import { navigate } from 'gatsby'
 
 export default function Portal({ link, obj }) {
 	const [visible, setVisibility] = useState(false);
-	obj.material.opacity = 0;
+	obj.material.opacity = 0; // set initial material to be invisible
 	return (
 		<mesh
 			onPointerEnter={() => setVisibility(true)}
