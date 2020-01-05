@@ -43,6 +43,7 @@ export default () => {
 							linkfrom
 							linkalt
 							images
+							sculpture
 						}
 					}
 				}

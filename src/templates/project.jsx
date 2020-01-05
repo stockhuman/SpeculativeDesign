@@ -34,6 +34,7 @@ export const projectQuery = graphql`
 				linkfrom
 				linkalt
 				images
+				sculpture
 			}
 		}
 	}
