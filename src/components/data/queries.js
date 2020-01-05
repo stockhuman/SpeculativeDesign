@@ -73,8 +73,8 @@ export default () => {
 		people.push(page.node.frontmatter)
 	})
 
-	data.images.allFile.edges.forEach(image => {
-		people.push(image.node.childImageSharp)
+	data.images.edges.forEach(image => {
+		people.push(image.node.childImageSharp.fixed)
 	})
 
 	// The returned object consists of three arrays,
