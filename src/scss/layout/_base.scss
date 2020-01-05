@@ -6,35 +6,3 @@
 
 // Tablet & smaller: This site was designed desktop-first
 // see util, vendor/media & settings for query information
-
-@include media('<=tabletH') {
-	#viewport {
-		right: 0;
-	}
-	#sidebar {
-		width: 90vw;
-		left: 100vh;
-		transition: transform 0.5s ease;
-		&.open {
-			transform: translateX(-90vw);
-		}
-	}
-
-	#sidebar-toggle {
-		display: block;
-	}
-
-	.crt-actions-container {
-		bottom: 0;
-		left: 0;
-		display: grid;
-		width: 100%;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-	}
-}
-
-@include media('<=mobile') {
-	.crt-actions-container {
-		grid-template-columns: 1fr 1fr;
-	}
-}

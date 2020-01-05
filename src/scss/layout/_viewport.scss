@@ -1,18 +1,38 @@
+$br: 10px; // border radius
+$sw: 5px; // screen outline width (padding)
 
 #viewport {
 	position: fixed;
 	top: 0;
-	right: 30vw;
-	bottom:0;
+	right: 0;
+	bottom:10vh;
 	left: 0;
 	z-index: -2;
-	background: rgb(17, 17, 17);
-	padding: 9px;
+	background: #1a1a1a;
+	padding: $sw;
+
+	&::after {
+		content: "";
+		pointer-events: none;
+		position: absolute;
+		top: $sw;
+		left: $sw;
+		right: $sw;
+		bottom: $sw;
+		border-radius: $br;
+		background: repeating-linear-gradient(
+			0deg,
+			rgba(black, 0.15),
+			rgba(black, 0.15) 1px,
+			transparent 1px,
+			transparent 2px
+		);
+	}
 
 	// canvas wrapper element
 	// creates the CRT-style inner-bevel effect
 	div {
-		border-radius: 14px;
+		border-radius: $br;
 		box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.29);
 	}
 }
