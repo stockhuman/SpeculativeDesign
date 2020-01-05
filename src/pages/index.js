@@ -27,10 +27,10 @@ const IndexPage = () => (
         <meshLambertMaterial attach="material" visible={false} />
       </mesh>
       <Suspense fallback={null}>
-        <Model url={'meshes/entrance_facade.003.glb'} />
-        <Model url={'meshes/entrance_index.glb'} />
+        <Model url={'meshes/index/SP_index7.glb'} />
+        {/* <Model url={'meshes/entrance_index.glb'} /> */}
         <Model url={'meshes/entrance_lattice.glb'} />
-        <Model url={'meshes/floorplane.glb'} />
+        {/* <Model url={'meshes/floorplane.glb'} /> */}
       </Suspense>
       <ambientLight intensity={0.1}/>
       <spotLight intensity={4} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
