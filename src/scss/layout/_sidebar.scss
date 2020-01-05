@@ -83,6 +83,17 @@
 	}
 }
 
+#sidebar-toggle {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 2rem;
+	height: 2rem;
+	z-index: 100;
+	background: blue;
+}
+
 .blinking-cursor {
   color: white;
   animation: 1s blink step-end infinite;

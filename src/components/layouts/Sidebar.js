@@ -13,6 +13,7 @@ class Sidebar extends Component {
 
 	render() {
 		return (
+			<>
 			<aside id="sidebar" className={this.state.opened ? 'open' : ''}>
 				<Log intro={this.props.intro || null}/>
 				<div></div>
@@ -20,6 +21,8 @@ class Sidebar extends Component {
 					<Link to="/">Speculative Play</Link>
 				</h1>
 			</aside>
+			<div id="sidebar-toggle" onClick={()=> this.setState({opened: !this.state.opened})}></div>
+			</>
 		)
 	}
 }

@@ -12,11 +12,16 @@
 		right: 0;
 	}
 	#sidebar {
-		left: 100%;
-		transition: transform 0.2s ease;
-		.open {
-			transform: translateX(-100%);
+		width: 90vw;
+		left: 100vh;
+		transition: transform 0.5s ease;
+		&.open {
+			transform: translateX(-90vw);
 		}
+	}
+
+	#sidebar-toggle {
+		display: block;
 	}
 
 	.crt-actions-container {
