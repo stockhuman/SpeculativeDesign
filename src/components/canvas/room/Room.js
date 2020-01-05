@@ -12,7 +12,6 @@ import Portal from './Link'
 export default function Room({ url, data = {} }) {
 	const gltf = useLoader(GLTFLoader, url)
 	let objects = []
-	console.log(gltf.scene)
 	gltf.scene.traverse(obj => {
 		// literal picture frames
 		if (obj.name.startsWith('Painting')) {
