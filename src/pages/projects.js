@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 
 // Page Structure
 import View from '../components/canvas/canvas'
-import Model from '../components/canvas/RoomLoader'
+import Room from '../components/canvas/room/Room'
 import Layout from '../components/layouts/Page'
 import Sidebar from '../components/layouts/Sidebar'
 
@@ -19,9 +19,9 @@ const ProjectsPage = () => (
 	<Layout>
 		<View center={[0, 1.3, 8]}>
 			<Suspense fallback={null}>
-				<Model url={'meshes/tests/testroom.glb'} />
+				<Room url={'meshes/tests/testroom.glb'} />
 			</Suspense>
-			<ambientLight intensity={0.2} />
+			<ambientLight intensity={1.5} />
 			<spotLight intensity={3} position={[3, 4, 10]} angle={2} penumbra={2} />
 		</View>
 		<Sidebar />
