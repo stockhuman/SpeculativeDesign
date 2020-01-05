@@ -19,7 +19,7 @@ const ProjectsPage = () => (
 	<Layout>
 		<View center={[0, 1.3, 8]}>
 			<Suspense fallback={null}>
-				<Room url={'meshes/tests/testroom.glb'} />
+				<Room url={'meshes/tests/testroom1.glb'} />
 			</Suspense>
 			<ambientLight intensity={1.5} />
 			<spotLight intensity={3} position={[3, 4, 10]} angle={2} penumbra={2} />
