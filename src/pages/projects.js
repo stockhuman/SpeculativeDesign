@@ -15,11 +15,11 @@ import '../scss/layout/_base.scss'
 // note the path is relative to the 'static' directory
 // at the root of the project. .glTF files (or binary, in this case)
 // are not natively supported by webpack, and cannot be imported as the css above.
-const ProjectsPage = () => (
+export default () => (
 	<Layout>
 		<View center={[0, 1.3, 8]}>
 			<Suspense fallback={null}>
-				<Room url={'meshes/tests/testroom1.glb'} />
+				<Room url={'/meshes/tests/testroom1.glb'} />
 			</Suspense>
 			<ambientLight intensity={1.5} />
 			<spotLight intensity={3} position={[3, 4, 10]} angle={2} penumbra={2} />
@@ -27,5 +27,3 @@ const ProjectsPage = () => (
 		<Sidebar />
 	</Layout>
 )
-
-export default ProjectsPage

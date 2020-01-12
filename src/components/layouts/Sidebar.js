@@ -6,16 +6,13 @@ import Log from '../log'
 class Sidebar extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {
-			opened : true
-		}
 	}
 
 	render() {
 		return (
 			<>
 			<Log intro={this.props.intro || null} />
-			<aside id="sidebar" className={this.state.opened ? 'open' : ''}>
+			<aside id="sidebar">
 				<div>
 					<h1 className="title">
 						<Link to="/">Speculative Play</Link>
