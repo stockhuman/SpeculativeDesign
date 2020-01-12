@@ -3,13 +3,13 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layouts/Page'
 import Sidebar from '../components/layouts/Sidebar'
-import Room from '../components/layouts/Room'
+import Viewport from '../components/layouts/Viewport'
 
 
 export default function Template({ data }) {
 	return (
 		<Layout>
-			<Room data={data} />
+			<Viewport data={data} />
 			<Sidebar intro={['Project: ' + data.markdownRemark.frontmatter.title]}/>
 		</Layout>
 	)

@@ -1,5 +1,4 @@
-import React from 'react'
-import { useLoader } from 'react-three-fiber'
+import React, { useState, useMemo } from 'react'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 import Frame from './Frame'
@@ -10,19 +9,31 @@ import Portal from './Link'
  * @param {string} url The path to a .glb, .gltf file to load
  */
 export default function Room({ url, data = {} }) {
-	const gltf = useLoader(GLTFLoader, url)
-	let objects = []
-	gltf.scene.traverse(obj => {
-		// literal picture frames
-		if (obj.name.startsWith('Painting')) {
-			objects.push(<Frame key={obj.uuid} url="textures/Bronze.png" obj={obj}/>)
-			// interactable surfaces
-		} else if (obj.name.startsWith('Link')) {
-			objects.push(<Portal key={obj.uuid}link={'/'} obj={obj} />)
-		} else {
-			objects.push(<primitive key={obj.uuid} object={obj}/>)
-		}
-	})
 
-	return <scene>{objects}</scene>
+	let availableImages = data.images ? data.images.length : 0
+	const [objects, setObjects] = useState([])
+	const [gltf, setScene] = useState()
+
+	useMemo(() => new GLTFLoader().load(url, gltf => {
+		console.log(gltf.scene)
+
+		gltf.scene.traverse(obj => {
+			// literal picture frames
+			if (obj.name.startsWith('Painting')) {
+				if (availableImages > 0) {
+					objects.push(<Frame key={obj.uuid} url={data.images[availableImages]} obj={obj} />)
+					availableImages -= 1;
+				}
+				// interactable surfaces
+			} else if (obj.name.startsWith('Link')) {
+				objects.push(<Portal key={obj.uuid} link={data[obj.name] || '/'} obj={obj} />)
+			} else {
+				objects.push(<primitive key={obj.uuid} object={obj} />)
+			}
+			setObjects(objects)
+		})
+		setScene(gltf.scene)
+	}), [url])
+
+	return gltf ? <scene>{objects}</scene> : null
 }
