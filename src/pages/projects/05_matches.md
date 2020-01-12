@@ -1,6 +1,7 @@
 ---
 path: '/projects/burnt-matches'
 title: 'Burnt Matches'
+sculpture: 'burntmatches.glb'
 linkto: '/projects/love'
 linkfrom: ''
 linkalt: ''
