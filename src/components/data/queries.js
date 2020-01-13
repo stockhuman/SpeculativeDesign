@@ -75,7 +75,7 @@ export default () => {
 	})
 
 	data.images.edges.forEach(image => {
-		people.push(image.node.childImageSharp.fixed)
+		images.push(image.node.childImageSharp.fixed.src)
 	})
 
 	// The returned object consists of three arrays,
