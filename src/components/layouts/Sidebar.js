@@ -18,13 +18,13 @@ class Sidebar extends Component {
 						<Link to="/">Speculative Play</Link>
 					</h1>
 					<a href="https://www.facebook.com/profile.php?id=100013471624792">
-						<i className="fa fa-facebook" aria-hidden="true"></i>
+						<i className="fa fa-facebook">FB</i>
 					</a>
 					<a href="https://twitter.com/speculativeplay">
-						<i className="fa fa-twitter" aria-hidden="true"></i>
+						<i className="fa fa-twitter">TW</i>
 					</a>
 					<a href="https://www.instagram.com/speculativeplay/">
-						<i className="fa fa-instagram" aria-hidden="true"></i>
+						<i className="fa fa-instagram">IN</i>
 					</a>
 				</div>
 			</aside>
