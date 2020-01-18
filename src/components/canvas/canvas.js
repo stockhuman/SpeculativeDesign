@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { extend, Canvas, useThree, useRender } from 'react-three-fiber'
-import { Vector3, sRGBEncoding } from 'three/src/Three'
+import { Vector3, sRGBEncoding, PCFSoftShadowMap } from 'three/src/Three'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
@@ -43,6 +43,8 @@ function Camera(props) {
 	gl.gammaFactor = 2.2
 	gl.outputEncoding = sRGBEncoding
 	gl.physicallyCorrectLights = true
+	gl.shadowMap.enabled = true
+	gl.shadowMap.type = PCFSoftShadowMap
 	camera.far = props.far || 60
 
 	return (
@@ -74,7 +76,6 @@ export default function View(props) {
 				style={{ background: props.background || '#f9f9f9' }}
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
 				gl2
-				shadowMap
 				>
 				<Camera
 					center={center}
