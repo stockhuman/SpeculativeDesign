@@ -11,27 +11,36 @@ import Model from '../canvas/Model'
 // Links and data
 import Sculpture from '../canvas/Sculpture'
 
-export default ({ data }) => {
-	const d = data.markdownRemark.frontmatter
-	const title = d.title || d.name
+export default ({ data, images }) => {
+
+	console.log(data, images)
+
+	const title = data.title || data.name
 
 	// gets the link to previous and next rooms
-	const next = d.linkto
-	const prev = d.linkfrom
-	const alt = d.linkalt
+	const next = data.linkto
+	const prev = data.linkfrom
+	const alt = data.linkalt
+
+
 
 	// gets a random room shape
-	const room = d.room
-		? d.room
+	const room = data.room
+		? data.room
 		: `room${Math.floor(Math.random() * 2)}.glb`
 
 	return (
 		<View center={[0, 0, 0]}>
-			<Room url={`/meshes/rooms/${room}`} />
+			<Room url={`/meshes/tests/testroom.glb`}
+				data={{ LinkA: next, LinkB: prev, images }} />
+			{/* <Room url={`/meshes/rooms/${room}`} data={{LinkA: next, images}} /> */}
 			<Model url={`/meshes/rooms/plinths/plinth-0.glb`} />
 			<ambientLight intensity={1} />
 			<directionalLight intensity={1} position={[-1, 1, -1]} />
-			{d.sculpture ? <Model url={`/meshes/sculptures/${d.sculpture}`} /> : <Sculpture />}
+			{ data.sculpture
+				? <Model url={`/meshes/sculptures/${data.sculpture}`} />
+				: <Sculpture />
+			}
 			<Text
 				string={title}
 				options={
