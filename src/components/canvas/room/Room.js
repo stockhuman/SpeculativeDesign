@@ -36,7 +36,6 @@ export default ({ url, data = {} }) => {
 				obj.receiveShadow = true
 				obj.castShadow = true
 				objects.push(<primitive key={obj.uuid} object={obj} />)
-				console.log(obj)
 			}
 			setObjects(objects)
 		})
