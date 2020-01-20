@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 
 // Page Structure
 import View from '../components/canvas/canvas'
@@ -18,11 +18,14 @@ import '../scss/layout/_base.scss'
 export default () => (
 	<Layout>
 		<View center={[0, 1.3, 8]}>
-			<Suspense fallback={null}>
-				<Room url={'/meshes/tests/testroom1.glb'} />
-			</Suspense>
-			<ambientLight intensity={1.5} />
-			<spotLight intensity={3} position={[3, 4, 10]} angle={2} penumbra={2} />
+			<Room url={'/meshes/tests/about12.glb'} data={{
+				LinkProjects: '/projects/it-is-as-if-you-were-doing-work',
+				LinkPeople: '/people/agustina-isidori',
+				LinkBibliography: '/bibliography'
+			}}/>
+			{/* <ambientLight intensity={1} /> */}
+			<directionalLight intensity={0.3} position={[0, 2, 2]} />
+			<spotLight intensity={8} position={[0, 1, 10]} angle={110} penumbra={0.5} castShadow />
 		</View>
 		<Sidebar />
 	</Layout>

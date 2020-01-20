@@ -27,15 +27,15 @@ export default ({ data, images }) => {
 	// gets a random room shape
 	const room = data.room
 		? data.room
-		: `room${Math.floor(Math.random() * 2)}.glb`
+		: `room${Math.floor(Math.random() * 3)}.glb`
 
 	return (
 		<View center={[0, 0, 0]}>
-			<Room url={`/meshes/tests/testroom.glb`}
+			<Room url={`/meshes/rooms/${room}`}
 				data={{ LinkA: next, LinkB: prev, images }} />
 			{/* <Room url={`/meshes/rooms/${room}`} data={{LinkA: next, images}} /> */}
 			<Model url={`/meshes/rooms/plinths/plinth-0.glb`} />
-			<ambientLight intensity={1} />
+			<ambientLight intensity={0.2} />
 			<directionalLight intensity={1} position={[-1, 1, -1]} />
 			{ data.sculpture
 				? <Model url={`/meshes/sculptures/${data.sculpture}`} />

@@ -28,12 +28,7 @@ const IndexPage = () => (
       </mesh>
 
       <Model url={'meshes/index/SP_index7.glb'} />
-      {/* <Model url={'meshes/entrance_index.glb'} /> */}
       <Model url={'meshes/entrance_lattice.glb'} />
-      {/* <Model url={'meshes/floorplane.glb'} /> */}
-
-      <ambientLight intensity={0.1}/>
-      <spotLight intensity={4} position={[1, 2, 10]} angle={0.4} penumbra={0.5} castShadow />
       <spotLight intensity={2} position={[3, 4, 10]} angle={2} penumbra={2} />
     </View>
     <Sidebar />
