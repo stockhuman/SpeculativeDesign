@@ -17,13 +17,13 @@ class Sidebar extends Component {
 					<h1 className="title">
 						<Link to="/">Speculative Play</Link>
 					</h1>
-					<a href="https://www.facebook.com/profile.php?id=100013471624792">
+					<a href="https://www.facebook.com/profile.php?id=100013471624792" className="social-icon">
 						<i className="fa fa-facebook">FB</i>
 					</a>
-					<a href="https://twitter.com/speculativeplay">
+					<a href="https://twitter.com/speculativeplay" className="social-icon">
 						<i className="fa fa-twitter">TW</i>
 					</a>
-					<a href="https://www.instagram.com/speculativeplay/">
+					<a href="https://www.instagram.com/speculativeplay/" className="social-icon">
 						<i className="fa fa-instagram">IN</i>
 					</a>
 				</div>
