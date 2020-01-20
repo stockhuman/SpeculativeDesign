@@ -1,31 +1,28 @@
-import React, { useRef, useEffect } from 'react'
-import { extend, Canvas, useThree, useRender } from 'react-three-fiber'
-import { Vector3, sRGBEncoding, PCFSoftShadowMap } from 'three/src/Three'
+import React, { useRef, useEffect, useMemo } from 'react'
+import { extend, Canvas, useThree, useRender, useFrame } from 'react-three-fiber'
+import { Vector3, sRGBEncoding, Vector2 } from 'three/src/Three'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
-import { FXAAShader } from 'three/examples/jsm/shaders/FXAAShader'
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 // import { SSAOShader } from 'three/examples/jsm/shaders/SSAOShader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
-extend({ OrbitControls, EffectComposer, RenderPass, ShaderPass })
+extend({ OrbitControls, EffectComposer, RenderPass, ShaderPass, UnrealBloomPass })
 
 function Effects () {
 	const { gl, scene, camera, size } = useThree()
 	const composer = useRef()
 
-	useEffect(() => {
-		composer.current.setSize(size.width, size.height)
-	}, [size])
+	const aspect = useMemo(() => new Vector2(size.width, size.height), [size])
+	useEffect(() => void composer.current.setSize(size.width, size.height), [size])
+	useFrame(() => composer.current.render(), 1)
 
 	return (
-		<>
-			<effectComposer ref={composer} args={[gl]}>
-				<renderPass attachArray="passes" args={[scene, camera]} />
-				<shaderPass attachArray="passes" args={[FXAAShader]}
-				uniforms-resolution-value={[1 / size.width, 1 / size.height]} renderToScreen />
-			</effectComposer>
-		</>
+		<effectComposer ref={composer} args={[gl]}>
+			<renderPass attachArray="passes" scene={scene} camera={camera} />
+			<unrealBloomPass attachArray="passes" args={[aspect, 0.3, 1, 0]} />
+		</effectComposer>
 	)
 }
 
@@ -43,9 +40,7 @@ function Camera(props) {
 	gl.gammaFactor = 2.2
 	gl.outputEncoding = sRGBEncoding
 	gl.physicallyCorrectLights = true
-	gl.shadowMap.enabled = true
-	gl.shadowMap.type = PCFSoftShadowMap
-	camera.far = props.far || 60
+	camera.far = props.far || 200
 
 	return (
 		<orbitControls
@@ -76,6 +71,7 @@ export default function View(props) {
 				style={{ background: props.background || '#f9f9f9' }}
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
 				gl2
+				shadowMap
 				>
 				<Camera
 					center={center}
