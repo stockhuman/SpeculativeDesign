@@ -10,7 +10,7 @@ export default function Template({ data }) {
 
 	return (
 		<Layout>
-			<Viewport data={data} />
+			<Viewport data={data.markdownRemark.frontmatter} />
 			<Sidebar intro={'Introducing: ' + person.frontmatter.name} />
 		</Layout>
 	)
