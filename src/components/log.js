@@ -16,6 +16,7 @@ class Log extends Component {
 			terminalOutput: props.intro || randomCaption(), // what the terminal will write on load
 			logs: [], // holds entire conversation log as [{system: bool, copy: string}]
 			locked: true, // can the user type?
+			infoData: props.info || "what you see is all that is written about this space",
 		}
 	}
 
@@ -113,7 +114,10 @@ class Log extends Component {
 				<div className="crt-actions-container">
 					<button className="crt-btn" onClick={() => {
 						this.inputNode.current.innerText = 'help';}}>help</button>
-					<button className="crt-btn">info</button>
+					<button className="crt-btn" onClick={() => {
+						this.addLog({ system: true, copy: "info" })
+						this.addLog({ system: false, copy: this.state.infoData })
+					}}>info</button>
 					<button className="crt-btn">goto</button>
 					<button className="crt-btn" onClick={() => navigate('/')}>home</button>
 				</div>
