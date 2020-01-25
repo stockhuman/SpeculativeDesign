@@ -14,9 +14,9 @@ export default function Portal({ link = "/", obj = {}}) {
 	return (
 		<group>
 			<mesh
-				onPointerEnter={() => setVisibility(true)}
-				onPointerLeave={() => setVisibility(false)}
-				onPointerDown={() => navigate(link)}
+				onPointerEnter={() => { setVisibility(true); document.body.style.cursor = 'pointer' }}
+				onPointerLeave={() => { setVisibility(false); document.body.style.cursor = '' }}
+				onPointerDown={() => { document.body.style.cursor = ''; navigate(link)}}
 				position={obj.position || [0,0,0]}
 				geometry={geo}
 				scale={obj.scale || 1}>
