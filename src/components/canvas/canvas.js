@@ -1,11 +1,11 @@
-import React, { useRef, useEffect, useMemo } from 'react'
-import { extend, Canvas, useThree, useRender, useFrame } from 'react-three-fiber'
-import { Vector3, sRGBEncoding, Vector2 } from 'three/src/Three'
+import React, { useRef, useEffect, useMemo, Suspense } from 'react'
+import { extend, Canvas, useThree, useFrame, Dom } from 'react-three-fiber'
+import { Vector3, sRGBEncoding, Vector2 } from 'three'
+
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
-// import { SSAOShader } from 'three/examples/jsm/shaders/SSAOShader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 extend({ OrbitControls, EffectComposer, RenderPass, ShaderPass, UnrealBloomPass })
@@ -34,7 +34,7 @@ function Camera(props) {
 	const center = new Vector3(props.center[0], props.center[1], props.center[2])
 
 	// see https://codesandbox.io/s/j3yrl1k9rw
-	useRender(() => (controls.current ? controls.current.update() : null))
+	useFrame(() => (controls.current ? controls.current.update() : null))
 
 	// Better colors!
 	gl.gammaFactor = 2.2
@@ -72,6 +72,7 @@ export default function View(props) {
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
 				gl2
 				shadowMap
+				concurrent
 				>
 				<Camera
 					center={center}
@@ -84,7 +85,9 @@ export default function View(props) {
 				/>
 				<Effects />
 				<fog attach="fog" args={['#fbf7f5', 16, 40]} />
-				<scene>{props.children}</scene>
+				<Suspense fallback={<Dom>loading...</Dom>}>
+					<scene><group dispose={null}>{props.children}</group></scene>
+				</Suspense>
 			</Canvas>
 		</main>
 	)
