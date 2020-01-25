@@ -40,7 +40,7 @@ function Camera(props) {
 	gl.gammaFactor = 2.2
 	gl.outputEncoding = sRGBEncoding
 	gl.physicallyCorrectLights = true
-	camera.far = props.far || 200
+	camera.far = props.far || 100
 
 	return (
 		<orbitControls
@@ -68,7 +68,7 @@ export default function View(props) {
 	return (
 		<main id='viewport'>
 			<Canvas
-				style={{ background: props.background || '#f9f9f9' }}
+				style={{ background: props.background || '#f900f9' }}
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
 				gl2
 				shadowMap
