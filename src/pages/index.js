@@ -27,7 +27,7 @@ const IndexPage = () => (
         <meshLambertMaterial attach="material" visible={false} />
       </mesh>
 
-      <Model url={'meshes/index/SP_index7.glb'} />
+      <Model url={'meshes/index/SP_index8.glb'} />
       <Model url={'meshes/entrance_lattice.glb'} />
       <spotLight intensity={2} position={[3, 4, 10]} angle={2} penumbra={2} />
     </View>
