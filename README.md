@@ -12,9 +12,5 @@ npm install --global gatsby-cli
 
 And run from your CLI:
 ```sh
-npm run develop
+npm start
 ```
-
-## Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
