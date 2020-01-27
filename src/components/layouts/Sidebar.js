@@ -13,10 +13,10 @@ class Sidebar extends Component {
 			<>
 			<Log intro={this.props.intro || null} />
 			<aside id="sidebar">
-				<div>
-					<h1 className="title">
-						<Link to="/">Speculative Play</Link>
-					</h1>
+				<h1 className="title">
+					<Link to="/">Speculative Play</Link>
+				</h1>
+				<div className="social-container">
 					<a href="https://www.facebook.com/profile.php?id=100013471624792" className="social-icon">
 						<i className="fa fa-facebook">FB</i>
 					</a>
