@@ -2,7 +2,7 @@
 path: '/projects/deep-time-jam'
 title: 'Deep Time Jam'
 linkto: '/projects/neoqab'
-linkfrom: ''
+linkfrom: '/projects/mono-orifice'
 linkalt: ''
 images: ['jam/deeptimejam.png']
 ---

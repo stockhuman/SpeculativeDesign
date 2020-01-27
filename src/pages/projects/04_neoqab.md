@@ -2,7 +2,7 @@
 path: '/projects/neoqab'
 title: 'NEO//QAB'
 linkto: '/projects/burnt-matches'
-linkfrom: ''
+linkfrom: '/projects/deep-time-jam'
 linkalt: ''
 images: [
 	'neoqab/Neoqab.jpg',

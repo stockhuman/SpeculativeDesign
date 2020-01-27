@@ -1,9 +1,8 @@
 ---
 path: '/projects/love'
 title: 'It is as if you were making love'
-linkto: ''
-linkfrom: ''
-linkalt: ''
+linkto: '/people/agustina-isidori'
+linkfrom: '/projects/burnt-matches'
 images: [
 	'love/about.png',
 	'love/desktop.png',

@@ -2,7 +2,7 @@
 path: '/projects/mono-orifice'
 title: 'Mono Orifice™'
 linkto: '/projects/deep-time-jam'
-linkfrom: ''
+linkfrom: '/projects/drift-workshop'
 images: ['orifice/0.png']
 sculpture: 'monoorifice.glb'
 ---

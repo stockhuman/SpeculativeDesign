@@ -3,7 +3,7 @@ path: '/projects/burnt-matches'
 title: 'Burnt Matches'
 sculpture: 'burntmatches.glb'
 linkto: '/projects/love'
-linkfrom: ''
+linkfrom: '/projects/neoqab'
 linkalt: ''
 images: [
 	'matches/Chess-UI.png',

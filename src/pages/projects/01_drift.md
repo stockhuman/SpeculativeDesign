@@ -3,7 +3,7 @@ path: '/projects/drift-workshop'
 title: 'DRIFT workshop'
 room: 'room2.glb'
 linkto: '/projects/mono-orifice'
-linkfrom: ''
+linkfrom: '/projects/it-is-as-if-you-were-doing-work'
 linkalt: ''
 images: ['drift/drift.jpg']
 ---
