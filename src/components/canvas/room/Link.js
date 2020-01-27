@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { navigate } from 'gatsby'
 import { useThree } from 'react-three-fiber'
-import helvetica from 'three/examples/fonts/helvetiker_regular.typeface.json'
+import typeface from '../../../assets/fonts/uni-neue-italic.json'
 import { Font } from 'three/src/extras/core/Font'
 
 export default function Portal({ link = "/", obj = {}}) {
@@ -10,6 +10,7 @@ export default function Portal({ link = "/", obj = {}}) {
 	if (obj && obj.material) obj.material.opacity = 0;
 	const geo = obj.geometry
 	const { camera } = useThree()
+	const font = new Font(typeface)
 
 	return (
 		<group>
@@ -28,7 +29,7 @@ export default function Portal({ link = "/", obj = {}}) {
 					position={obj.position}
 					rotation={obj.rotation || [0, 0, 0]}>
 					<textGeometry attach="geometry"
-						args={[link, { ...{ font: new Font(helvetica) },
+						args={[link, { ...{ font },
 							size: 0.4,
 							height: 0.2,
 							curveSegments: 2

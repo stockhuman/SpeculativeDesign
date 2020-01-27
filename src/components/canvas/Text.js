@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import { useFrame } from 'react-three-fiber'
-import helvetica from 'three/examples/fonts/helvetiker_regular.typeface.json'
+import typeface from '../../assets/fonts/uni-neue-italic.json'
 import { Font } from 'three/src/extras/core/Font'
 
 // implements https://threejs.org/docs/#api/en/geometries/TextGeometry
 export default ({ string, options = { position: [0,0,0] }, ...props }) => {
 	const ref = useRef()
-	const font = new Font(helvetica)
+	const font = new Font(typeface)
 
 	let t = Math.random() * 100
 	let speed = options.speed || 0.01
