@@ -48,13 +48,6 @@ export const projectQuery = graphql`
 			frontmatter {
 				path
 				title
-				cover {
-					childImageSharp {
-						sizes {
-							src
-						}
-					}
-				}
 				room
 				linkto
 				linkfrom

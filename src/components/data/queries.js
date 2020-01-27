@@ -10,13 +10,7 @@ export default () => {
 						frontmatter {
 							path
 							name
-							cover {
-								childImageSharp {
-									sizes {
-										src
-									}
-								}
-							}
+							cover
 							room
 							linkto
 							linkfrom
@@ -31,13 +25,6 @@ export default () => {
 						frontmatter {
 							path
 							title
-							cover {
-								childImageSharp {
-									sizes {
-										src
-									}
-								}
-							}
 							room
 							linkto
 							linkfrom

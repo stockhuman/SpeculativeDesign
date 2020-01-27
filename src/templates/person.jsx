@@ -23,14 +23,6 @@ export const personQuery = graphql`
 			frontmatter {
 				path
 				name
-				# cover {
-				# 	publicURL
-				# 	childImageSharp {
-				# 		sizes(maxWidth: 1240 ) {
-				# 			srcSet
-				# 		}
-				# 	}
-				# }
 			}
 		}
 	}
