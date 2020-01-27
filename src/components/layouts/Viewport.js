@@ -13,8 +13,6 @@ import Sculpture from '../canvas/Sculpture'
 
 export default ({ data, images }) => {
 
-	console.log(data, images)
-
 	const title = data.title || data.name
 
 	// gets the link to previous and next rooms
@@ -33,10 +31,7 @@ export default ({ data, images }) => {
 		<View center={[0, 0, 0]}>
 			<Room url={`/meshes/rooms/${room}`}
 				data={{ LinkA: next, LinkB: prev, images }} />
-			{/* <Room url={`/meshes/rooms/${room}`} data={{LinkA: next, images}} /> */}
 			<Model url={`/meshes/rooms/plinths/plinth-0.glb`} />
-			<ambientLight intensity={0.2} />
-			<directionalLight intensity={1} position={[-1, 1, -1]} />
 			{ data.sculpture
 				? <Model url={`/meshes/sculptures/${data.sculpture}`} />
 				: <Sculpture />
