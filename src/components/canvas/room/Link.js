@@ -3,6 +3,7 @@ import { navigate } from 'gatsby'
 import { useThree } from 'react-three-fiber'
 import typeface from '../../../assets/fonts/uni-neue-italic.json'
 import { Font } from 'three/src/extras/core/Font'
+import { Vector3 } from 'three'
 
 export default function Portal({ link = "/", obj = {}}) {
 	const [visible, setVisibility] = useState(false);
@@ -25,7 +26,7 @@ export default function Portal({ link = "/", obj = {}}) {
 			</mesh>
 			{visible ?
 				<mesh
-					onUpdate={self => self.lookAt(camera.getWorldPosition())}
+					onUpdate={self => self.lookAt(camera.getWorldPosition(new Vector3))}
 					position={obj.position}
 					rotation={obj.rotation || [0, 0, 0]}>
 					<textGeometry attach="geometry"
