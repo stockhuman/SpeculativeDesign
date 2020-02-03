@@ -15,7 +15,6 @@
 	.title a {
 		text-decoration: none;
 		color: rgba(214, 214, 214, 0.6);
-
 	}
 }
 
@@ -45,14 +44,19 @@
 	border-radius: 5px;
 	position: fixed;
 	pointer-events: none;
-	max-width: 700px;
+
+	p { max-width: 700px; }
+
+	.crt-actions-container {
+		text-align: center;
+	}
 
 	.crt-btn {
 		border:none;
 		background: transparent;
 
 		&:hover, &:focus {
-			background: rgba(6, 252, 6, 0.295);
+			background: rgba(0, 0, 0, 0.295);
 		}
 	}
 
