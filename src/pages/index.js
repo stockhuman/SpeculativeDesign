@@ -10,7 +10,6 @@ import Sidebar from '../components/layouts/Sidebar'
 // Styles
 import '../scss/main.scss'
 import '../scss/layout/_base.scss'
-// import Fonts from '../scss/style.js'
 
 // As the user approaches the website, an imposing museum facade looms in the index..
 

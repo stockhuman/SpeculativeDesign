@@ -11,21 +11,21 @@ import Model from '../canvas/Model'
 // Links and data
 import Sculpture from '../canvas/Sculpture'
 
-export default ({ data, images }) => {
+export default ({ data, images, image }) => {
 
 	const title = data.title || data.name
 
 	// gets the link to previous and next rooms
 	const next = data.linkto
 	const prev = data.linkfrom
-	const alt = data.linkalt
-
-
 
 	// gets a random room shape
 	const room = data.room
 		? data.room
-		: `room${Math.floor(Math.random() * 3)}.glb`
+		// : `room${Math.floor(Math.random() * 3)}.glb`
+		: `room_01.glb`
+
+	console.log(data)
 
 	return (
 		<View center={[0, 0, 0]}>

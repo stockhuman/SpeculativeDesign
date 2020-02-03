@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react'
 import { navigate } from 'gatsby'
-import localforage from 'localforage'
+// import localforage from 'localforage'
 
 import { randomCaption, commands } from './data/strings'
 

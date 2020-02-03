@@ -10,8 +10,8 @@ export default () => {
 						frontmatter {
 							path
 							name
-							cover
 							room
+							image
 							linkto
 							linkfrom
 							linkalt

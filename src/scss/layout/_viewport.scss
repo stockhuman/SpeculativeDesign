@@ -11,28 +11,30 @@ $sw: 5px; // screen outline width (padding)
 	background: #1a1a1a;
 	padding: $sw;
 
-	&::after {
-		content: "";
-		pointer-events: none;
-		position: absolute;
-		top: $sw;
-		left: $sw;
-		right: $sw;
-		bottom: $sw;
-		border-radius: $br;
-		background: repeating-linear-gradient(
-			0deg,
-			rgba(black, 0.15),
-			rgba(black, 0.15) 1px,
-			transparent 1px,
-			transparent 2px
-		);
-	}
-
 	// canvas wrapper element
 	// creates the CRT-style inner-bevel effect
 	div {
 		border-radius: $br;
 		box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.29);
 	}
+}
+
+#loader {
+	color: white;
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	z-index: 1000;
+	top: -50vh !important;
+	left: -50vw;
+	background: blue;
+}
+
+.canvas-dom-link {
+	background: blue;
+	color: white;
+	padding: 4px 8px 4px 8px;
+	font-family: 'Uni Neue', sans-serif;
+	font-weight: bold;
+	font-style: italic;
 }
