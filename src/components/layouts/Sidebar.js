@@ -11,7 +11,7 @@ class Sidebar extends Component {
 	render() {
 		return (
 			<>
-			<Log intro={this.props.intro || null} />
+			<Log intro={this.props.intro || null} info={this.props.info || null} />
 			<aside id="sidebar">
 				<h1 className="title">
 					<Link to="/">Speculative Play</Link>
