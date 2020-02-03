@@ -40,6 +40,8 @@ export const personQuery = graphql`
 				path
 				name
 				image
+				linkto
+				linkfrom
 			}
 		}
 	}
