@@ -17,6 +17,7 @@ class Log extends Component {
 			logs: [], // holds entire conversation log as [{system: bool, copy: string}]
 			locked: true, // can the user type?
 			infoData: props.info || "what you see is all that is written about this space",
+			skip: false, // pressed info again
 		}
 	}
 
@@ -36,7 +37,7 @@ class Log extends Component {
 
 			this.timerHandle = setTimeout(() => {
 				this.tick(text, i + 1)
-			}, this.props.interval || 80)
+			}, this.props.interval || 60)
 		} else {
 			this.addLog({ system: true, copy: this.state.terminalOutput })
 			// if there is more than one intro line
@@ -112,13 +113,32 @@ class Log extends Component {
 					disabled={this.state.locked ? true : false}
 					 />
 				<div className="crt-actions-container">
+
 					<button className="crt-btn" onClick={() => {
-						this.inputNode.current.innerText = 'help';}}>help</button>
-					<button className="crt-btn" onClick={() => {
-						this.addLog({ system: false, copy: "info" })
-						this.addLog({ system: true, copy: this.state.infoData })
+						if (this.state.skip != true) {
+							this.setState({skip: true})
+							// tick through text from markdown files
+							this.addLog({ system: false, copy: "info" })
+							if (Array.isArray(this.state.infoData)) {
+								this.setState({
+									terminalOutput: this.state.infoData[0],
+									termQueue: this.state.infoData
+								})
+								this.tick(this.state.infoData[0], 0)
+							} else {
+								this.tick(this.state.infoData, 0)
+							}
+						} else {
+							clearTimeout(this.timerHandle)
+							this.setState({termQueue: [], termQueuePlace: 0, terminalOutput: ''})
+							this.addLog({ system: false, copy: this.state.infoData })
+						}
+
 					}}>info</button>
 					<button className="crt-btn">goto</button>
+					<button className="crt-btn" onClick={() => {
+						this.parseCommand('help')
+					}}>help</button>
 					<button className="crt-btn" onClick={() => navigate('/')}>home</button>
 				</div>
 			</div>
