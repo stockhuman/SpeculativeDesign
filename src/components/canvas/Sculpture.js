@@ -27,9 +27,9 @@ export default function Sculpture({ seed = 'default' }) {
 	return (
 		<mesh
 			position={[0, 1, -0.3]}
-			geometry={Wheel(Math.random(), 2, 1)}
+			geometry={Spring(Math.random(), 1, 1)}
 		>
-			<meshPhongMaterial receiveShadows flatShading={false} shininess={1} color='blue' attach="material" side={DoubleSide} castShadows />
+			<meshNormalMaterial attach="material" side={DoubleSide} />
 		</mesh>
 	)
 }
