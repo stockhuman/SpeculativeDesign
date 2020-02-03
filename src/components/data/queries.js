@@ -14,7 +14,6 @@ export default () => {
 							image
 							linkto
 							linkfrom
-							linkalt
 						}
 					}
 				}
@@ -28,7 +27,6 @@ export default () => {
 							room
 							linkto
 							linkfrom
-							linkalt
 							images
 							sculpture
 						}
