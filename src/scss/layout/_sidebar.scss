@@ -39,16 +39,21 @@
 // now an overlay
 .crt {
 	bottom: 10vh;
-	left: 20px;
-	right: 20px;
+	left: 0px;
+	right: 0px;
 	border-radius: 5px;
 	position: fixed;
 	pointer-events: none;
 
-	p { max-width: 700px; }
+	p {
+		max-width: 700px;
+		margin-left: 20px;
+		margin-right:20px
+	}
 
 	.crt-actions-container {
 		text-align: center;
+		background: rgba(0, 0, 0, 0.095);
 	}
 
 	.crt-btn {
@@ -70,7 +75,7 @@
 	}
 
 	span, p, .crt-btn, #user-input {
-		text-shadow: 0 0 5px #C8C8C8;
+		text-shadow: 0 0 5px rgb(167, 167, 167);
 		font-family: monospace;
 		color: white;
 		overflow: visible;

@@ -6,3 +6,9 @@
 
 // Tablet & smaller: This site was designed desktop-first
 // see util, vendor/media & settings for query information
+
+// default styling for otherwise unstyled pages
+.page {
+	max-width: 70ch;
+	margin: 1em auto 4em auto;
+}
