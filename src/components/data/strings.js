@@ -17,12 +17,16 @@ export function commands (command) {
 		case 'hey':
 		case 'hi':
 		case 'howdy':
+		case 'ciao':
 			return 'Hello there!';
 		case 'sup': return 'yo';
 		case 'yo': return 'sup';
+		case 'test': return 'passed.';
+		case 'salam': return 'salam!';
+		case 'what is this': return 'The Speculative Play project brings together the critical practices and forecasting of speculative design with the hands-on experience of play, and especially the play of interactive digital game-like things. As per what is immediately in front of you, try tapping [info].'
 		case 'help':
 			return "Lost? There's always the site name to click on - that'll send you home. Else, each room has interactive areas you can click on to navigate this space. you can click or tap and drag to look about.";
-		default: return null;
+		default: return `If I could parse "${command}", one might imagine that I'd have more to say.`;
 	}
 }
 
