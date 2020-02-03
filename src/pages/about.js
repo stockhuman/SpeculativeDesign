@@ -10,6 +10,9 @@ import Sidebar from '../components/layouts/Sidebar'
 import '../scss/main.scss'
 import '../scss/layout/_base.scss'
 
+// Text
+import { about } from '../components/data/strings'
+
 // The about page serves to branch the two paths: one to artists and the other
 // to projects. This interstitial space also serves to describe the project
 
@@ -28,6 +31,6 @@ export default () => (
 			{/* <directionalLight intensity={0.3} position={[0, 2, 2]} />
 			<spotLight intensity={8} position={[0, 1, 10]} angle={110} penumbra={0.5} castShadow /> */}
 		</View>
-		<Sidebar intro="Welcome, welcome, welcome!"/>
+		<Sidebar intro="Welcome, welcome, welcome!" info={about}/>
 	</Layout>
 )
