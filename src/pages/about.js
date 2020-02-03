@@ -27,9 +27,6 @@ export default () => (
 				LinkBibliography: '/bibliography'
 			}} />
 			<hemisphereLight color={0xffffff} groundColor={0xffffff} intensity={0.6} />
-
-			{/* <directionalLight intensity={0.3} position={[0, 2, 2]} />
-			<spotLight intensity={8} position={[0, 1, 10]} angle={110} penumbra={0.5} castShadow /> */}
 		</View>
 		<Sidebar intro="Welcome, welcome, welcome!" info={about}/>
 	</Layout>
