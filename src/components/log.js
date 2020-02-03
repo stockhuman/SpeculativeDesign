@@ -115,8 +115,8 @@ class Log extends Component {
 					<button className="crt-btn" onClick={() => {
 						this.inputNode.current.innerText = 'help';}}>help</button>
 					<button className="crt-btn" onClick={() => {
-						this.addLog({ system: true, copy: "info" })
-						this.addLog({ system: false, copy: this.state.infoData })
+						this.addLog({ system: false, copy: "info" })
+						this.addLog({ system: true, copy: this.state.infoData })
 					}}>info</button>
 					<button className="crt-btn">goto</button>
 					<button className="crt-btn" onClick={() => navigate('/')}>home</button>
