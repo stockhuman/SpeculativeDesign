@@ -1,30 +1,13 @@
 import React, { useRef, useEffect, useMemo, Suspense } from 'react'
 import { extend, Canvas, useThree, useFrame, Dom } from 'react-three-fiber'
-import { Vector3, sRGBEncoding, Vector2 } from 'three'
+import { Vector3, sRGBEncoding, ACESFilmicToneMapping } from 'three'
 
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
-extend({ OrbitControls, EffectComposer, RenderPass, ShaderPass, UnrealBloomPass })
+import Effects from './Effects'
 
-function Effects () {
-	const { gl, scene, camera, size } = useThree()
-	const composer = useRef()
+extend({ OrbitControls })
 
-	const aspect = useMemo(() => new Vector2(size.width, size.height), [size])
-	useEffect(() => void composer.current.setSize(size.width, size.height), [size])
-	useFrame(() => composer.current.render(), 1)
-
-	return (
-		<effectComposer ref={composer} args={[gl]}>
-			<renderPass attachArray="passes" scene={scene} camera={camera} />
-			<unrealBloomPass attachArray="passes" args={[aspect, 0.3, 1, 0]} />
-		</effectComposer>
-	)
-}
 
 // This function is abstracted from the view method so as to let size variables instantiate
 // Many performance optimisations derived from https://discoverthreejs.com/tips-and-tricks/
@@ -36,10 +19,6 @@ function Camera(props) {
 	// see https://codesandbox.io/s/j3yrl1k9rw
 	useFrame(() => (controls.current ? controls.current.update() : null))
 
-	// Better colors!
-	gl.gammaFactor = 2.2
-	gl.outputEncoding = sRGBEncoding
-	gl.physicallyCorrectLights = true
 	camera.far = props.far || 100
 
 	return (
@@ -68,9 +47,17 @@ export default function View(props) {
 	return (
 		<main id='viewport'>
 			<Canvas
-				style={{ background: props.background || '#f900f9' }}
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
-				gl2
+				onCreated={({ gl }) => {
+					gl.antialias = false
+					gl.logarithmicDepthBuffer = false
+					gl.alpha = false
+					gl.setClearColor(props.background || '#000000')
+					gl.outputEncoding = sRGBEncoding
+					gl.toneMapping = ACESFilmicToneMapping
+					gl.physicallyCorrectLights = true
+				}}
+				gl2={{ alpha: false, antialias: false, logarithmicDepthBuffer: true }}
 				shadowMap
 				concurrent
 				>
@@ -83,10 +70,11 @@ export default function View(props) {
 					minPolarAngle={props.minPolarAngle}
 					far={props.far}
 				/>
-				<Effects />
-				<fog attach="fog" args={['#fbf7f5', 16, 40]} />
-				<Suspense fallback={<Dom>loading...</Dom>}>
-					<scene><group dispose={null}>{props.children}</group></scene>
+				<Suspense fallback={<Dom><div id="loader">loading...</div></Dom>}>
+					<fog attach="fog" args={['#fbf7f5', 16, 70]} />
+					<Effects />
+					<ambientLight intensity={0.2}/>
+					<scene dispose={null}>{props.children}</scene>
 				</Suspense>
 			</Canvas>
 		</main>
