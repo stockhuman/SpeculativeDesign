@@ -25,8 +25,6 @@ export default ({ data, images, image }) => {
 		// : `room${Math.floor(Math.random() * 3)}.glb`
 		: `room_01.glb`
 
-	console.log(data)
-
 	return (
 		<View center={[0, 0, 0]}>
 			<Room url={`/meshes/rooms/${room}`}
