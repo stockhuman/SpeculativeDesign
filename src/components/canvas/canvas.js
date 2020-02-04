@@ -44,6 +44,11 @@ export default function View(props) {
 		? props.cameraPosition
 		: [1, 0, 2];
 
+	// this is a hacky fix for gatsby SSR - where window is not available
+	if (typeof window === 'undefined') {
+		global.window = {}
+	}
+
 	return (
 		<main id='viewport'>
 			<Canvas
