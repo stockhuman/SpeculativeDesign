@@ -2,26 +2,17 @@
 
 import { useMemo, useEffect } from 'react'
 import { useLoader, useThree, useFrame } from 'react-three-fiber'
-import { SMAAImageLoader, BlendFunction, EffectComposer, EffectPass, RenderPass, SMAAEffect, SSAOEffect, NormalPass } from 'postprocessing'
-
-// Fix smaa loader signature
-const _load = SMAAImageLoader.prototype.load
-SMAAImageLoader.prototype.load = function (_, set) {
-	return _load.bind(this)(set)
-}
+import { BlendFunction, EffectComposer, EffectPass, RenderPass, SSAOEffect, NormalPass } from 'postprocessing'
 
 export default function Post() {
 	const { gl, scene, camera, size } = useThree()
-	const smaa = useLoader(SMAAImageLoader)
 	const composer = useMemo(() => {
 		const composer = new EffectComposer(gl)
 		composer.addPass(new RenderPass(scene, camera))
-		// const smaaEffect = new SMAAEffect(...smaa)
-		// smaaEffect.colorEdgesMaterial.setEdgeDetectionThreshold(0.1)
 		const normalPass = new NormalPass(scene, camera)
 		const ssaoEffect = new SSAOEffect(camera, normalPass.renderTarget.texture, {
 			blendFunction: BlendFunction.MULTIPLY,
-			samples: 30,
+			samples: 14,
 			rings: 4,
 			distanceThreshold: 1, // Render distance depends on camera near&far.
 			distanceFalloff: 0.0, // No need for falloff.
