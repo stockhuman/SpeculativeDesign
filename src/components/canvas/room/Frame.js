@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { withPrefix } from 'gatsby'
 import { TextureLoader } from 'three'
 
 /**
@@ -7,7 +8,7 @@ import { TextureLoader } from 'three'
  * @param {Three object} obj gltf object data to position frame
  */
 export default function Frame({ url, obj }) {
-	const texture = useMemo(() => new TextureLoader().load(url), [url])
+	const texture = useMemo(() => new TextureLoader().load(withPrefix(url)), [url])
 
 	return (
 		<mesh position={obj.position} rotation={obj.rotation} >

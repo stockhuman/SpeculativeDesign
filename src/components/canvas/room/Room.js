@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import { withPrefix } from 'gatsby'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 import Frame from './Frame'
@@ -14,7 +15,7 @@ export default ({ url, data = {} }) => {
 	const [objects, setObjects] = useState([])
 	const [gltf, setScene] = useState()
 
-	useMemo(() => new GLTFLoader().load(url, gltf => {
+	useMemo(() => new GLTFLoader().load(withPrefix(url), gltf => {
 
 		gltf.scene.traverse(obj => {
 
