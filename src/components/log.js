@@ -135,7 +135,7 @@ class Log extends Component {
 						}
 
 					}}>info</button>
-					<button className="crt-btn">goto</button>
+					{/* <button className="crt-btn">goto</button> */}
 					<button className="crt-btn" onClick={() => {
 						this.parseCommand('help')
 					}}>help</button>
