@@ -20,7 +20,7 @@ export default function Portal({ link = "/", obj = {}}) {
 				<meshBasicMaterial attach="material" visible={visible} wireframe />
 			</mesh>
 			{visible ?
-				<Dom><span className="canvas-dom-link">Navigate to {link}</span></Dom>
+				<Dom position={obj.position}><span className="canvas-dom-link">Navigate to {link}</span></Dom>
 			: null}
 		</group>
 	)
