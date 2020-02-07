@@ -21,7 +21,7 @@ import { about } from '../components/data/strings'
 export default () => (
 	<Layout>
 		<View center={[0, 1.3, 0]}>
-			<Room url={'/meshes/about/about3_013.glb'} data={{
+			<Room url={'/meshes/about/about3_014.glb'} data={{
 				LinkProjects: '/projects/it-is-as-if-you-were-doing-work',
 				LinkPeople: '/people/agustina-isidori',
 				LinkBibliography: '/bibliography'

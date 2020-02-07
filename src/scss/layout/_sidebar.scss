@@ -20,18 +20,16 @@
 
 
 .blinking-cursor {
-  color: white;
-  animation: 1s blink step-end infinite;
+	animation: 1s blink ease-in-out infinite;
+	text-shadow: 0 0 5px #C8C8C8;
 }
 
 @keyframes blink {
-  from, to {
-		color: transparent;
-		text-shadow: none;
+  from {
+		opacity: 1
   }
-  50% {
-		color: white;
-		text-shadow: 0 0 5px #C8C8C8;
+  to {
+		opacity: 0
   }
 }
 
@@ -54,11 +52,13 @@
 	.crt-actions-container {
 		text-align: center;
 		background: rgba(0, 0, 0, 0.095);
+		margin-bottom: $br;
 	}
 
 	.crt-btn {
 		border:none;
 		background: transparent;
+		margin: 0;
 
 		&:hover, &:focus {
 			background: rgba(0, 0, 0, 0.295);
@@ -70,8 +70,11 @@
 		background: transparent;
 		pointer-events: all;
 		border: none;
-		padding: 1em 0;
 		min-height: 1rem;
+		margin: 1.5em;
+		&:focus {
+			outline: none;
+		}
 	}
 
 	span, p, .crt-btn, #user-input {
