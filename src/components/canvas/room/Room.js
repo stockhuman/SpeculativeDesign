@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react'
+import React from 'react'
 import { withPrefix } from 'gatsby'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { useLoader } from 'react-three-fiber'
 
 import Frame from './Frame'
 import Portal from './Link'
@@ -12,38 +13,36 @@ import Portal from './Link'
  */
 export default ({ url, data = {} }) => {
 	let availableImages = data.images ? data.images.length : 0
-	const [objects, setObjects] = useState([])
-	const [gltf, setScene] = useState()
+	let objects = []
 
-	useMemo(() => new GLTFLoader().load(withPrefix(url), gltf => {
+	const gltf = useLoader(GLTFLoader, withPrefix(url))
+	const scene = gltf.scene.clone(true)
 
-		gltf.scene.traverse(obj => {
+	scene.traverse(obj => {
 
-			// picture frames
-			if (obj.name.startsWith('Painting')) {
-				if (availableImages > 0) {
-					objects.push(<Frame key={obj.uuid} url={data.images[availableImages]} obj={obj} />)
-					availableImages -= 1;
-				}
+		// picture frames
+		if (obj.name.startsWith('Painting')) {
+			if (availableImages > 0) {
+				objects.push(<Frame key={obj.uuid} url={data.images[availableImages]} obj={obj} />)
+				availableImages -= 1;
 			}
+		}
 
-			// interactable surfaces
-			// an object named 'LinkA' will look for 'LinkA' in the data object
-			// and use the value as its url
-			else if (obj.name.startsWith('Link')) {
-				objects.push(<Portal key={obj.uuid} link={data[obj.name] || '/'} obj={obj} />)
-			} else {
-				// All other meshes
-				obj.receiveShadow = true
-				obj.castShadow = true
-				objects.push(<primitive key={obj.uuid} object={obj} />)
-			}
-			setObjects(objects)
-		})
-		setScene(gltf.scene)
-	}), [url])
+		// interactable surfaces
+		// an object named 'LinkA' will look for 'LinkA' in the data object
+		// and use the value as its url
+		else if (obj.name.startsWith('Link')) {
+			objects.push(<Portal key={obj.uuid} link={data[obj.name] || '/'} obj={obj} />)
+		} else {
+			// All other meshes
+			obj.receiveShadow = true
+			obj.castShadow = true
+			objects.push(<primitive dispose={null} key={obj.uuid} object={obj} />)
+		}
 
-	return gltf ? <scene>{objects}</scene> : null
+	})
+
+	return <scene dispose={null}>{objects}</scene>
 }
 
 // see https://codesandbox.io/embed/react-three-fiber-gltf-loader-animations-c671i
