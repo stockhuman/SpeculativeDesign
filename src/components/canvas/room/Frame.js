@@ -1,6 +1,7 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { withPrefix } from 'gatsby'
 import { TextureLoader } from 'three'
+import { useLoader } from 'react-three-fiber'
 
 /**
  * 'Frames' an image texture as a painting
@@ -8,14 +9,13 @@ import { TextureLoader } from 'three'
  * @param {Three object} obj gltf object data to position frame
  */
 export default function Frame({ url, obj }) {
-	const texture = useMemo(() => new TextureLoader().load(withPrefix(url)), [url])
+	const texture = useLoader( TextureLoader, withPrefix(url))
 
 	return (
-		<mesh position={obj.position} rotation={obj.rotation} >
-			<planeBufferGeometry attach="geometry" args={[5, 5]} />
-			<meshLambertMaterial attach="material" transparent>
+		<mesh position={obj.position} rotation={obj.rotation} geometry={obj.geometry} >
+			<meshStandardMaterial attach="material" transparent>
 				<primitive attach="map" object={texture} />
-			</meshLambertMaterial>
+			</meshStandardMaterial>
 		</mesh>
 	)
 }

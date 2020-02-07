@@ -17,9 +17,8 @@ export default function Template({ data }) {
 
 	if (person.image) {
 		q.images.forEach(url => {
-			let parts = url.split('/')
 			if (url.includes(person.image)) {
-				img = `/${parts[2]}/${parts[3]}/${parts[4]}` // removes "/static", which is implied
+				img = url
 			}
 		})
 	}

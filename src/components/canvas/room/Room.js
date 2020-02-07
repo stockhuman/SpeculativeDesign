@@ -12,7 +12,7 @@ import Portal from './Link'
  * @param {object} data information about links to other pages, page data and images
  */
 export default ({ url, data = {} }) => {
-	let availableImages = data.images ? data.images.length : 0
+	let availableImages = data.images ? data.images.length - 1 : 0
 	let objects = []
 
 	const gltf = useLoader(GLTFLoader, withPrefix(url))
@@ -21,7 +21,7 @@ export default ({ url, data = {} }) => {
 	scene.traverse(obj => {
 
 		// picture frames
-		if (obj.name.startsWith('Painting')) {
+		if (obj.name.startsWith('Frame')) {
 			if (availableImages > 0) {
 				objects.push(<Frame key={obj.uuid} url={data.images[availableImages]} obj={obj} />)
 				availableImages -= 1;
@@ -37,12 +37,12 @@ export default ({ url, data = {} }) => {
 			// All other meshes
 			obj.receiveShadow = true
 			obj.castShadow = true
-			objects.push(<primitive dispose={null} key={obj.uuid} object={obj} />)
+			objects.push(<primitive key={obj.uuid} object={obj} />)
 		}
 
 	})
 
-	return <scene dispose={null}>{objects}</scene>
+	return <scene>{objects}</scene>
 }
 
 // see https://codesandbox.io/embed/react-three-fiber-gltf-loader-animations-c671i
