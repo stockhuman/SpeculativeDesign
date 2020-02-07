@@ -54,15 +54,13 @@ export default function View(props) {
 			<Canvas
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
 				onCreated={({ gl }) => {
-					gl.antialias = false
-					gl.logarithmicDepthBuffer = false
 					gl.alpha = false
 					gl.setClearColor(props.background || '#000000')
 					gl.outputEncoding = sRGBEncoding
 					gl.toneMapping = ACESFilmicToneMapping
 					gl.physicallyCorrectLights = true
 				}}
-				gl2={{ alpha: false, antialias: false, logarithmicDepthBuffer: true }}
+				gl2
 				shadowMap
 				concurrent
 				>
@@ -75,9 +73,8 @@ export default function View(props) {
 					minPolarAngle={props.minPolarAngle}
 					far={props.far}
 				/>
-				<Suspense fallback={<Dom><div id="loader">loading...</div></Dom>}>
-					<fog attach="fog" args={['#fbf7f5', 16, 70]} />
-					<Effects />
+				<Suspense fallback={<Dom center className="loader" prepend children='loading...'/>}>
+					<fog attach="fog" args={['#fbf7f5', 16, 60]} />
 					<ambientLight intensity={0.2}/>
 					<scene dispose={null}>{props.children}</scene>
 				</Suspense>
