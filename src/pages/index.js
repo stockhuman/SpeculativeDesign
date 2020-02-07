@@ -1,11 +1,12 @@
 import React from 'react'
-import { navigate } from 'gatsby'
 
 // Page Structure
 import View from '../components/canvas/canvas'
 import Model from '../components/canvas/Model'
 import Layout from '../components/layouts/Page'
 import Sidebar from '../components/layouts/Sidebar'
+
+import { LinkedModel } from '../components/canvas/room/Link'
 
 // Styles
 import '../scss/main.scss'
@@ -19,13 +20,7 @@ import '../scss/layout/_base.scss'
 const IndexPage = () => (
   <Layout>
     <View center={[0, 1.3, 8]}>
-      <mesh
-        position={[0, 1, -4]}
-        onClick={ () => navigate("/about/") }>
-        <planeBufferGeometry attach="geometry" args={[3, 3]} />
-        <meshLambertMaterial attach="material" visible={false} />
-      </mesh>
-
+      <LinkedModel link={'/about/'} url={'meshes/index/SP_index8.glb'}/>
       <Model url={'meshes/index/SP_index8.glb'} />
       <Model url={'meshes/entrance_lattice.glb'} />
       <spotLight intensity={2} position={[3, 4, 10]} angle={2} penumbra={2} />
