@@ -1,7 +1,7 @@
 ---
 path: '/projects/drift-workshop'
 title: 'DRIFT workshop'
-room: 'room2.glb'
+room: 'room_00.glb'
 linkto: '/projects/mono-orifice'
 linkfrom: '/projects/it-is-as-if-you-were-doing-work'
 linkalt: ''

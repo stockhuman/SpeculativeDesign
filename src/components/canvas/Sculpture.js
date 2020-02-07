@@ -27,7 +27,7 @@ export default function Sculpture({ seed = 'default' }) {
 	return (
 		<mesh
 			position={[0, 1, -0.3]}
-			geometry={Spring(Math.random(), 1, 1)}
+			geometry={Spring(Math.floor(Math.random() * 2), Math.random() +0.3, 1)}
 		>
 			<meshNormalMaterial attach="material" side={DoubleSide} />
 		</mesh>

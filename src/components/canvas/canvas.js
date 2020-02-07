@@ -76,7 +76,7 @@ export default function View(props) {
 				<Suspense fallback={<Dom center className="loader" prepend children='loading...'/>}>
 					<fog attach="fog" args={['#fbf7f5', 16, 60]} />
 					<ambientLight intensity={0.2}/>
-					<scene dispose={null}>{props.children}</scene>
+					<scene>{props.children}</scene>
 				</Suspense>
 			</Canvas>
 		</main>

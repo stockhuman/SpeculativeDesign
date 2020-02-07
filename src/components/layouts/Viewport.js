@@ -22,14 +22,13 @@ export default ({ data, images, image }) => {
 	// gets a random room shape
 	const room = data.room
 		? data.room
-		// : `room${Math.floor(Math.random() * 3)}.glb`
-		: `room_01.glb`
+		: `room_${String(Math.floor(Math.random() * 2)).padStart(2, '0')}.glb`
 
 	return (
 		<View center={[0, 0, 0]}>
 			<Room url={`/meshes/rooms/${room}`}
-				data={{ LinkA: next, LinkB: prev, images }} />
-			<Model url={`/meshes/rooms/plinths/plinth-0.glb`} />
+				data={{ LinkA: next, LinkB: prev, images: images || image }} />
+			<Model url={`/meshes/rooms/plinths/plinth-${Math.floor(Math.random() * 2)}.glb`} />
 			{ data.sculpture
 				? <Model url={`/meshes/sculptures/${data.sculpture}`} />
 				: <Sculpture />
