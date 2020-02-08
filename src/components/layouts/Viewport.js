@@ -12,6 +12,7 @@ import Model from '../canvas/Model'
 import Sculpture from '../canvas/Sculpture'
 
 export default ({ data, images, image }) => {
+	console.log(image)
 
 	const title = data.title || data.name
 
@@ -22,7 +23,7 @@ export default ({ data, images, image }) => {
 	// gets a random room shape
 	const room = data.room
 		? data.room
-		: `room_${String(Math.floor(Math.random() * 2)).padStart(2, '0')}.glb`
+		: `room_${String(Math.floor(Math.random() * 3)).padStart(2, '0')}.glb`
 
 	return (
 		<View center={[0, 0, 0]}>
