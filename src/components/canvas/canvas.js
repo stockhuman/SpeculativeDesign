@@ -74,7 +74,7 @@ export default function View(props) {
 					far={props.far}
 				/>
 				<Suspense fallback={<Dom center className="loader" prepend children='loading...'/>}>
-					<fog attach="fog" args={['#fbf7f5', 16, 60]} />
+					<fog attach="fog" args={['#fbf7f5', 16, 80]} />
 					<ambientLight intensity={0.2}/>
 					<scene>{props.children}</scene>
 				</Suspense>
