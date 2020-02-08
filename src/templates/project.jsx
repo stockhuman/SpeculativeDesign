@@ -20,8 +20,8 @@ export default function Template({ data }) {
 
 	// get optimised, cache-busted images by querying against site data
 	// there are admittedly more direct ways to do this, but hey.
-	// these are used in the Frame component, so we dont' need the fancy Sharp
-	// features otherwise user for 'blur-up' techniques and the like.
+	// these are used in the Frame component, so we don't need the fancy Sharp
+	// features otherwise used for 'blur-up' techniques and the like.
 
 	q.images.forEach(url => {
 		let parts = url.split('/')
