@@ -503,8 +503,7 @@ input,
 label,
 select,
 summary,
-textarea,
-[tabindex] {
+textarea {
   -ms-touch-action: manipulation; /* 1 */
   touch-action: manipulation; /* 2 */
 }

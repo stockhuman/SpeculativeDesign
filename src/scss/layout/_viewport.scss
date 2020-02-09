@@ -5,17 +5,18 @@ $sw: 10px; // screen outline width (padding)
 	position: fixed;
 	top: 0;
 	right: 0;
-	bottom:10vh;
+	bottom:0;
 	left: 0;
 	z-index: -2;
 	background: #1a1a1a;
 	padding: $sw;
+	// pointer-events: none;
+	touch-action: none;
 
 	// canvas wrapper element
 	// creates the CRT-style inner-bevel effect
 	&>div {
 		border-radius: $br;
-		box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.29);
 	}
 }
 
