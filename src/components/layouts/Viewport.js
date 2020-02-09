@@ -12,8 +12,6 @@ import Model from '../canvas/Model'
 import Sculpture from '../canvas/Sculpture'
 
 export default ({ data, images, image }) => {
-	console.log(image)
-
 	const title = data.title || data.name
 
 	// gets the link to previous and next rooms
