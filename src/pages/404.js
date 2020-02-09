@@ -2,7 +2,7 @@ import React from 'react'
 import { navigate } from 'gatsby'
 
 import Layout from '../components/layouts/Page'
-import Sidebar from '../components/layouts/Sidebar'
+import Sidebar from '../components/layouts/HUD'
 import Text from '../components/canvas/Text'
 import View from '../components/canvas/canvas'
 
@@ -29,7 +29,6 @@ const NotFoundPage = () => (
         bevelSize={0.01}
         bevelSegments={4}
         curveSegments={8}
-
       />
     </View>
     <Sidebar intro={['404','Seems like the abscence of things is still a constant, no matter the world imagined.']}/>

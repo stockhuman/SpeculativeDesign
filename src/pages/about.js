@@ -4,7 +4,10 @@ import React from 'react'
 import View from '../components/canvas/canvas'
 import Room from '../components/canvas/room/Room'
 import Layout from '../components/layouts/Page'
-import Sidebar from '../components/layouts/Sidebar'
+import Sidebar from '../components/layouts/HUD'
+
+// Components
+import Model from '../components/canvas/Model'
 
 // Styles
 import '../scss/main.scss'
@@ -21,12 +24,13 @@ import { about } from '../components/data/strings'
 export default () => (
 	<Layout>
 		<View center={[0, 1.3, 0]}>
-			<Room url={'/meshes/about/about3_014.glb'} data={{
+			<Room url={'/meshes/about/about3_015.glb'} data={{
 				LinkProjects: '/projects/it-is-as-if-you-were-doing-work',
 				LinkPeople: '/people/agustina-isidori',
 				LinkBibliography: '/bibliography'
 			}} />
-			<hemisphereLight color={0xffffff} groundColor={0xffffff} intensity={0.6} />
+			<Model url={'/meshes/about/Sphinx.glb'} />
+			<hemisphereLight color={0xffffff} groundColor={0xffffff} intensity={0.4} />
 		</View>
 		<Sidebar intro="Welcome, welcome, welcome!" info={about}/>
 	</Layout>

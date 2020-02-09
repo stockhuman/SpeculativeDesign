@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layouts/Page'
-import Sidebar from '../components/layouts/Sidebar'
+import Sidebar from '../components/layouts/HUD'
 import Viewport from '../components/layouts/Viewport'
 import queries from '../components/data/queries'
 
