@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { Helmet, HelmetProvider } from 'react-helmet-async'
+import { Helmet } from 'react-helmet'
 
 import Fonts from '../../scss/style'
 import '../../scss/main.scss'
@@ -28,7 +28,7 @@ export default ({ children }) => {
   const title = pageTitle ? pageTitle : data.site.siteMetadata.title
 
   return (
-  <HelmetProvider>
+    <>
     <Helmet>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -36,9 +36,8 @@ export default ({ children }) => {
       <meta rel="icon" href={ico} />
       <title>{title}</title>
       <style>{Fonts}</style>
-
     </Helmet>
     {children}
-  </HelmetProvider>
+    </>
   )
 }
