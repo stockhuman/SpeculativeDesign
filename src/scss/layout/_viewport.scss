@@ -10,8 +10,7 @@ $sw: 10px; // screen outline width (padding)
 	z-index: -2;
 	background: #1a1a1a;
 	padding: $sw;
-	// pointer-events: none;
-	touch-action: none;
+	touch-action: manipulation;
 
 	// canvas wrapper element
 	// creates the CRT-style inner-bevel effect
@@ -35,4 +34,5 @@ $sw: 10px; // screen outline width (padding)
 	font-family: 'Uni Neue', sans-serif;
 	font-weight: bold;
 	font-style: italic;
+	pointer-events: none;
 }

@@ -27,7 +27,7 @@ export default function LinkedObject({ link = "/", obj = {}}) {
 				<meshBasicMaterial attach="material" visible={visible} wireframe />
 			</mesh>
 			{visible ?
-				<Dom center position={obj.position} style=''><span className="canvas-dom-link">Navigate to {link}</span></Dom>
+				<Dom center position={obj.position}><span className="canvas-dom-link">Navigate to {link}</span></Dom>
 			: null}
 		</group>
 	)

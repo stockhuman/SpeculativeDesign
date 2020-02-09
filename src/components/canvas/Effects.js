@@ -1,7 +1,7 @@
 // via https://codesandbox.io/s/r3f-gamma-correction-kmb9i
 
 import { useMemo, useEffect } from 'react'
-import { useLoader, useThree, useFrame } from 'react-three-fiber'
+import { useThree, useFrame } from 'react-three-fiber'
 import { BlendFunction, EffectComposer, EffectPass, RenderPass, SSAOEffect, NormalPass } from 'postprocessing'
 
 export default function Post() {

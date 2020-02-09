@@ -9,7 +9,6 @@ import Sidebar from '../components/layouts/HUD'
 import { LinkedModel } from '../components/canvas/room/Link'
 
 // Styles
-import '../scss/layout/_base.scss'
 import '../scss/main.scss'
 
 
