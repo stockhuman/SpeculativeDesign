@@ -1,17 +1,14 @@
-import React, { useRef, useEffect, useMemo, Suspense } from 'react'
+import React, { useRef, useState, useMemo, Suspense } from 'react'
 import { extend, Canvas, useThree, useFrame, Dom } from 'react-three-fiber'
-import { Vector3, sRGBEncoding, ACESFilmicToneMapping } from 'three'
+import { Vector3, sRGBEncoding, ACESFilmicToneMapping, PerspectiveCamera } from 'three'
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-
-import Effects from './Effects'
-
 extend({ OrbitControls })
 
 
 // This function is abstracted from the view method so as to let size variables instantiate
 // Many performance optimisations derived from https://discoverthreejs.com/tips-and-tricks/
-function Camera(props) {
+function Controls (props) {
 	const controls = useRef()
 	const { gl, camera } = useThree()
 	const center = new Vector3(props.center[0], props.center[1], props.center[2])
@@ -19,7 +16,7 @@ function Camera(props) {
 	// see https://codesandbox.io/s/j3yrl1k9rw
 	useFrame(() => (controls.current ? controls.current.update() : null))
 
-	camera.far = props.far || 100
+	camera.far = props.far || 1000
 
 	return (
 		<orbitControls
@@ -55,16 +52,16 @@ export default function View(props) {
 				pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
 				onCreated={({ gl }) => {
 					gl.alpha = false
+					gl.antialias = false
 					gl.setClearColor(props.background || '#000000')
 					gl.outputEncoding = sRGBEncoding
 					gl.toneMapping = ACESFilmicToneMapping
 					gl.physicallyCorrectLights = true
 				}}
 				gl2
-				shadowMap
 				concurrent
 				>
-				<Camera
+				<Controls
 					center={center}
 					cameraPlacement={cameraPlacement}
 					enableZoom={props.debug}
