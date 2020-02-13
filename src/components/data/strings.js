@@ -8,6 +8,23 @@ export function randomCaption () {
 	return captions[Math.floor(Math.random() * (captions.length))]
 }
 
+export function loaders () {
+	const captions = [
+		"Loading...",
+		'harnessing the bits',
+		'do you have faith?',
+		'experiencing real time',
+		'building upon the present',
+		'moving backwards',
+		'loading the preloaders',
+		'unloading onto you',
+		'involving you in the experience'
+	]
+
+	// returns a random caption from the array
+	return captions[Math.floor(Math.random() * (captions.length))]
+}
+
 // commands from the console
 export function commands (command) {
 	const c = command.toLowerCase()

@@ -1,6 +1,8 @@
-import React, { useRef, useState, useMemo, Suspense } from 'react'
+import React, { useRef, Suspense } from 'react'
 import { extend, Canvas, useThree, useFrame, Dom } from 'react-three-fiber'
-import { Vector3, sRGBEncoding, ACESFilmicToneMapping, PerspectiveCamera } from 'three'
+import { Vector3, sRGBEncoding, ACESFilmicToneMapping } from 'three'
+
+import { loaders } from '../data/strings'
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 extend({ OrbitControls })
@@ -70,7 +72,13 @@ export default function View(props) {
 					minPolarAngle={props.minPolarAngle}
 					far={props.far}
 				/>
-				<Suspense fallback={<Dom center className="loader" prepend children='loading...'/>}>
+				<Suspense fallback={
+					<Dom center
+						className="loader"
+						position={[0, 0, 0]}>
+						<span>{loaders()}</span>
+					</Dom>
+					}>
 					<fog attach="fog" args={['#fbf7f5', 16, 80]} />
 					<ambientLight intensity={0.2}/>
 					<scene>{props.children}</scene>

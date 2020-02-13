@@ -1,0 +1,47 @@
+#hamburger, #nav-transitioner {
+	position: fixed;
+	background: white;
+	right: $sw + 10px;
+	top: $sw + 10px;
+}
+
+#hamburger {
+	width: 3rem;
+	height: 3rem;
+	z-index: 203;
+	border-radius: 50%;
+	&:hover {
+		cursor: pointer;
+		background: lightcoral
+	}
+
+	// the hamburger icon
+	img {
+		margin: 0.5em;
+	}
+}
+
+// creates a circle slide-out
+#nav-transitioner, #menu {
+	width: 400px;
+	z-index: 200;
+	height: calc(100vh - 6rem);
+	transform: translateX(120%);
+	transition: transform 0.3s ease-in-out;
+	border-radius: 8px;
+	margin: -6px;
+	&.open {
+		transform: translateX(0);
+	}
+}
+
+#menu {
+	position: fixed;
+	transition: all 0.3s ease-in-out;
+	opacity: 0;
+	margin: 2rem;
+	&.open {
+		opacity: 1;
+	}
+
+}
