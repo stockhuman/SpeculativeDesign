@@ -1,8 +1,12 @@
+$br: 10px; // border radius
+$sw: 10px; // screen outline width (padding)
+
 // note that styling is imported on a per-component basis,
 // which enables quicker downloads for essential styling
 @import '../util/util';
 @import 'viewport';
 @import 'hud';
+@import 'menu';
 
 // Tablet & smaller: This site was designed desktop-first
 // see util, vendor/media & settings for query information
