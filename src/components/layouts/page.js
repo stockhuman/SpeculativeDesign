@@ -6,6 +6,8 @@ import Fonts from '../../scss/style'
 import '../../scss/main.scss'
 import ico from '../../assets/logos/favicon.ico'
 
+import Menu from '../layouts/Menu'
+
 export default ({ children }) => {
 
   const data = useStaticQuery(graphql`
@@ -37,7 +39,8 @@ export default ({ children }) => {
       <title>{title}</title>
       <style>{Fonts}</style>
     </Helmet>
-    {children}
+      <div id="viewport-container">{children}</div>
+      <Menu />
     </>
   )
 }

@@ -22,26 +22,20 @@
 }
 
 // creates a circle slide-out
-#nav-transitioner, #menu {
-	width: 400px;
+#menu {
+	position: fixed;
 	z-index: 200;
+	width: calc(100vw - 6rem);
 	height: calc(100vh - 6rem);
-	transform: translateX(120%);
+	transform: translateY(120%);
 	transition: transform 0.3s ease-in-out;
 	border-radius: 8px;
 	margin: -6px;
 	&.open {
-		transform: translateX(0);
-	}
-}
-
-#menu {
-	position: fixed;
-	transition: all 0.3s ease-in-out;
-	opacity: 0;
-	margin: 2rem;
-	&.open {
-		opacity: 1;
+		transform: translateY(0);
 	}
 
+	.nav-container {
+		margin: 2rem;
+	}
 }

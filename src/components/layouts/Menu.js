@@ -7,14 +7,15 @@ export default function Menu () {
 	const [toggleState, set] = useState(false)
 
 	return (
-		<>
+		<div id="nav-container" className={toggleState ? 'active' : ''}>
+			<nav id="menu">
+				<div className="nav-container">
+					<Link to='/'>Home</Link>
+				</div>
+			</nav>
 			<div id="hamburger" onClick={() => toggleState ? set(false) : set(true)}>
 				<img src={Hamburger} />
 			</div>
-			<div id="nav-transitioner" className={toggleState ? 'open' : ''}></div>
-			<nav id="menu" className={toggleState ? 'open' : ''}>
-				<Link to='/'>Home</Link>
-			</nav>
-		</>
+		</div>
 	)
 }

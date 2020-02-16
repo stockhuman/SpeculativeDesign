@@ -2,8 +2,6 @@ import React from 'react'
 import Link from 'gatsby-link'
 
 import Log from '../log'
-import Menu from './Menu'
-
 import Logo from '../../assets/logos/22.png'
 
 export default function Sidebar ({intro = null, info = null}) {
@@ -13,7 +11,6 @@ export default function Sidebar ({intro = null, info = null}) {
 				<img src={Logo} />
 				<h1 className="title">Speculative Play</h1>
 			</Link>
-			<Menu />
 			<Log intro={intro} info={info} />
 			<div className="social-container">
 				<a href="https://www.facebook.com/profile.php?id=100013471624792" className="social-icon">
