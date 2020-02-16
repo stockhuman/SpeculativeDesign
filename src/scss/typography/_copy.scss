@@ -8,9 +8,6 @@ strong {
   font-weight: inherit;
   font-weight: bolder;
 }
-dfn {
-  font-style: italic;
-}
 mark {
   background-color: #ff0;
   color: #000;
@@ -55,28 +52,10 @@ hr {
 
 tt,
 code {
-  background-color: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
   font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
     "Liberation Mono", Menlo, Courier, monospace;
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
-}
-pre code {
-  background: none;
-  line-height: 1.42;
-}
-code:before,
-code:after,
-tt:before,
-tt:after {
-  letter-spacing: -0.2em;
-  content: " ";
-}
-pre code:before,
-pre code:after,
-pre tt:before,
-pre tt:after {
-  content: "";
 }

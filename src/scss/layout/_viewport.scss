@@ -1,0 +1,39 @@
+#viewport {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom:0;
+	left: 0;
+	z-index: -2;
+	background: #1a1a1a;
+	padding: $sw;
+	touch-action: manipulation;
+
+	// canvas wrapper element
+	// creates the CRT-style inner-bevel effect
+	&>div {
+		border-radius: $br;
+	}
+}
+
+.loader {
+	color: white;
+	width: 100vw;
+	height: 100vh;
+	text-align: center;
+	background: blue;
+	span {
+		display: block;
+		transform: translateY(50vh);
+	}
+}
+
+.canvas-dom-link {
+	background: blue;
+	color: white;
+	padding: 4px 8px 4px 8px;
+	font-family: 'Uni Neue', sans-serif;
+	font-weight: bold;
+	font-style: italic;
+	pointer-events: none;
+}

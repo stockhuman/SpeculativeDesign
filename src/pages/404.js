@@ -1,8 +1,38 @@
 import React from 'react'
-import Layout from '../components/layouts/page'
+import { navigate } from 'gatsby'
+
+import Layout from '../components/layouts/Page'
+import Sidebar from '../components/layouts/HUD'
+import Text from '../components/canvas/Text'
+import View from '../components/canvas/canvas'
 
 const NotFoundPage = () => (
-  <Layout>404!</Layout>
+  <Layout>
+    <View center={[0, 0, 0]} background={'#000'}>
+      <mesh onClick={() => navigate('/')} position={[0,0,0]}>
+        <planeBufferGeometry args={[20, 20]} attach="geometry"/>
+        <meshBasicMaterial attach="material" visible={false} />
+      </mesh>
+      <directionalLight intensity={2} position={[0, 2, 2]} />
+      <Text
+        string={'?'}
+        options={
+          {
+            position: [0, 0, 0],
+            color: 'white'
+          }
+        }
+        size={2 + (Math.random() / 1.5)}
+        bevelEnabled={true}
+        height={0.1}
+        bevelThickness={0.2}
+        bevelSize={0.01}
+        bevelSegments={4}
+        curveSegments={8}
+      />
+    </View>
+    <Sidebar intro={['404','Seems like the abscence of things is still a constant, no matter the world imagined.']}/>
+  </Layout>
 )
 
 export default NotFoundPage

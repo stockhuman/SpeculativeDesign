@@ -1,32 +1,31 @@
-/* @meta
-	layout: home
-*/
-
 import React from 'react'
 
-import HomeCanvas from '../components/home-canvas'
-import HomeShow from '../components/home-show'
-import Caption from '../components/caption'
-import Layout from '../components/layouts/home'
+// Page Structure
+import View from '../components/canvas/canvas'
+import Model from '../components/canvas/Model'
+import Layout from '../components/layouts/Page'
+import Sidebar from '../components/layouts/HUD'
+
+import { LinkedModel } from '../components/canvas/room/Link'
 
 // Styles
 import '../scss/main.scss'
-import '../scss/pages/_home.scss'
-// import Fonts from '../scss/style.js'
 
 
-const copy = {
-	about: 'The Speculative Play project brings together the critical practices and forecasting of speculative design with the hands-on experience of play, and especially the play of interactive digital game-like things. The project operates out of the Technoculture, Art, and Games (TAG) Lab in the Milieux Institute for Arts, Culture, and Technology and the Department of Design and Computation Arts at Concordia University in Montréal and is funded by an FRQSC Team Research-Creation grant.'
-}
+// As the user approaches the website, an imposing museum facade looms in the index..
 
+// note the path is relative to the 'static' directory
+// at the root of the project. .glTF files (or binary, in this case)
+// are not natively supported by webpack, and cannot be imported as the css above.
 const IndexPage = () => (
   <Layout>
-		<section className="home-intro">
-			<Caption interval={80} />
-			<div className="title"><h1>Speculative Play</h1></div>
-		</section>
-    <HomeCanvas />
-    <HomeShow data={copy} />
+    <View center={[0, 1.3, 8]}>
+      <LinkedModel link={'/about/'} url={'meshes/index/SP_index8.glb'}/>
+      <Model url={'meshes/index/SP_index8.glb'} />
+      <Model url={'meshes/index/entrance_lattice.glb'} />
+      <spotLight intensity={2} position={[3, 4, 10]} angle={2} penumbra={2} />
+    </View>
+    <Sidebar />
   </Layout>
 )
 

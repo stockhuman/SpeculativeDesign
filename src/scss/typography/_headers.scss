@@ -1,8 +1,17 @@
 .title {
-	font-family: 'Libre Barcode 128 Text', sans-serif;
+  font-family: 'Uni Neue', sans-serif;
+}
+
+.caption-component {
+  padding: 1rem;
+  margin: 0;
+  opacity: 0.7;
+  font-weight: bold;
+  font-family: monospace;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Uni Neue', sans-serif;
 	margin-left: 0;
 	margin-right: 0;
 	margin-top: 0;
@@ -33,9 +42,5 @@ h4 {
 }
 h5 {
   font-size: 0.85028rem;
-  line-height: 1.1;
-}
-h6 {
-  font-size: 0.78405rem;
   line-height: 1.1;
 }

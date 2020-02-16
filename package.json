@@ -1,40 +1,45 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
-  "version": "1.0.0",
+  "name": "speculative-play",
+  "description": "Gatsby Speculative Play site",
+  "version": "2.0.4",
   "author": "Michael Hemingway",
   "dependencies": {
-    "fs-extra": "^6.0.1",
-    "gatsby": "^2.4.3",
-    "gatsby-link": "^2.1.1",
-    "gatsby-plugin-react-helmet": "^3.0.12",
-    "gatsby-plugin-sass": "^2.0.11",
-    "gatsby-plugin-sharp": "^2.0.17",
-    "gatsby-remark-copy-linked-files": "^2.0.12",
-    "gatsby-remark-images": "^3.0.11",
-    "gatsby-source-filesystem": "^2.0.33",
-    "gatsby-transformer-remark": "^2.3.12",
-    "gatsby-transformer-sharp": "^2.1.9",
+    "fs-extra": "^8.1.0",
+    "gatsby": "^2.19.17",
+    "gatsby-link": "^2.2.29",
+    "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-sass": "^2.1.28",
+    "gatsby-plugin-sharp": "^2.4.5",
+    "gatsby-remark-copy-linked-files": "^2.1.37",
+    "gatsby-remark-images": "^3.1.44",
+    "gatsby-source-filesystem": "^2.1.48",
+    "gatsby-transformer-remark": "^2.6.51",
+    "gatsby-transformer-sharp": "^2.3.14",
     "js-yaml": "^3.13.1",
-    "node-sass": "^4.12.0",
-    "react": "^16.8.6",
-    "react-anime": "^2.2.0",
-    "react-dom": "^16.8.6",
-    "react-flexbox-grid": "^2.1.2",
-    "react-helmet": "^5.2.1",
+    "localforage": "^1.7.3",
+    "node-sass": "^4.13.1",
+    "postprocessing": "^6.10.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.0.0-beta.2",
+    "react-helmet-async": "^1.0.4",
     "react-images-loaded": "^2.0.0",
-    "webpack": "^4.31.0"
+    "react-three-fiber": "^4.0.16",
+    "three": "^0.113.x",
+    "webpack": "^4.41.6"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "start": "gatsby develop"
+    "build": "gatsby build --prefix-paths",
+    "start": "gatsby develop -H 0.0.0.0 -p 8000"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-plugin-react": "^7.13.0"
+    "@hot-loader/react-dom": "^16.11.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.3",
+    "jimp": "^0.9.3"
   }
 }

@@ -4,11 +4,18 @@ module.exports = {
     title: 'Speculative Play'
   },
   plugins: [
-		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-sass',
 		'gatsby-remark-copy-linked-files',
 		'gatsby-transformer-sharp',
 		'gatsby-plugin-sharp',
+		'gatsby-plugin-react-helmet',
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				path: `${__dirname}/src/assets/img/`,
+				name: 'images'
+			}
+		},
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {

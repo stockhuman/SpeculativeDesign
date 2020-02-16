@@ -1,17 +1,19 @@
 // I know, this isn't really a component..
 
 // via https://github.com/gatsbyjs/gatsby/issues/2583
-import MaisonNeueMonoWOFF2 from '../assets/fonts/MaisonNeue-Mono.woff2'
-import MaisonNeueMonoWOFF from '../assets/fonts/MaisonNeue-Mono.woff';
-import MaisonNeueMonoTTF from '../assets/fonts/MaisonNeue-Mono.ttf';
-import MaisonNeueMonoItalicWOFF2 from '../assets/fonts/MaisonNeue-MonoItalic.woff2';
-import MaisonNeueMonoItalicTTF from '../assets/fonts/MaisonNeue-MonoItalic.ttf';
+import UniNeueLightWOFF2 from '../assets/fonts/UniNeue-Light.woff2'
+import UniNeueLightWOFF from '../assets/fonts/UniNeue-Light.woff';
+import UniNeueLightTTF from '../assets/fonts/UniNeue-Light.ttf';
+import UniNeueHeavyItalicWOFF2 from '../assets/fonts/UniNeue-HeavyItalic.woff2';
+import UniNeueHeavyItalicWOFF from '../assets/fonts/UniNeue-HeavyItalic.woff';
+import UniNeueHeavyItalicTTF from '../assets/fonts/UniNeue-HeavyItalic.ttf';
 
 export default {
-	MaisonNeueMonoTTF,
-	MaisonNeueMonoWOFF,
-	MaisonNeueMonoWOFF2,
+	UniNeueLightTTF,
+	UniNeueLightWOFF,
+	UniNeueLightWOFF2,
 
-	MaisonNeueMonoItalicTTF,
-	MaisonNeueMonoItalicWOFF2
+	UniNeueHeavyItalicTTF,
+	UniNeueHeavyItalicWOFF,
+	UniNeueHeavyItalicWOFF2
 }

@@ -10,7 +10,8 @@ Make sure that you have the Gatsby CLI program installed:
 npm install --global gatsby-cli
 ```
 
-And run from your CLI:
+And run from your CLI in the downloaded project folder
 ```sh
+npm i
 npm start
 ```

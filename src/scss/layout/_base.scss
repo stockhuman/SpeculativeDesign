@@ -1,0 +1,22 @@
+$br: 10px; // border radius
+$sw: 10px; // screen outline width (padding)
+
+// note that styling is imported on a per-component basis,
+// which enables quicker downloads for essential styling
+@import '../util/util';
+@import 'viewport';
+@import 'hud';
+@import 'menu';
+
+// Tablet & smaller: This site was designed desktop-first
+// see util, vendor/media & settings for query information
+
+// default styling for otherwise unstyled pages
+.page {
+	article {
+		max-width: 70ch;
+		padding-top: 4em;
+		margin: 0em auto 4em auto;
+	}
+	background: yellow;
+}
