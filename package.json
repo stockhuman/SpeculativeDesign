@@ -5,14 +5,15 @@
   "author": "Michael Hemingway",
   "dependencies": {
     "fs-extra": "^8.1.0",
-    "gatsby": "^2.19.12",
+    "gatsby": "^2.19.17",
     "gatsby-link": "^2.2.29",
+    "gatsby-plugin-react-helmet": "^3.1.22",
     "gatsby-plugin-sass": "^2.1.28",
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-remark-copy-linked-files": "^2.1.37",
     "gatsby-remark-images": "^3.1.44",
     "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-transformer-remark": "^2.6.50",
+    "gatsby-transformer-remark": "^2.6.51",
     "gatsby-transformer-sharp": "^2.3.14",
     "js-yaml": "^3.13.1",
     "localforage": "^1.7.3",
@@ -20,12 +21,12 @@
     "postprocessing": "^6.10.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.0.0-beta.2",
     "react-helmet-async": "^1.0.4",
     "react-images-loaded": "^2.0.0",
-    "react-three-fiber": "^4.0.14",
+    "react-three-fiber": "^4.0.16",
     "three": "^0.113.x",
-    "webpack": "^4.41.5"
+    "webpack": "^4.41.6"
   },
   "keywords": [
     "gatsby"

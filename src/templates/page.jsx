@@ -7,7 +7,7 @@ export default function Template({ data }) {
 	const copy = data.markdownRemark
 
 	return (
-		<Layout>
+		<Layout title={copy.frontmatter.title}>
 			<main className="page">
 				<h1>{copy.frontmatter.title}</h1>
 				<div dangerouslySetInnerHTML={{ __html: copy.html }} />

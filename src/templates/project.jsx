@@ -31,7 +31,7 @@ export default function Template({ data }) {
 	})
 
 	return (
-		<Layout>
+		<Layout title={fm.title}>
 			<Viewport data={data.markdownRemark.frontmatter} images={urls} />
 			<Sidebar
 				intro={['Project: ' + fm.title]}

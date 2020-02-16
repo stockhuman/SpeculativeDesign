@@ -21,7 +21,7 @@ export default ({ data, images, image }) => {
 	// gets a random room shape
 	const room = data.room
 		? data.room
-		: `room_${String(Math.floor(Math.random() * 3)).padStart(2, '0')}.glb`
+		: `room_${String(Math.floor(Math.random() * 4)).padStart(2, '0')}.glb`
 
 	return (
 		<View center={[0, 0, 0]}>

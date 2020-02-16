@@ -24,7 +24,7 @@ export default function Template({ data }) {
 	}
 
 	return (
-		<Layout>
+		<Layout title={person.frontmatter.name}>
 			<Viewport data={data.markdownRemark.frontmatter} image={img} />
 			<Sidebar intro={'Introducing: ' + person.frontmatter.name} info={ data.markdownRemark.html}/>
 		</Layout>
