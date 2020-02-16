@@ -9,8 +9,10 @@ export default function Template({ data }) {
 	return (
 		<Layout title={copy.frontmatter.title}>
 			<main className="page">
-				<h1>{copy.frontmatter.title}</h1>
-				<div dangerouslySetInnerHTML={{ __html: copy.html }} />
+				<article>
+					<h1>{copy.frontmatter.title}</h1>
+					<div dangerouslySetInnerHTML={{ __html: copy.html }} />
+				</article>
 			</main>
 		</Layout>
 	)
