@@ -21,8 +21,8 @@ export default ({ title, description = '', children }) => {
       <title>{pageTitle}</title>
       <style>{Fonts}</style>
     </Helmet>
-      <div id="viewport-container">{children}</div>
       <Menu />
+      <div id="viewport-container">{children}</div>
     </>
   )
 }

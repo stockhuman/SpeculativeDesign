@@ -1,4 +1,52 @@
-#hamburger, #nav-transitioner {
+// Contains 3D viewport and 'HUD' elements
+#viewport-container {
+	transition: transform 1s ease;
+	height: 100vh;
+	position: fixed;
+	width: 100vw;
+	top:0;
+}
+
+#nav-container.active+#viewport-container {
+	transform: translate3d(-100vw, 0, 0);
+}
+
+#nav-container {
+	cursor: auto;
+	padding: 6em 2em;
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+#menu {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr auto;
+	gap: 20px;
+
+
+	.nav-section {
+		a {
+			text-decoration: none;
+			display: block;
+			font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
+				"Liberation Mono", Menlo, Courier, monospace;
+			padding: 0;
+			padding-top: 0.2em;
+			padding-bottom: 0.2em;
+		}
+		span { // section title
+			@extend .title;
+			text-decoration: underline;
+			font-weight: bolder;
+			font-style: italic;
+			margin-bottom: 1em;
+			display: block;
+		}
+	}
+}
+
+#hamburger {
 	position: fixed;
 	background: white;
 	right: $sw + 10px;
@@ -18,24 +66,5 @@
 	// the hamburger icon
 	img {
 		margin: 0.5em;
-	}
-}
-
-// creates a circle slide-out
-#menu {
-	position: fixed;
-	z-index: 200;
-	width: calc(100vw - 6rem);
-	height: calc(100vh - 6rem);
-	transform: translateY(120%);
-	transition: transform 0.3s ease-in-out;
-	border-radius: 8px;
-	margin: -6px;
-	&.open {
-		transform: translateY(0);
-	}
-
-	.nav-container {
-		margin: 2rem;
 	}
 }
