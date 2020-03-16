@@ -8,6 +8,36 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 extend({ OrbitControls })
 
 
+import { useEffect } from 'react'
+import { UnsignedByteType, PMREMGenerator } from 'three'
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
+
+
+function Env () {
+	const { gl, scene } = useThree()
+	const pmremGenerator = new PMREMGenerator(gl)
+	pmremGenerator.compileEquirectangularShader()
+
+	useEffect(() => {
+		new RGBELoader()
+			.setDataType(UnsignedByteType)
+			.load('/textures/royal_esplanade_1k.hdr', texture => {
+
+				const envMap = pmremGenerator.fromEquirectangular(texture).texture
+
+				// scene.background = envMap
+				scene.environment = envMap
+
+				texture.dispose()
+				pmremGenerator.dispose()
+			})
+	}, [])
+
+	return null
+}
+
+
+
 // This function is abstracted from the view method so as to let size variables instantiate
 // Many performance optimisations derived from https://discoverthreejs.com/tips-and-tricks/
 function Controls (props) {
@@ -79,6 +109,7 @@ export default function View(props) {
 						<span>{loaders()}</span>
 					</Dom>
 					}>
+						<Env />
 					<fog attach="fog" args={['#fbf7f5', 16, 80]} />
 					<ambientLight intensity={0.2}/>
 					<scene>{props.children}</scene>
