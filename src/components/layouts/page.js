@@ -5,7 +5,8 @@ import Fonts from '../../scss/style'
 import '../../scss/main.scss'
 import ico from '../../assets/logos/favicon.ico'
 
-import Menu from '../layouts/Menu'
+import Menu from './Menu'
+import { nonsenseProvider } from './Context'
 
 export default ({ title, description = '', children }) => {
 
@@ -22,7 +23,9 @@ export default ({ title, description = '', children }) => {
       <style>{Fonts}</style>
     </Helmet>
       <Menu />
-      <div id="viewport-container">{children}</div>
+      <nonsenseProvider>
+        <div id="viewport-container">{children}</div>
+      </nonsenseProvider>
     </>
   )
 }
