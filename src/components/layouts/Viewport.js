@@ -21,8 +21,7 @@ export default ({ data, images, image }) => {
 	const next = d.linkto
 	const prev = d.linkfrom
 
-
-	console.log('nonsense is', nonsense)
+	// The stop nonsense button
 	if (!nonsense) {
 		return (
 			<main className="page">
