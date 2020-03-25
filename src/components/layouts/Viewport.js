@@ -6,17 +6,33 @@ import Room from '../canvas/room/Room'
 import Text from '../canvas/Text'
 import Model from '../canvas/Model'
 
-// Materials and Loaders from Three
-
 // Links and data
 import Sculpture from '../canvas/Sculpture'
 
+import { useNonsense } from './Context'
+
 export default ({ data, images, image }) => {
-	const title = data.title || data.name
+	const { nonsense } = useNonsense()
+	const d = data.frontmatter
+
+	const title = d.title || d.name
 
 	// gets the link to previous and next rooms
-	const next = data.linkto
-	const prev = data.linkfrom
+	const next = d.linkto
+	const prev = d.linkfrom
+
+
+	console.log('nonsense is', nonsense)
+	if (!nonsense) {
+		return (
+			<main className="page">
+				<article>
+					<h1>{d.title}</h1>
+					<div dangerouslySetInnerHTML={{ __html: data.html }} />
+				</article>
+			</main>
+		)
+	}
 
 	// gets a random room shape
 	const room = data.room
@@ -28,8 +44,8 @@ export default ({ data, images, image }) => {
 			<Room url={`/meshes/rooms/${room}`}
 				data={{ LinkA: next, LinkB: prev, images: images || image }} />
 			<Model url={`/meshes/rooms/plinths/plinth-${Math.floor(Math.random() * 2)}.glb`} />
-			{ data.sculpture
-				? <Model url={`/meshes/sculptures/${data.sculpture}`} />
+			{ d.sculpture
+				? <Model url={`/meshes/sculptures/${d.sculpture}`} />
 				: <Sculpture />
 			}
 			<Text

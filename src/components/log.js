@@ -1,11 +1,12 @@
 import React, { Component, createRef } from 'react'
 import { navigate } from 'gatsby'
-// import localforage from 'localforage'
 
+import { nonsenseContext } from './layouts/Context'
 import { randomCaption, commands } from './data/strings'
 
 
 class Log extends Component {
+	static contextType = nonsenseContext
 	constructor (props) {
 		super(props)
 		this.inputNode = createRef()
@@ -87,33 +88,36 @@ class Log extends Component {
 		} else {
 			this.tick(this.state.terminalOutput, 0)
 		}
-		this.inputNode.current.addEventListener('keydown', this.type)
+		this.inputNode.current ? this.inputNode.current.addEventListener('keydown', this.type) : null
 	}
 
 	componentWillUnmount = () => {
 		if (this.timerHandle) {
 			clearTimeout(this.timerHandle)
 		}
-		this.inputNode.current.removeEventListener('keydown', this.type)
+		this.inputNode.current ? this.inputNode.current.removeEventListener('keydown', this.type) : null
 	}
 
 	render() {
+		const [nonsense, setNonsense] = this.context
 		const items = this.state.logs.map((item, key) =>
 			<p key={key}>{item.system ? '' : '> '}{item.copy}</p>
 		)
-
 		return (
 			<div className="crt">
-				{items}
-				<p>{this.state.terminalOutput}</p>
-				<div
-					id='user-input'
-					contentEditable autoFocus
-					ref={this.inputNode}
-					disabled={this.state.locked ? true : false}
-					 />
+				{nonsense ?
+					<>
+						<p>{this.state.terminalOutput}</p>
+						<div
+							id='user-input'
+							contentEditable autoFocus
+							ref={this.inputNode}
+							disabled={this.state.locked ? true : false}
+						/>
+						{items}
+					</>
+				: null}
 				<div className="crt-actions-container">
-
 					<button className="crt-btn" onClick={() => {
 						if (this.state.skip != true) {
 							this.setState({skip: true})
@@ -135,11 +139,11 @@ class Log extends Component {
 						}
 
 					}}>info</button>
-					{/* <button className="crt-btn">goto</button> */}
-					<button className="crt-btn" onClick={() => {
-						this.parseCommand('help')
-					}}>help</button>
+					<button className="crt-btn" onClick={() => this.parseCommand('help')}>help</button>
 					<button className="crt-btn" onClick={() => navigate('/')}>home</button>
+					<button className="crt-btn" onClick={() => setNonsense(!nonsense)}>
+						{nonsense ? 'stop this nonsense': 'bring back the nonsense'}
+					</button>
 				</div>
 			</div>
 		)

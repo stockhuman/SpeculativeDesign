@@ -6,10 +6,9 @@ import '../../scss/main.scss'
 import ico from '../../assets/logos/favicon.ico'
 
 import Menu from './Menu'
-import { nonsenseProvider } from './Context'
+import { NonsenseProvider } from './Context'
 
 export default ({ title, description = '', children }) => {
-
   let pageTitle = title ? `${title} • Speculative Play` : 'Speculative Play'
 
   return (
@@ -23,9 +22,9 @@ export default ({ title, description = '', children }) => {
       <style>{Fonts}</style>
     </Helmet>
       <Menu />
-      <nonsenseProvider>
+      <NonsenseProvider>
         <div id="viewport-container">{children}</div>
-      </nonsenseProvider>
+      </NonsenseProvider>
     </>
   )
 }
