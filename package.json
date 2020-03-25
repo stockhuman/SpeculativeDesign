@@ -4,29 +4,29 @@
   "version": "2.0.4",
   "author": "Michael Hemingway",
   "dependencies": {
-    "fs-extra": "^8.1.0",
-    "gatsby": "^2.19.45",
-    "gatsby-link": "^2.2.31",
-    "gatsby-plugin-react-helmet": "^3.1.24",
-    "gatsby-plugin-sass": "^2.1.31",
-    "gatsby-plugin-sharp": "^2.4.13",
-    "gatsby-remark-copy-linked-files": "^2.1.40",
-    "gatsby-remark-images": "^3.1.50",
-    "gatsby-source-filesystem": "^2.1.56",
-    "gatsby-transformer-remark": "^2.6.59",
-    "gatsby-transformer-sharp": "^2.3.19",
+    "fs-extra": "^9.0.0",
+    "gatsby": "^2.20.6",
+    "gatsby-link": "^2.3.1",
+    "gatsby-plugin-react-helmet": "^3.2.1",
+    "gatsby-plugin-sass": "^2.2.1",
+    "gatsby-plugin-sharp": "^2.5.3",
+    "gatsby-remark-copy-linked-files": "^2.2.1",
+    "gatsby-remark-images": "^3.2.1",
+    "gatsby-source-filesystem": "^2.2.2",
+    "gatsby-transformer-remark": "^2.7.1",
+    "gatsby-transformer-sharp": "^2.4.2",
     "js-yaml": "^3.13.1",
     "localforage": "^1.7.3",
     "node-sass": "^4.13.1",
-    "postprocessing": "^6.12.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "postprocessing": "^6.13.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0-beta.2",
     "react-helmet-async": "^1.0.4",
     "react-images-loaded": "^2.0.0",
-    "react-three-fiber": "^4.0.21",
-    "three": "^0.114.x",
-    "webpack": "^4.42.0"
+    "react-three-fiber": "^4.0.23",
+    "three": "^0.115.x",
+    "webpack": "^4.42.1"
   },
   "keywords": [
     "gatsby"
@@ -40,6 +40,6 @@
     "@hot-loader/react-dom": "^16.13.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
-    "jimp": "^0.9.5"
+    "jimp": "^0.9.6"
   }
 }
