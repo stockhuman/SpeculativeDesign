@@ -5,7 +5,7 @@
   "author": "Michael Hemingway",
   "dependencies": {
     "fs-extra": "^9.0.0",
-    "gatsby": "^2.21.21",
+    "gatsby": "^2.21.22",
     "gatsby-link": "^2.4.2",
     "gatsby-plugin-react-helmet": "^3.3.1",
     "gatsby-plugin-sass": "^2.3.1",
@@ -23,7 +23,7 @@
     "react-helmet": "^6.0.0",
     "react-helmet-async": "^1.0.6",
     "react-images-loaded": "^2.0.0",
-    "react-three-fiber": "^4.1.4",
+    "react-three-fiber": "^4.2.3",
     "three": "^0.116.x",
     "webpack": "^4.43.0"
   },
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.13.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-plugin-react": "^7.19.0",
     "jimp": "^0.10.3"
   }
