@@ -1,31 +1,31 @@
 {
   "name": "speculative-play",
   "description": "Gatsby Speculative Play site",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "author": "Michael Hemingway",
   "dependencies": {
     "fs-extra": "^9.0.1",
-    "gatsby": "^2.23.3",
-    "gatsby-link": "^2.4.6",
-    "gatsby-plugin-react-helmet": "^3.3.4",
-    "gatsby-plugin-sass": "^2.3.4",
-    "gatsby-plugin-sharp": "^2.6.11",
-    "gatsby-remark-copy-linked-files": "^2.3.5",
-    "gatsby-remark-images": "^3.3.10",
-    "gatsby-source-filesystem": "^2.3.11",
-    "gatsby-transformer-remark": "^2.8.15",
-    "gatsby-transformer-sharp": "^2.5.5",
+    "gatsby": "^2.27.4",
+    "gatsby-link": "^2.6.1",
+    "gatsby-plugin-react-helmet": "^3.5.0",
+    "gatsby-plugin-sass": "^2.6.0",
+    "gatsby-plugin-sharp": "^2.9.1",
+    "gatsby-remark-copy-linked-files": "^2.5.0",
+    "gatsby-remark-images": "^3.6.0",
+    "gatsby-source-filesystem": "^2.6.1",
+    "gatsby-transformer-remark": "^2.11.1",
+    "gatsby-transformer-sharp": "^2.7.0",
     "js-yaml": "^3.14.0",
-    "node-sass": "^4.14.1",
-    "postprocessing": "^6.14.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "node-sass": "^5.0.0",
+    "postprocessing": "^6.18.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "react-helmet-async": "^1.0.6",
+    "react-helmet-async": "^1.0.7",
     "react-images-loaded": "^2.0.0",
-    "react-three-fiber": "^4.2.8",
-    "three": "^0.117.x",
-    "webpack": "^4.43.0"
+    "react-three-fiber": "^5.3.3",
+    "three": "^0.123.x",
+    "webpack": "^5.9.0"
   },
   "keywords": [
     "gatsby"
@@ -36,9 +36,9 @@
     "start": "gatsby develop -H 0.0.0.0 -p 8000"
   },
   "devDependencies": {
-    "@hot-loader/react-dom": "^16.13.0",
-    "eslint": "^7.2.0",
-    "eslint-plugin-react": "^7.20.0",
-    "jimp": "^0.13.0"
+    "@hot-loader/react-dom": "^17.0.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-react": "^7.21.5",
+    "jimp": "^0.16.1"
   }
 }
