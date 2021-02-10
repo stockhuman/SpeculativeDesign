@@ -1,12 +1,11 @@
 import React, { useRef } from 'react'
-import { useFrame } from 'react-three-fiber'
+// import { useFrame } from 'react-three-fiber'
 
 import {
 	Vector3,
 	LatheGeometry,
 	MeshPhongMaterial,
 	Mesh,
-	Matrix4,
 	CatmullRomCurve3,
 	ExtrudeGeometry,
 	IcosahedronGeometry,
@@ -15,7 +14,6 @@ import {
 	TorusGeometry,
 	Shape,
 	Object3D,
-	DoubleSide,
 	FlatShading
 } from 'three'
 
@@ -36,15 +34,15 @@ export default function Sculpture({ seed = 'default' }) {
 
 function Template (props) {
 	// This reference will give us direct access to the mesh
-	const mesh = useRef()
+	// const mesh = useRef()
 
 	// Rotate mesh every frame, this is outside of React without overhead
-	useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01))
+	// useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01))
 
 	return (
 		<mesh
 			{...props}
-			ref={mesh}
+			// ref={mesh}
 			geometry={new Spring(Math.random()*0.3, Math.random(), 1)}
 			>
 			<meshNormalMaterial attach="material" />

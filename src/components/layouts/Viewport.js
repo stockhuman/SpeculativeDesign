@@ -42,7 +42,7 @@ export default ({ data, images, image }) => {
 		<View center={[0, 0, 0]}>
 			<Room url={`/meshes/rooms/${room}`}
 				data={{ LinkA: next, LinkB: prev, images: images || image }} />
-			<Model url={`/meshes/rooms/plinths/plinth-${Math.floor(Math.random() * 2)}.glb`} />
+			<Model url={`/meshes/rooms/plinths/plinth-${Math.floor(Math.random() * 3)}.glb`} />
 			{ d.sculpture
 				? <Model url={`/meshes/sculptures/${d.sculpture}`} />
 				: <Sculpture />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { navigate, withPrefix } from 'gatsby'
-import { Dom, useLoader } from 'react-three-fiber'
+import { useLoader } from 'react-three-fiber'
+import { Text } from 'drei'
 import { MeshBasicMaterial } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
@@ -24,10 +25,10 @@ export default function LinkedObject({ link = "/", obj = {}}) {
 				position={obj.position || [0,0,0]}
 				geometry={geo}
 				scale={obj.scale || 1}>
-				<meshBasicMaterial attach="material" visible={visible} wireframe />
+				<meshBasicMaterial visible={visible} wireframe />
 			</mesh>
 			{visible ?
-				<Dom center position={obj.position}><span className="canvas-dom-link">Navigate to {link}</span></Dom>
+				<Text color="white" position={obj.position}>Navigate to {link}</Text>
 			: null}
 		</group>
 	)
@@ -43,8 +44,10 @@ export function LinkedModel ({ link = '/', url }) {
 	const [visible, setVisibility] = useState(false)
 
 	const scene = gltf.scene.clone(true)
+	let pos = [0,0,0]
 	scene.traverse(obj => {
 		obj.material = new MeshBasicMaterial({wireframe: true, visible})
+		pos = obj.position
 	})
 
 	return (
@@ -53,10 +56,10 @@ export function LinkedModel ({ link = '/', url }) {
 			onPointerLeave={() => { setVisibility(false); document.body.style.cursor = '' }}
 			onClick={() => { document.body.style.cursor = ''; navigate(link) }}
 		>
-			<primitive object={scene} dispose={null}/>
+			<primitive object={scene}/>
 
 			{visible ?
-				<Dom center position={scene.position}><span className="canvas-dom-link">Navigate to {link}</span></Dom>
+				<Text color="white" position={pos}>Navigate to {link}</Text>
 				: null}
 		</group>
 	)
