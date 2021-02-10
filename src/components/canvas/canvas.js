@@ -1,7 +1,7 @@
 import React, { useRef, Suspense } from 'react'
 import { extend, Canvas, useThree, useFrame } from 'react-three-fiber'
 import { Html, Stars } from 'drei'
-import { Vector3, sRGBEncoding, ACESFilmicToneMapping } from 'three'
+import { Vector3, sRGBEncoding } from 'three'
 
 import { loaders } from '../data/strings'
 

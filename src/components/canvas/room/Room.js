@@ -11,7 +11,7 @@ import Portal from './Link'
  * @param {string} url The path to a .glb, .gltf file to load
  * @param {object} data information about links to other pages, page data and images
  */
-export default ({ url, data = {} }) => {
+export default function Room ({ url, data = {} }) {
 	let availableImages = data.images ? data.images.length - 1 : 0
 	let objects = []
 
