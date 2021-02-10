@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { navigate, withPrefix } from 'gatsby'
 import { useLoader } from 'react-three-fiber'
-import { Text } from 'drei'
+import { Text } from '@react-three/drei'
 import { MeshBasicMaterial } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
