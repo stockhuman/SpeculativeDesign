@@ -1,41 +1,12 @@
 import React, { useRef, Suspense } from 'react'
-import { extend, Canvas, useThree, useFrame, Dom } from 'react-three-fiber'
+import { extend, Canvas, useThree, useFrame } from 'react-three-fiber'
+import { Html, Stars } from 'drei'
 import { Vector3, sRGBEncoding, ACESFilmicToneMapping } from 'three'
 
 import { loaders } from '../data/strings'
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 extend({ OrbitControls })
-
-
-import { useEffect } from 'react'
-import { UnsignedByteType, PMREMGenerator } from 'three'
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
-
-
-function Env () {
-	const { gl, scene } = useThree()
-	const pmremGenerator = new PMREMGenerator(gl)
-	pmremGenerator.compileEquirectangularShader()
-
-	useEffect(() => {
-		new RGBELoader()
-			.setDataType(UnsignedByteType)
-			.load('/textures/royal_esplanade_1k.hdr', texture => {
-
-				const envMap = pmremGenerator.fromEquirectangular(texture).texture
-
-				// scene.background = envMap
-				scene.environment = envMap
-
-				texture.dispose()
-				pmremGenerator.dispose()
-			})
-	}, [])
-
-	return null
-}
-
 
 
 // This function is abstracted from the view method so as to let size variables instantiate
@@ -87,10 +58,8 @@ export default function View(props) {
 					gl.antialias = false
 					gl.setClearColor(props.background || '#000000')
 					gl.outputEncoding = sRGBEncoding
-					gl.toneMapping = ACESFilmicToneMapping
 					gl.physicallyCorrectLights = true
 				}}
-				gl2
 				concurrent
 				>
 				<Controls
@@ -102,16 +71,25 @@ export default function View(props) {
 					minPolarAngle={props.minPolarAngle}
 					far={props.far}
 				/>
+				<spotLight
+					intensity={4}
+					position={[4, 2, 2]}
+					shadow-mapSize-width={2048}
+					shadow-mapSize-height={2048}
+					penumbra={0.2}
+					castShadow
+				/>
+				<Stars />
 				<Suspense fallback={
-					<Dom center
+					<Html center
 						className="loader"
 						position={[0, 0, 0]}>
 						<span>{loaders()}</span>
-					</Dom>
+					</Html>
 					}>
-						<Env />
-					<fog attach="fog" args={['#fbf7f5', 16, 80]} />
-					<ambientLight intensity={0.2}/>
+						{/* <Env /> */}
+					{/* <fog attach="fog" args={['#fbf7f5', 16, 80]} /> */}
+					{/* <ambientLight intensity={0.2}/> */}
 					<scene>{props.children}</scene>
 				</Suspense>
 			</Canvas>
