@@ -1,12 +1,11 @@
 import React, { Component, createRef } from 'react'
 import { navigate } from 'gatsby'
 
-import { nonsenseContext } from './layouts/Context'
+// import { nonsenseContext } from './layouts/Context'
 import { randomCaption, commands } from './data/strings'
 
 
 class Log extends Component {
-	static contextType = nonsenseContext
 	constructor (props) {
 		super(props)
 		this.inputNode = createRef()
@@ -22,7 +21,7 @@ class Log extends Component {
 		}
 	}
 
-	addLog = log => {
+	addLog(log) {
 		// fancy way of pushing to array without direct mutations
 		// via https://www.robinwieruch.de/react-state-array-add-update-remove
 		this.setState(state => {
@@ -32,7 +31,7 @@ class Log extends Component {
 	}
 
 	// writes one character and calls itself until the text is done
-	tick = (text, i) => {
+	tick(text, i){
 		if (i < (text.length)) {
 			this.setState({ terminalOutput: text.substring(0, i + 1) })
 
@@ -46,7 +45,7 @@ class Log extends Component {
 				this.setState({ termQueuePlace: this.state.termQueuePlace + 1 })
 				this.setState({ locked: false, terminalOutput: '' })
 				if (this.state.termQueuePlace < this.state.termQueue.length)
-				  this.tick(this.state.termQueue[this.state.termQueuePlace], 0)
+					this.tick(this.state.termQueue[this.state.termQueuePlace], 0)
 			} else {
 				this.setState({ locked: false, terminalOutput: '' })
 			}
@@ -54,7 +53,7 @@ class Log extends Component {
 	}
 
 	// invokes responses based on particular input
-	parseCommand = command => {
+	parseCommand(command) {
 		this.addLog({system:false, copy: command})
 		this.inputNode.current.innerText = ''
 		// if the returned string is not null, it's a valid command.
@@ -65,7 +64,7 @@ class Log extends Component {
 	}
 
 	// letter by letter ticker
-	type = e => {
+	type(e){
 		if (!this.state.locked) {
 			if (e.key == 'Enter') {
 				e.preventDefault()
@@ -76,7 +75,7 @@ class Log extends Component {
 		}
 	}
 
-	componentDidMount = () => {
+	componentDidMount () {
 		const tintro = this.state.terminalOutput
 		// if passed an array, write out each line separately
 		if (Array.isArray(tintro)) {
@@ -91,7 +90,7 @@ class Log extends Component {
 		this.inputNode.current ? this.inputNode.current.addEventListener('keydown', this.type) : null
 	}
 
-	componentWillUnmount = () => {
+	componentWillUnmount ()  {
 		if (this.timerHandle) {
 			clearTimeout(this.timerHandle)
 		}

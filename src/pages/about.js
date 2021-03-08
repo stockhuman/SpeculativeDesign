@@ -21,7 +21,7 @@ import { about } from '../components/data/strings'
 
 // Each branch takes one on a successive journey though each room, project or person.
 // the order of each project is determined by alphanumeric sorting, thus the numbered entries.
-export default () => (
+const About = () => (
 	<Layout>
 		<View center={[0, 1.3, 0]}>
 			<Room url={'/meshes/about/about3_015.glb'} data={{
@@ -35,3 +35,5 @@ export default () => (
 		<Sidebar intro="Welcome, welcome, welcome!" info={about}/>
 	</Layout>
 )
+
+export default About

@@ -8,7 +8,7 @@ import ico from '../../assets/logos/favicon.ico'
 import Menu from './Menu'
 import { NonsenseProvider } from './Context'
 
-export default ({ title, description = '', children }) => {
+const Page = ({ title, description = '', children }) => {
   let pageTitle = title ? `${title} • Speculative Play` : 'Speculative Play'
 
   return (
@@ -28,3 +28,4 @@ export default ({ title, description = '', children }) => {
     </>
   )
 }
+export default Page
