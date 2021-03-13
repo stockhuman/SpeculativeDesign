@@ -23,75 +23,6 @@
 	}
 }
 
-
-.blinking-cursor {
-	animation: 1s blink ease-in-out infinite;
-	text-shadow: 0 0 5px #C8C8C8;
-}
-
-@keyframes blink {
-  from {
-		opacity: 1
-  }
-  to {
-		opacity: 0
-  }
-}
-
-// via https://css-tricks.com/old-timey-terminal-styling/
-.crt {
-	bottom: 0;
-	left: 0px;
-	right: 0px;
-	border-radius: 5px;
-	position: fixed;
-	pointer-events: none;
-	touch-action: none;
-	background: rgba(0, 0, 0, 0.2);
-
-	p {
-		max-width: 700px;
-		margin-left: 20px;
-		margin-right:20px
-	}
-
-	.crt-actions-container {
-		background: rgba(0, 0, 0, 0.095);
-		margin-bottom: $br;
-	}
-
-	.crt-btn {
-		border:none;
-		background: transparent;
-		margin: 0;
-
-		&:hover, &:focus {
-			background: rgba(0, 0, 0, 0.295);
-		}
-	}
-
-	#user-input {
-		width: 100%;
-		background: transparent;
-		pointer-events: all;
-		border: none;
-		min-height: 1rem;
-		margin: 1.5em;
-		&:focus {
-			outline: none;
-		}
-	}
-
-	span, p, .crt-btn, #user-input {
-		text-shadow: 0 0 5px rgb(167, 167, 167);
-		font-family: monospace;
-		color: white;
-		overflow: visible;
-		overflow-wrap: break-all;
-		font-size: larger;
-	}
-}
-
 .social-container {
 	position: fixed;
 	bottom: $sw *2;
@@ -111,6 +42,7 @@
 	text-decoration: none;
 	padding: 4px;
 	margin-right: 5px;
+	background: rgba(0, 0, 0, 0.103);
 	&:hover, &:focus {
 		background: black;
 		color: white;
