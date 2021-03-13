@@ -3,7 +3,7 @@ import { navigate, withPrefix } from 'gatsby'
 import { useLoader } from 'react-three-fiber'
 import { Text } from '@react-three/drei'
 import { MeshBasicMaterial } from 'three'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { GLTFLoader } from 'three-stdlib'
 
 /**
  * Creates a navigable link given a path and 3D object data

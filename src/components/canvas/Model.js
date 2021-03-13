@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { withPrefix } from 'gatsby'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { GLTFLoader } from 'three-stdlib'
 import { useLoader } from 'react-three-fiber'
 
 /**
