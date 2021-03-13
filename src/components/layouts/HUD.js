@@ -1,17 +1,18 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-import Log from '../log'
+// import Log from '../log'
 import Logo from '../../assets/logos/22.png'
 
-export default function Sidebar ({intro = null, info = null}) {
+export default function Sidebar () {
 	return (
 		<>
 			<Link to="/" id="logo">
 				<img src={Logo} />
 				<h1 className="title">Speculative Play</h1>
 			</Link>
-			<Log intro={intro} info={info} />
+			{/* Stop nonsense button here */}
+			{/* <Log intro={intro} info={info} /> */}
 			<div className="social-container">
 				<a href="https://www.facebook.com/profile.php?id=100013471624792" className="social-icon">
 					<i className="fa fa-facebook">FB</i>
