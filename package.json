@@ -28,6 +28,7 @@
     "react-three-fiber": "^5.3.19",
     "sass": "latest",
     "three": "0.126.x",
+    "three-stdlib": "^1.0.0",
     "webpack": "^5.25.0"
   },
   "keywords": [
