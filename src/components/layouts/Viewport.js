@@ -11,7 +11,7 @@ import Sculpture from '../canvas/Sculpture'
 
 import { useNonsense } from './Context'
 
-export default ({ data, images, image }) => {
+export default function Viewport ({ data, images, image }) {
 	const { nonsense } = useNonsense()
 	const d = data.frontmatter
 
