@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 
 import queries from '../data/queries'
 
-import Hamburger from '../../assets/logos/hamburger.svg'
+import Hamburger from '../../assets/icons/hamburger.svg'
 
 export default function Menu () {
 	const [toggleState, set] = useState(false)

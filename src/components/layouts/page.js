@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 
 import Fonts from '../../scss/style'
 import '../../scss/main.scss'
-import ico from '../../assets/logos/favicon.ico'
+import ico from '../../assets/icons/favicon.ico'
 
 import Menu from './Menu'
 import { NonsenseProvider } from './Context'
