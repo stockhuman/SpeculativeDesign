@@ -2,50 +2,49 @@ import { useStaticQuery, graphql } from "gatsby"
 
 // In a dev environment, this can be inspected @ http://localhost:8000/___graphql
 export default () => {
-	const data = useStaticQuery(graphql`
-    query Pages {
-			people: allMarkdownRemark(filter: {frontmatter: {path: {regex: "/people/"}}}) {
-				edges {
-					node {
-						frontmatter {
-							path
-							name
-							room
-							image
-							linkto
-							linkfrom
-						}
-					}
-				}
-			}
-			projects: allMarkdownRemark(filter: {frontmatter: {path: {regex: "/projects/"}}}) {
-				edges {
-					node {
-						frontmatter {
-							path
-							title
-							room
-							linkto
-							linkfrom
-							images
-							sculpture
-						}
-					}
-				}
-			}
-			images: allFile(filter: {sourceInstanceName: {eq: "images"}}) {
-				edges {
-					node {
-						childImageSharp {
-							fixed {
-								src
-							}
-						}
-					}
-				}
-			}
-		}
-	`)
+	const data = useStaticQuery(graphql`query Pages {
+  people: allMarkdownRemark(filter: {frontmatter: {path: {regex: "/people/"}}}) {
+    edges {
+      node {
+        frontmatter {
+          path
+          name
+          room
+          image
+          linkto
+          linkfrom
+        }
+      }
+    }
+  }
+  projects: allMarkdownRemark(
+    filter: {frontmatter: {path: {regex: "/projects/"}}}
+  ) {
+    edges {
+      node {
+        frontmatter {
+          path
+          title
+          room
+          linkto
+          linkfrom
+          images
+          sculpture
+        }
+      }
+    }
+  }
+  images: allFile(filter: {sourceInstanceName: {eq: "images"}}) {
+    edges {
+      node {
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, layout: FIXED)
+        }
+      }
+    }
+  }
+}
+`)
 
 	let projects = []
 	let people = []
@@ -60,7 +59,7 @@ export default () => {
 	})
 
 	data.images.edges.forEach(image => {
-		images.push(image.node.childImageSharp.fixed.src)
+		images.push(image.node.childImageSharp.gatsbyImageData.src)
 	})
 
 	// The returned object consists of three arrays,

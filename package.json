@@ -4,20 +4,21 @@
   "version": "2.0.5",
   "author": "Michael Hemingway",
   "dependencies": {
-    "@react-three/drei": "^3.10.2",
+    "@react-three/drei": "^3.11.0",
+    "babel-preset-gatsby": "^1.0.0",
     "fs-extra": "^9.1.0",
-    "gatsby": "^3.0.3",
+    "gatsby": "^3.0.4",
     "gatsby-link": "^3.0.1",
+    "gatsby-plugin-image": "^1.0.1",
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sass": "^4.0.2",
-    "gatsby-plugin-sharp": "^3.0.0",
+    "gatsby-plugin-sharp": "^3.0.1",
     "gatsby-remark-copy-linked-files": "^3.0.0",
     "gatsby-remark-images": "^4.0.0",
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-transformer-remark": "^3.0.0",
     "gatsby-transformer-sharp": "^3.0.0",
     "js-yaml": "^4.0.0",
-    "node-sass": "^5.0.0",
     "postprocessing": "^6.21.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -25,8 +26,9 @@
     "react-helmet-async": "^1.0.9",
     "react-images-loaded": "^2.0.0",
     "react-three-fiber": "^5.3.19",
+    "sass": "latest",
     "three": "0.126.x",
-    "webpack": "^5.24.4"
+    "webpack": "^5.25.0"
   },
   "keywords": [
     "gatsby"
@@ -37,10 +39,18 @@
     "start": "gatsby develop -H 0.0.0.0 -p 8000"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
     "@hot-loader/react-dom": "^17.0.1",
-    "babel-preset-gatsby": "^1.0.0",
-    "eslint": "^7.21.0",
+    "eslint": "^7.22.0",
     "eslint-plugin-react": "^7.22.0",
     "jimp": "^0.16.1"
+  },
+  "resolutions": {
+    "graphql": "^15.4.0",
+    "graphql-compose": "^7.25.0",
+    "webpack": "^5.24.2"
   }
 }
