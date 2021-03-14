@@ -6,7 +6,7 @@ import '../../scss/main.scss'
 import ico from '../../assets/icons/favicon.ico'
 
 import Menu from './Menu'
-import { NonsenseProvider } from './Context'
+import { NonsenseProvider } from './Nonsense'
 
 const Page = ({ title, description = '', children }) => {
   let pageTitle = title ? `${title} • Speculative Play` : 'Speculative Play'

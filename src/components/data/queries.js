@@ -34,21 +34,11 @@ export default () => {
       }
     }
   }
-  images: allFile(filter: {sourceInstanceName: {eq: "images"}}) {
-    edges {
-      node {
-        childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, layout: FIXED)
-        }
-      }
-    }
-  }
 }
 `)
 
 	let projects = []
 	let people = []
-	let images = []
 
 	data.projects.edges.forEach(page => {
 		projects.push(page.node.frontmatter)
@@ -58,16 +48,11 @@ export default () => {
 		people.push(page.node.frontmatter)
 	})
 
-	data.images.edges.forEach(image => {
-		images.push(image.node.childImageSharp.gatsbyImageData.src)
-	})
-
 	// The returned object consists of three arrays,
 	// where indeces { previous, node, next } leads from people into projects
 
 	return {
 		people,
-		projects,
-		images
+		projects
 	}
 }

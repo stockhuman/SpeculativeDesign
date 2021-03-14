@@ -49,3 +49,12 @@
 		border-color: blue;
 	}
 }
+
+.nonsense-btn {
+	position: fixed;
+	bottom: $sw *2;
+	left: $sw*2;
+	margin: 0;
+	border-radius: $br;
+	padding: 0.5rem;
+}

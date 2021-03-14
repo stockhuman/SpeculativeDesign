@@ -20,7 +20,7 @@ I've elected to use yarn, but the commands are identical. The site is viewable a
 ## Adding content
 Within `src/pages` are the directories `people` & `projects`, containing easily editable markdown files.
 
-The [frontmatter]() at the top of the file describes some metadata essential for building every page:
+The [frontmatter](https://github.com/cuttlebelle/website/blob/master/content/documentation/what-is-frontmatter.md) at the top of the file describes some metadata essential for building every page:
 
 ```md
 path: '/projects/the-url'
@@ -47,6 +47,9 @@ images: [
 ## Deploy
 
 Running the following will create a static build of the site in `/public`, ready for hosting. :)
+
 ```sh
 npm run build
 ```
+
+Note that `gatsby-config.js` contains the `pathPrefix` field, which should be set if the site is to be hosted in a sub directory.
