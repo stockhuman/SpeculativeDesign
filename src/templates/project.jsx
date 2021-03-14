@@ -4,11 +4,9 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layouts/Page'
 import Sidebar from '../components/layouts/HUD'
 import Viewport from '../components/layouts/Viewport'
-import queries from '../components/data/queries'
 
 export default function Template({ data }) {
 	const fm = data.markdownRemark.frontmatter
-	const q = queries()
 	let images = []
 	let urls = []
 
@@ -23,7 +21,7 @@ export default function Template({ data }) {
 	// these are used in the Frame component, so we don't need the fancy Sharp
 	// features otherwise used for 'blur-up' techniques and the like.
 
-	q.images.forEach(url => {
+	images.forEach((url) => {
 		let parts = url.split('/')
 		if (images.includes(parts[4])) {
 			urls.push(url)
@@ -43,7 +41,7 @@ export default function Template({ data }) {
 
 export const projectQuery = graphql`
 	query ProjectByPath($path: String!) {
-		markdownRemark(frontmatter: {path: { eq: $path } }) {
+		markdownRemark(frontmatter: { path: { eq: $path } }) {
 			html
 			frontmatter {
 				path
