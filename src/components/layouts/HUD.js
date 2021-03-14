@@ -1,7 +1,7 @@
 import React from 'react'
 import Link, { withPrefix } from 'gatsby-link'
 
-import { useNonsense } from './Context'
+import { useNonsense } from './Nonsense'
 
 export default function HUD() {
 	const { nonsense, toggleNonsense } = useNonsense()
@@ -14,13 +14,11 @@ export default function HUD() {
 			</Link>
 
 			<button
+				className={`nonsense-btn${nonsense ? ' toggled' : ''}`}
 				onClick={toggleNonsense}
-				style={{ position: 'absolute', bottom: 5 }}
 			>
-				{nonsense.toString()}
+				{nonsense ? 'Stop this nonsense': 'Resume nonsense'}
 			</button>
-
-			{/* <button onClick={() => toggleNonsense(!nonsense)}></button> */}
 			<div className="social-container">
 				<a
 					href="https://www.facebook.com/profile.php?id=100013471624792"
