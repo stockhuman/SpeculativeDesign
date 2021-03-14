@@ -20,7 +20,7 @@ export default function Template({ data }) {
 
 export const personQuery = graphql`
 	query PageQuery($path: String!) {
-		markdownRemark(frontmatter: {path: { eq: $path } }) {
+		markdownRemark(frontmatter: { path: { eq: $path } }) {
 			html
 			frontmatter {
 				path
