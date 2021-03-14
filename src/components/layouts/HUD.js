@@ -4,8 +4,7 @@ import Link, { withPrefix } from 'gatsby-link'
 import { useNonsense } from './Context'
 
 export default function HUD() {
-	const {nonsense, toggleNonsense} = useNonsense()
-	console.log(nonsense, toggleNonsense)
+	const { nonsense, toggleNonsense } = useNonsense()
 	const logo = Math.floor(Math.random() * 30)
 	return (
 		<>
@@ -14,13 +13,12 @@ export default function HUD() {
 				<h1 className="title">Speculative Play</h1>
 			</Link>
 
-					<button
-						onClick={toggleNonsense}
-						style={{ position: 'absolute', bottom: 5 }}
-					>
-						{nonsense.toString()}
-					</button>
-
+			<button
+				onClick={toggleNonsense}
+				style={{ position: 'absolute', bottom: 5 }}
+			>
+				{nonsense.toString()}
+			</button>
 
 			{/* <button onClick={() => toggleNonsense(!nonsense)}></button> */}
 			<div className="social-container">
