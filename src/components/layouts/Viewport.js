@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link, withPrefix } from 'gatsby'
+// import { StaticImage } from 'gatsby-plugin-image'
 
 // Page Structure & Scene components
 import View from '../canvas/canvas'
@@ -9,9 +11,9 @@ import Model from '../canvas/Model'
 // Links and data
 import Sculpture from '../canvas/Sculpture'
 
-import { useNonsense } from './Context'
+import { useNonsense } from './Nonsense'
 
-export default function Viewport ({ data, images, image }) {
+export default function Viewport ({ data, images }) {
 	const { nonsense } = useNonsense()
 	const d = data.frontmatter
 
@@ -26,8 +28,15 @@ export default function Viewport ({ data, images, image }) {
 		return (
 			<main className="page">
 				<article>
-					<h1>{d.title}</h1>
+					<Link to={prev} className="nn-nav">Prev</Link>
+					<Link to={next} className="nn-nav">Next</Link>
+					<h1>{title}</h1>
 					<div dangerouslySetInnerHTML={{ __html: data.html }} />
+					{images.map((img) => {
+						return (
+							<img src={withPrefix(`/assets/img/${img}`)} key={img} />
+						)
+					})}
 				</article>
 			</main>
 		)
@@ -41,7 +50,7 @@ export default function Viewport ({ data, images, image }) {
 	return (
 		<View center={[0, 0, 0]}>
 			<Room url={`/meshes/rooms/${room}`}
-				data={{ LinkA: next, LinkB: prev, images: images || image }} />
+				data={{ LinkA: next, LinkB: prev, images }} />
 			<Model url={`/meshes/rooms/plinths/plinth-${Math.floor(Math.random() * 3)}.glb`} />
 			{ d.sculpture
 				? <Model url={`/meshes/sculptures/${d.sculpture}`} />
