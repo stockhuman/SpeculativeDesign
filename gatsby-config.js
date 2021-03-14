@@ -4,11 +4,13 @@ module.exports = {
     title: 'Speculative Play'
   },
   plugins: [
+		'gatsby-plugin-image',
+		'gatsby-plugin-react-helmet',
 		'gatsby-plugin-sass',
+		'gatsby-plugin-sharp',
 		'gatsby-remark-copy-linked-files',
 		'gatsby-transformer-sharp',
-		'gatsby-plugin-sharp',
-		'gatsby-plugin-react-helmet',
+		'gatsby-transformer-remark',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
@@ -28,8 +30,7 @@ module.exports = {
 			options: {
 				maxWidth: 1080,
 			},
-		},
-		'gatsby-transformer-remark'
+		}
   ],
 	pathPrefix: `/site/sp` // for live.arthem.co/site/sp
 	// pathPrefix: `/new` // for staging
