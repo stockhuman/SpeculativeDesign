@@ -30,7 +30,7 @@ export function Controls({
 		return getPoi(phi, theta).add(ext).toArray()
 	}
 
-	const bind = useGesture(
+	useGesture(
 		{
 			onDrag: ({ dragging, velocities: [x, y] }) => {
 				if (dragging) {
@@ -50,8 +50,7 @@ export function Controls({
 		},
 		{ domTarget: gl.domElement }
 	)
-	useEffect(bind, [bind])
-	useEffect(() => void setDefaultCamera(camera.current), [])
+	useEffect(() => void setDefaultCamera(camera.current))
 	useFrame(() => camera.current.updateMatrixWorld())
 	useEffect(() => void set({ props: [distance, phi, theta], delay: 400 }), [
 		distance,

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link, { withPrefix } from 'gatsby-link'
 
-import { useNonsense } from './Nonsense'
+import { useNonsense } from '../../components/hooks/Nonsense'
 
 export default function HUD() {
 	const { nonsense, toggleNonsense } = useNonsense()
