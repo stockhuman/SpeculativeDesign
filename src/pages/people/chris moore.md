@@ -1,7 +1,7 @@
 ---
 path: '/people/chris-moore'
 name: 'Chris Moore'
-image: 'chris.jpg'
+image: '/people/chris.jpg'
 linkto: '/people/jess-marcotte'
 linkfrom: '/people/brian-greenspan'
 ---

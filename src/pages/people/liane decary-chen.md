@@ -1,7 +1,7 @@
 ---
 path: '/people/liane-decary-chen'
 name: 'Liane Decary-Chen'
-image: 'liane.jpg'
+image: '/people/liane.jpg'
 linkto: '/people/pippin Barr'
 linkfrom: '/people/jess-marcotte'
 ---

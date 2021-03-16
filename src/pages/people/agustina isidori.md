@@ -1,7 +1,7 @@
 ---
 path: '/people/agustina-isidori'
 name: 'Agustina Isidori'
-image: 'augustina.jpg'
+image: '/people/augustina.jpg'
 linkto: '/people/brian-greenspan'
 linkfrom: '/projects/love'
 ---

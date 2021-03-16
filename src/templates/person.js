@@ -10,7 +10,7 @@ export default function Template({ data }) {
 
 	return (
 		<Page title={person.frontmatter.name}>
-			<Viewport data={data.markdownRemark} images={[person.image]} />
+			<Viewport data={data.markdownRemark} images={[person.frontmatter.image]} />
 			<HUD />
 		</Page>
 	)
