@@ -15,11 +15,6 @@ exports.createPages = ({ actions, graphql }) => {
 
 	return graphql(`
 		{
-			allSitePage {
-				nodes {
-					path
-				}
-			}
 			allMarkdownRemark {
 				nodes {
 					frontmatter {
@@ -32,14 +27,6 @@ exports.createPages = ({ actions, graphql }) => {
 		if (res.errors) {
 			return Promise.reject(res.errors)
 		}
-
-		res.data.allSitePage.nodes.forEach((node) => {
-			const pagePath = node.path
-			createPage({
-				path: pagePath,
-				component: defaultTemplate,
-			})
-		})
 
 		res.data.allMarkdownRemark.nodes.forEach((node) => {
 			const pagePath = node.frontmatter.path
