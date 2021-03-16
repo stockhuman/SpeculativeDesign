@@ -15,10 +15,24 @@ $sw: 10px; // screen outline width (padding)
 .page {
 	article {
 		max-width: 70ch;
-		padding: 4em 1em 6em 1em;
-		margin: 0em auto 4em auto;
+		padding: 5rem 1em 7em 1em;
+		margin: 0 auto;
 	}
 	background: yellow;
 	min-height: 100vh;
 	cursor: auto;
+}
+
+.nn-grid {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	img {
+		display: block;
+		width: 100%;
+		&:first-of-type {
+			grid-column: 1 / span 2;
+		}
+	}
 }
