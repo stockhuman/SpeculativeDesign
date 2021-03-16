@@ -5,7 +5,7 @@ import { useNonsense } from '../../components/hooks/Nonsense'
 
 export default function HUD() {
 	const { nonsense, toggleNonsense } = useNonsense()
-	const logo = Math.floor(Math.random() * 30)
+	const logo = Math.floor(Math.random() * 29)
 	return (
 		<>
 			<Link to="/" id="logo">
