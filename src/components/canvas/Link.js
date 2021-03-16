@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { navigate, withPrefix } from 'gatsby'
 import { useLoader } from 'react-three-fiber'
 import { Text } from '@react-three/drei'
-import { MeshBasicMaterial } from 'three'
+import { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial'
 import { GLTFLoader } from 'three-stdlib'
 
 /**
@@ -46,7 +46,8 @@ export function LinkedModel ({ link = '/', url }) {
 	const scene = gltf.scene.clone(true)
 	let pos = [0,0,0]
 	scene.traverse(obj => {
-		obj.material = new MeshBasicMaterial({wireframe: true, visible})
+		let color = obj.material ? obj.material.color : 'yellow'
+		obj.material = new MeshBasicMaterial({wireframe: true, visible, color})
 		pos = obj.position
 	})
 

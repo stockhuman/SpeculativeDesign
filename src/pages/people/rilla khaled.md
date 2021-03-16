@@ -1,7 +1,7 @@
 ---
 path: '/people/rilla-khaled'
 name: 'Rilla Khaled'
-image: 'rilla.jpg'
+image: '/people/rilla.jpg'
 linkto: '/about'
 linkfrom: '/people/pippin Barr'
 ---

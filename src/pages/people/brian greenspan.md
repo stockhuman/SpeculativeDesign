@@ -1,7 +1,7 @@
 ---
 path: '/people/brian-greenspan'
 name: 'Brian Greenspan'
-image: 'brian.png'
+image: '/people/brian.png'
 linkto: '/people/chris-moore'
 linkfrom: '/people/agustina-isidori'
 ---

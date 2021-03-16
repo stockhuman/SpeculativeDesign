@@ -1,7 +1,7 @@
 ---
 path: '/people/jess-marcotte'
 name: 'Jess Marcotte'
-image: 'jess.jpg'
+image: '/people/jess.jpg'
 linkto: '/people/liane-decary-chen'
 linkfrom: '/people/chris-moore'
 ---

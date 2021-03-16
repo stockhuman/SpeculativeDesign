@@ -5,6 +5,11 @@
 	position: fixed;
 	width: 100vw;
 	top:0;
+	&.nn {
+		height: auto;
+		width: 100%;
+		position: absolute;
+	}
 }
 
 #nav-container.active+#viewport-container {

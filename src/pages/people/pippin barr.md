@@ -1,7 +1,7 @@
 ---
 path: '/people/pippin Barr'
 name: 'Pippin Barr'
-image: 'pippin.jpg'
+image: '/people/pippin.jpg'
 linkto: '/people/rilla-khaled'
 linkfrom: '/people/liane-decary-chen'
 ---

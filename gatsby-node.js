@@ -7,51 +7,44 @@
 
 const path = require('path')
 
-exports.createPages = ({actions, graphql}) => {
+exports.createPages = ({ actions, graphql }) => {
 	const { createPage } = actions
-	const projectTemplate = path.resolve('src/templates/project.jsx')
-	const personTemplate = path.resolve('src/templates/person.jsx')
-	const defaultTemplate = path.resolve('src/templates/page.jsx')
+	const projectTemplate = path.resolve('src/templates/project.js')
+	const personTemplate = path.resolve('src/templates/person.js')
+	const defaultTemplate = path.resolve('src/templates/page.js')
 
-	return graphql(`{
-		allMarkdownRemark {
-			edges {
-				node {
-					html
-					id
+	return graphql(`
+		{
+			allMarkdownRemark {
+				nodes {
 					frontmatter {
 						path
 					}
 				}
 			}
 		}
-	}`)
-	.then(res => {
+	`).then((res) => {
 		if (res.errors) {
 			return Promise.reject(res.errors)
 		}
 
-		res.data.allMarkdownRemark.edges.forEach(({node}) => {
+		res.data.allMarkdownRemark.nodes.forEach((node) => {
 			const pagePath = node.frontmatter.path
-			const layout = node.frontmatter.layout || 'index'
 
 			if (pagePath.startsWith('/people')) {
 				createPage({
 					path: pagePath,
-					layout,
-					component: personTemplate
+					component: personTemplate,
 				})
 			} else if (pagePath.startsWith('/project')) {
 				createPage({
 					path: pagePath,
-					layout,
-					component: projectTemplate
+					component: projectTemplate,
 				})
-			}	else {
+			} else {
 				createPage({
 					path: pagePath,
-					layout,
-					component: defaultTemplate
+					component: defaultTemplate,
 				})
 			}
 		})

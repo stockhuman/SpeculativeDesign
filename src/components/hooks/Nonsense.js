@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useCallback } from 'react'
-import { useLocalStorage } from '../data/useLocalStorage'
+import { useLocalStorage } from './useLocalStorage'
 
 export const NonsenseContext = createContext()
 
@@ -17,7 +17,7 @@ export function useNonsense () {
 	const toggleNonsense = useCallback(() => {
 		if (nonsenseValue) setNonsense(false)
 		else setNonsense(true)
-	}, [nonsenseValue])
+	}, [setNonsense, nonsenseValue])
 	return {
 		nonsense: nonsenseValue,
 		toggleNonsense

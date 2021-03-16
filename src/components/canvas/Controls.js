@@ -30,7 +30,7 @@ export function Controls({
 		return getPoi(phi, theta).add(ext).toArray()
 	}
 
-	const bind = useGesture(
+	useGesture(
 		{
 			onDrag: ({ dragging, velocities: [x, y] }) => {
 				if (dragging) {
@@ -47,11 +47,16 @@ export function Controls({
 				const d = MathUtils.clamp(k * distance, minDist, maxDist)
 				set({ props: [d, phi, theta] })
 			},
+			onWheel: ({ velocities: [, y] }) => {
+				const [distance, phi, theta] = props.get()
+				const k = 1 + (Math.sign(y) * Math.min(8 * Math.abs(y), 20)) / (20 + 10)
+				const d = MathUtils.clamp(k * distance, minDist, maxDist)
+				set({ props: [d, phi, theta] })
+			},
 		},
 		{ domTarget: gl.domElement }
 	)
-	useEffect(bind, [bind])
-	useEffect(() => void setDefaultCamera(camera.current), [])
+	useEffect(() => void setDefaultCamera(camera.current))
 	useFrame(() => camera.current.updateMatrixWorld())
 	useEffect(() => void set({ props: [distance, phi, theta], delay: 400 }), [
 		distance,
