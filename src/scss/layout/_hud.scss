@@ -23,6 +23,11 @@
 	}
 }
 
+// no-nonsese title on yellow
+.nn #logo .title {
+	color: rgba(31, 31, 31, 0.719);
+}
+
 .social-container {
 	position: fixed;
 	bottom: $sw *2;
@@ -57,7 +62,7 @@
 	margin: 0;
 	border-radius: $br;
 	padding: 0.5rem;
-	background: linear-gradient(15deg, #5a9384, #1f4d87);
+	background: linear-gradient(15deg, #539986, #0e325e);
 	background-size: 400% 400%;
 	animation: ResumeNS 5s ease infinite;
 	border: none;
@@ -67,9 +72,19 @@
 	}
 }
 
-
 @keyframes ResumeNS {
 	0%{background-position:58% 0%}
 	50%{background-position:43% 100%}
 	100%{background-position:58% 0%}
+}
+
+// no-nonsense buttons
+.nn-nav {
+	@extend button;
+	@extend .nonsense-btn;
+	position: unset;
+	margin: 1rem 1rem 2rem 0;
+	background: linear-gradient(15deg, #aa2121, #c7a5bd);
+	background-size: 400% 400%;
+	animation: none;
 }
