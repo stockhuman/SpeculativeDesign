@@ -2,13 +2,11 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { Stars, Sky } from '@react-three/drei'
 
-import HUD from '../templates/layout/HUD'
+// Page Structure
 import Page from '../templates/layout/Page'
-import Viewport from '../templates/layout/Viewport'
-
+import HUD from '../templates/layout/HUD'
 
 import Canvas from '../components/canvas/Canvas'
-import { LinkedModel } from '../components/canvas/Link'
 import { useNonsense } from '../components/hooks/Nonsense'
 
 import '../scss/main.scss'
@@ -22,28 +20,33 @@ const IndexPage = () => {
 	// The stop nonsense button
 	if (!nonsense) {
 		return (
-			<main className="page">
-				<article>
-					<Link to={'/about/'} className="nn-nav">
-						About
-					</Link>
-					<h1>Welcome to Speculative Play!</h1>
-				</article>
-			</main>
+			<Page title="Welcome">
+				<main className="page">
+					<article>
+						<Link to={'/about/'} className="nn-nav">
+							About
+						</Link>
+						<h1>Welcome to Speculative Play!</h1>
+					</article>
+				</main>
+				<HUD />
+			</Page>
 		)
 	}
 
 	return (
-		<Page title={'doot'}>
-			<Viewport>
+		<Page title="Welcome">
+			<main id="viewport">
 				<Canvas center={[0, 1.3, 8]}>
 					<Sky inclination={Math.random()} />
 					<Stars />
 					<ambientLight intensity={1} />
-					{/* <LinkedModel link={'/about/'} url={'meshes/index/SP_index8.glb'} />
-			<spotLight intensity={2} position={[3, 4, 10]} angle={2} penumbra={2} /> */}
+					<fog args={['#cc7b32', 16, 20]} />
+					<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -7, 0]}>
+						<planeBufferGeometry args={[1000, 1000]} />
+					</mesh>
 				</Canvas>
-			</Viewport>
+			</main>
 			<HUD />
 		</Page>
 	)
