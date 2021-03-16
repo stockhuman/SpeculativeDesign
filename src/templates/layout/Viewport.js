@@ -13,6 +13,8 @@ export default function Viewport({ data, images, children }) {
 
 	const title = d.title || d.name
 
+	console.log(images);
+
 	// gets the link to previous and next rooms
 	const next = d.linkto
 	const prev = d.linkfrom
@@ -30,9 +32,17 @@ export default function Viewport({ data, images, children }) {
 					</Link>
 					<h1>{title}</h1>
 					<div dangerouslySetInnerHTML={{ __html: data.html }} />
-					{images.map((img) => {
-						return <img src={withPrefix(`/img/${img}`)} key={img} />
-					})}
+					<div className="nn-grid">
+						{images.map((img) => {
+							return (
+								<img
+									src={withPrefix(`/img/${img}`)}
+									key={img}
+									className="nn-image"
+								/>
+							)
+						})}
+					</div>
 				</article>
 			</main>
 		)
