@@ -8,7 +8,7 @@ import '../../scss/main.scss'
 
 import Menu from './Menu'
 
-export default function Page ({ title, description = '', children }) {
+export default function Page({ title, description = '', children }) {
 	let pageTitle = title ? `${title} • Speculative Play` : 'Speculative Play'
 
 	const { nonsense } = useNonsense()
@@ -19,7 +19,7 @@ export default function Page ({ title, description = '', children }) {
 				<meta charset="utf-8" />
 				<meta
 					name="viewport"
-					content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
+					content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"
 				/>
 				<meta name="description" content={description} />
 				<link
@@ -31,7 +31,9 @@ export default function Page ({ title, description = '', children }) {
 				<style>{Fonts}</style>
 			</Helmet>
 			<Menu />
-			<div id="viewport-container" className={nonsense ? '' : 'nn'}>{children}</div>
+			<div id="viewport-container" className={nonsense ? '' : 'nn'}>
+				{children}
+			</div>
 		</>
 	)
 }
