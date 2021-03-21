@@ -13,8 +13,6 @@ export default function Viewport({ data, images, children }) {
 
 	const title = d.title || d.name
 
-	console.log(images);
-
 	// gets the link to previous and next rooms
 	const next = d.linkto
 	const prev = d.linkfrom
