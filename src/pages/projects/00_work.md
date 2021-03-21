@@ -19,8 +19,8 @@ The robots are here! No more work! It’s great! Is it great?! Wait! You feel ap
 
 It is as if you were doing work is a game set in a near future in which robot and software labour has led to mass unemployment for humans. In this new reality, humans are largely expected to live in leisure or exercising their creativity, but there is an issue around a sense of worth and productivity that needs to be addressed. This software addresses that need through the creation of a simulation of conventional “computer work” that might be imagined in an office setting. The user is able to type up documents and emails and interact with conventional user-interface elements under instructions from the computer in order to win “work points” and promotions. This simulated work is intended to provide the validation of work in a workless world.
 
-Experience It is as if you were doing work in your browser
+[Experience It is as if you were doing work in your browser](https://pippinbarr.github.io/itisasifyouweredoingwork/)
 
-View the It is as if you were doing work code and process repository
+[View the It is as if you were doing work code and process repository](https://github.com/pippinbarr/itisasifyouweredoingwork)
 
-View the It is as if you were doing work press kit
+[View the It is as if you were doing work press kit](https://github.com/pippinbarr/itisasifyouweredoingwork/tree/master/press)
