@@ -10,7 +10,7 @@ export default function Template({ data, children }) {
 
 	return (
 		<Page title={copy.frontmatter.title}>
-			<Viewport>
+			<Viewport data={copy}>
 				{ children }
 			</Viewport>
 			<HUD />
