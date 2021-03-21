@@ -39,7 +39,7 @@ images: [
 ]
 ```
 
-`images` is relative to `src/assets/img`, so that updated content is renamed on build (and thus cache-busted).
+`images` is relative to `static/img/`, for ease of migration & asset management. Note the site's dynamic logos are similarly in `static/logos/`.
 
 
 `linkto`, `linkfrom` and `linkalt` are paths that populate in page links, forming a circular ring around the website. Specifying these allows for editorial control over the order of what one sees, presuming they're navigating from the home page.
