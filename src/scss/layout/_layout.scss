@@ -29,6 +29,7 @@ $sw: 10px; // screen outline width (padding)
 	grid-template-columns: 1fr 1fr;
 	gap: 1rem;
 	img {
+		border-radius: $br / 2;
 		display: block;
 		width: 100%;
 		&:first-of-type {
