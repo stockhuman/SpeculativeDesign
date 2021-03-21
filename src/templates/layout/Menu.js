@@ -2,7 +2,16 @@ import React, { useState } from 'react'
 import Link, { withPrefix } from 'gatsby-link'
 import { useStaticQuery, graphql } from 'gatsby'
 
-export default function Menu () {
+function setBG(path = '') {
+	if (path == '') {
+		document.body.style.backgroundImage = ''
+	} else {
+		let fp = withPrefix('img/' + path)
+		document.body.style.backgroundImage = `url(${fp})`
+	}
+}
+
+export default function Menu() {
 	const [toggleState, set] = useState(false)
 	const data = useStaticQuery(graphql`
 		query MenuItems {
@@ -54,11 +63,27 @@ export default function Menu () {
 	})
 
 	const peopleList = people.map((person, index) => {
-		return <Link to={person.path} key={index}>{person.name}</Link>
+		return (
+			<Link
+				to={person.path}
+				key={index}
+			>
+				{person.name}
+			</Link>
+		)
 	})
 
 	const projectList = projects.map((project, index) => {
-		return <Link to={project.path} key={index}>{project.title}</Link>
+		return (
+			<Link
+				onPointerEnter={() => setBG(project.images[0])}
+				onPointerLeave={() => setBG('')}
+				to={project.path}
+				key={index}
+			>
+				{project.title}
+			</Link>
+		)
 	})
 
 	return (
@@ -82,8 +107,9 @@ export default function Menu () {
 			<div
 				id="hamburger"
 				onClick={() => (toggleState ? set(false) : set(true))}
+				title="toggle the nav"
 			>
-				<img src={withPrefix(`/icons/hamburger.svg`)} />
+				<img src={withPrefix(`/icons/hamburger.svg`)} alt="a hamburger icon"/>
 			</div>
 		</div>
 	)

@@ -6,15 +6,16 @@ body {
 	font-weight: normal;
 	word-wrap: break-word;
 	font-kerning: normal;
-	-moz-font-feature-settings: "kern", "liga", "clig", "calt";
-	-ms-font-feature-settings: "kern", "liga", "clig", "calt";
-	-webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-	font-feature-settings: "kern", "liga", "clig", "calt";
+	-moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+	-ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+	-webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+	font-feature-settings: 'kern', 'liga', 'clig', 'calt';
 	@extend %system-font;
 	cursor: all-scroll;
+
+	background-repeat: repeat-y;
+	background-size: 50%;
 }
-
-
 
 ::-moz-selection {
 	// background-color: #b3d4fc;
@@ -29,10 +30,10 @@ body {
 }
 
 ::-webkit-input-placeholder {
-  color: inherit;
-  opacity: .54;
+	color: inherit;
+	opacity: 0.54;
 }
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  font: inherit;
+	-webkit-appearance: button;
+	font: inherit;
 }
