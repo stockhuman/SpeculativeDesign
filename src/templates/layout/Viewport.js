@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Link, withPrefix } from 'gatsby'
 
 // Import r3f Canvas, to render a 3D scene
@@ -57,7 +57,9 @@ export default function Viewport({ data, images = [], children }) {
 
 	return (
 		<main id="viewport">
-			<Canvas>{children}</Canvas>
+			<Canvas>
+				<Suspense fallback={null}>{children}</Suspense>
+			</Canvas>
 		</main>
 	)
 }
