@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { Stars, Sky } from '@react-three/drei'
+import { Environment } from '@react-three/drei'
 
 // Page Structure
 import Page from '../templates/layout/Page'
@@ -10,6 +10,7 @@ import Canvas from '../components/canvas/Canvas'
 import { useNonsense } from '../components/hooks/Nonsense'
 
 import '../scss/main.scss'
+import HomeCanvas from '../components/canvas/scenes/home'
 
 // note the path is relative to the 'static' directory
 // at the root of the project. .glTF files (or binary, in this case)
@@ -38,13 +39,8 @@ const IndexPage = () => {
 		<Page title="Welcome">
 			<main id="viewport">
 				<Canvas center={[0, 1.3, 8]}>
-					<Sky inclination={Math.random()} />
-					<Stars />
-					<ambientLight intensity={1} />
-					<fog args={['#cc7b32', 16, 20]} />
-					<mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -7, 0]}>
-						<planeBufferGeometry args={[1000, 1000]} />
-					</mesh>
+					<Environment preset="sunset" />
+					<HomeCanvas />
 				</Canvas>
 			</main>
 			<HUD />
