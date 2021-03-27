@@ -12,6 +12,7 @@ export const NonsenseProvider = props => {
 	)
 }
 
+// Note, this will suspend (useEffect within LocalStorage hook)
 export function useNonsense () {
 	const [ nonsenseValue, setNonsense ] = useContext(NonsenseContext)
 	const toggleNonsense = useCallback(() => {
