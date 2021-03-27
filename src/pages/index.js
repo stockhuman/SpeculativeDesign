@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
 import { Environment } from '@react-three/drei'
+import { useAsset } from 'use-asset'
 
 // Page Structure
 import Page from '../templates/layout/Page'
@@ -17,6 +18,9 @@ import HomeCanvas from '../components/canvas/scenes/home'
 // are not natively supported by webpack, and cannot be imported as the css above.
 const IndexPage = () => {
 	const { nonsense } = useNonsense()
+
+	// see https://github.com/pmndrs/drei/issues/332#issuecomment-808119185
+	useEffect(() => () => useAsset.clear(), [])
 
 	// The stop nonsense button
 	if (!nonsense) {
