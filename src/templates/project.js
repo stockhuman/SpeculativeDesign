@@ -1,12 +1,15 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import { Text } from '@react-three/drei'
+import { Text, Environment } from '@react-three/drei'
+import { useAsset } from 'use-asset'
 
 import HUD from './layout/HUD'
 import Page from './layout/Page'
 import Viewport from './layout/Viewport'
 
 import Cadre from '../components/canvas/Cadre'
+import Model from '../components/canvas/Model'
+
 
 function stripHTML(html) {
 	let tmp = document.createElement('div')
@@ -17,7 +20,7 @@ function stripHTML(html) {
 export default function Template({ data }) {
 	const fm = data.markdownRemark.frontmatter
 
-	console.log(data.markdownRemark.frontmatter)
+	useEffect(() => () => useAsset.clear(), [])
 
 	const html = stripHTML(data.markdownRemark.html)
 
@@ -58,6 +61,8 @@ export default function Template({ data }) {
 					<meshNormalMaterial depthWrite={false} depthTest={false} side={2} />
 					{html}
 				</Text>
+				<Environment preset="sunset" />
+				{fm.sculpture ? <Model url={`/sculptures/${fm.sculpture}`} /> : null}
 				{pics}
 			</Viewport>
 			<HUD />
