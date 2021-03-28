@@ -9,7 +9,7 @@ import { useSpring, a } from '@react-spring/three'
 
 export function Controls({
 	speed = 5,
-	maxDist = 8,
+	maxDist = 10,
 	minDist = 1.5,
 	distance = 5,
 	phi = Math.PI / 2,
