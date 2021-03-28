@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { withPrefix } from 'gatsby'
 import { Font } from 'three/src/extras/core/Font'
 
@@ -8,7 +8,6 @@ export default function Text({
 	options = { position: [0, 0, 0] },
 	props,
 }) {
-	const ref = useRef()
 	const [typeface, setTypeface] = useState(null)
 
 	useEffect(() => {
@@ -24,7 +23,6 @@ export default function Text({
 
 	return typeface ? (
 		<mesh
-			ref={ref}
 			position={options.position}
 			rotation={options.rotation || [0, 0, 0]}
 		>
