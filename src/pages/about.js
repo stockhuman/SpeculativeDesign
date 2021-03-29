@@ -7,6 +7,8 @@ import Page from '../templates/layout/Page'
 import Canvas from '../components/canvas/Canvas'
 import HUD from '../templates/layout/HUD'
 
+import AboutPage from '../components/canvas/scenes/about'
+
 // Context hook
 import { useNonsense } from '../components/hooks/Nonsense'
 import { Text } from '@react-three/drei'
@@ -25,7 +27,6 @@ Play has traditionally been one way in which people have felt comfortable in per
 In our work, we draw these classes of designed experience together: We explore the terrain of critical and speculative design in a playful, interactive and participatory manner, demanding interactors to engage, to question, and to be present.\n
 
 Some of the more public activities that we engage in as part of this work that you should look out for are design jams and rapid prototyping sessions, casting calls, playtests, and exhibitions.`
-
 
 const About = () => {
 	const { nonsense } = useNonsense()
@@ -61,14 +62,12 @@ const About = () => {
 	return (
 		<Page title="about">
 			<main id="viewport">
-				<Canvas center={[0, 1.3, 0]}>
+				<Canvas center={[0, 1.3, 0]} background={'#081529'}>
 					<Text maxWidth={4} fontSize={0.2}>
-						<meshNormalMaterial
-							depthWrite={false}
-							depthTest={false}
-						/>
+						<meshNormalMaterial depthWrite={false} depthTest={false} side={2} />
 						{aboutText}
 					</Text>
+					<AboutPage />
 				</Canvas>
 			</main>
 			<HUD />
