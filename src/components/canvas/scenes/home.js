@@ -1,4 +1,4 @@
-import React, { useRef, Suspense, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Stars, Sky, useGLTF } from '@react-three/drei'
 import { useFrame } from 'react-three-fiber'
 import { withPrefix, navigate } from 'gatsby'
@@ -23,7 +23,7 @@ export default function HomeCanvas() {
 	// the primary group was mostly generated with the gltfjsx utility.
 	// see https://github.com/pmndrs/gltfjsx
 	return (
-		<Suspense fallback={null}>
+		<>
 			<Sky inclination={Math.random()} />
 			<Stars />
 			<ambientLight intensity={0.2} />
@@ -73,7 +73,7 @@ export default function HomeCanvas() {
 					<meshStandardMaterial emissive={'navy'} />
 				</mesh>
 			</group>
-		</Suspense>
+		</>
 	)
 }
 
