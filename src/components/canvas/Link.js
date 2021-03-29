@@ -84,7 +84,12 @@ export function Door(props) {
 				)}
 			</mesh>
 			<mesh geometry={nodes.DoorFace.geometry} />
-			{hovered ? <Text color="white">Navigate to {props.link}</Text> : null}
+			{hovered ? (
+				<Text color="white">
+					<meshStandardMaterial depthWrite={false} depthTest={false} side={2} />
+					Navigate to {props.link}
+				</Text>
+			) : null}
 		</group>
 	)
 }
