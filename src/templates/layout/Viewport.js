@@ -7,7 +7,12 @@ import Canvas from '../../components/canvas/Canvas'
 // context hook, to be aware of "global" state
 import { useNonsense } from '../../components/hooks/Nonsense'
 
-export default function Viewport({ data, images = [], children }) {
+export default function Viewport({
+	data,
+	images = [],
+	children,
+	background,
+}) {
 	const { nonsense } = useNonsense()
 
 	let d = data
@@ -57,7 +62,7 @@ export default function Viewport({ data, images = [], children }) {
 
 	return (
 		<main id="viewport">
-			<Canvas>
+			<Canvas background={background}>
 				<Suspense fallback={null}>{children}</Suspense>
 			</Canvas>
 		</main>
