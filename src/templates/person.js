@@ -12,7 +12,11 @@ export default function Template({ data }) {
 
 	return (
 		<Page title={person.frontmatter.name}>
-			<Viewport data={data.markdownRemark} images={[person.frontmatter.image]}>
+			<Viewport
+				data={data.markdownRemark}
+				images={[person.frontmatter.image]}
+				background={'#ebf7f3'}
+			>
 				<Cadre img={person.frontmatter.image} />
 			</Viewport>
 			<HUD />
