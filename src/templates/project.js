@@ -1,7 +1,6 @@
-import React, { useMemo, useEffect } from 'react'
+import React, { useMemo } from 'react'
 import { graphql } from 'gatsby'
-import { Text, Environment } from '@react-three/drei'
-import { useAsset } from 'use-asset'
+import { Text } from '@react-three/drei'
 
 import HUD from './layout/HUD'
 import Page from './layout/Page'
@@ -9,6 +8,7 @@ import Viewport from './layout/Viewport'
 
 import Cadre from '../components/canvas/Cadre'
 import Model from '../components/canvas/Model'
+import Room from '../components/canvas/scenes/room'
 
 
 function stripHTML(html) {
@@ -19,11 +19,9 @@ function stripHTML(html) {
 
 export default function Template({ data }) {
 	const fm = data.markdownRemark.frontmatter
-
-	useEffect(() => () => useAsset.clear(), [])
-
 	const html = stripHTML(data.markdownRemark.html)
 
+	// arranges images listed in markdown as 3D image planes
 	const Pictures = () => {
 		let pics = []
 
@@ -38,8 +36,6 @@ export default function Template({ data }) {
 				animated: true,
 			}
 		})
-
-		console.log(pics)
 
 		return pics.map((pic) => (
 			<Cadre
@@ -61,9 +57,10 @@ export default function Template({ data }) {
 					<meshNormalMaterial depthWrite={false} depthTest={false} side={2} />
 					{html}
 				</Text>
-				<Environment preset="sunset" />
+				<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
 				{fm.sculpture ? <Model url={`/sculptures/${fm.sculpture}`} /> : null}
 				{pics}
+				<Room to={fm.linkto} from={fm.linkfrom}/>
 			</Viewport>
 			<HUD />
 		</Page>
