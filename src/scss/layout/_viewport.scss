@@ -21,7 +21,9 @@
 	width: 100vw;
 	height: 100vh;
 	text-align: center;
-	background: blue;
+	background: #1f060c;
+	position: fixed;
+	top: -120px;
 	span {
 		display: block;
 		transform: translateY(50vh);
