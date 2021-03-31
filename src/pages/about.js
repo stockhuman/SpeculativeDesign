@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, withPrefix } from 'gatsby'
 
 // Page Structure
 import Page from '../templates/layout/Page'
@@ -52,6 +52,12 @@ const About = () => {
 						</Link>
 						<h1>About</h1>
 						<div>{aboutText}</div>
+						<div className="nn-grid">
+							<img
+								src={withPrefix('/img/IMG_6839.jpg')}
+								style={{ width: '100%' }}
+							/>
+						</div>
 					</article>
 				</main>
 				<HUD />
@@ -63,7 +69,11 @@ const About = () => {
 		<Page title="about">
 			<main id="viewport">
 				<Canvas center={[0, 1.3, 0]} background={'#081529'}>
-					<Text maxWidth={4} fontSize={0.2}>
+					<Text
+						maxWidth={4}
+						fontSize={0.2}
+						font={withPrefix('/fonts/UniNeue-HeavyItalic.woff')}
+					>
 						<meshNormalMaterial depthWrite={false} depthTest={false} side={2} />
 						{aboutText}
 					</Text>

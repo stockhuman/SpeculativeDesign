@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link } from 'gatsby'
+import { Link, withPrefix } from 'gatsby'
 import { Environment } from '@react-three/drei'
 import { useAsset } from 'use-asset'
 
@@ -32,6 +32,12 @@ const IndexPage = () => {
 							About
 						</Link>
 						<h1>Welcome to Speculative Play!</h1>
+						<div className="nn-grid">
+							<img
+								src={withPrefix('/img/bboard.jpg')}
+								style={{ width: '100%' }}
+							/>
+						</div>
 					</article>
 				</main>
 				<HUD />

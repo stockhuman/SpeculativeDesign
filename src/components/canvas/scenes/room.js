@@ -9,7 +9,8 @@ export default function Room({ to, from, alt }) {
 				<planeBufferGeometry args={[100, 100]} />
 			</mesh> */}
 			<fog color={'#111'} />
-			<ambientLight intensity={0.8} />
+			<ambientLight intensity={0.3} />
+			<pointLight intensity={1.3} />
 			{to ? (
 				<Door
 					link={to}

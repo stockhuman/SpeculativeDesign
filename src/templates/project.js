@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, withPrefix } from 'gatsby'
 import { Text } from '@react-three/drei'
 
 import HUD from './layout/HUD'
@@ -9,7 +9,6 @@ import Viewport from './layout/Viewport'
 import Cadre from '../components/canvas/Cadre'
 import Model from '../components/canvas/Model'
 import Room from '../components/canvas/scenes/room'
-
 
 function stripHTML(html) {
 	let tmp = document.createElement('div')
@@ -52,15 +51,22 @@ export default function Template({ data }) {
 
 	return (
 		<Page title={fm.title} description={html}>
-			<Viewport data={data.markdownRemark} images={fm.images}>
-				<Text maxWidth={4.5} fontSize={0.2}>
+			<Viewport data={data.markdownRemark} images={fm.images} background={fm.room}>
+				<Text
+					maxWidth={4.5}
+					fontSize={0.2}
+					font={withPrefix(
+						'/fonts/UniNeue-HeavyItalic.woff'
+					)}
+				>
 					<meshNormalMaterial depthWrite={false} depthTest={false} side={2} />
 					{html}
 				</Text>
-				<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-				{fm.sculpture ? <Model url={`/sculptures/${fm.sculpture}`} /> : null}
+				{fm.sculpture ? (
+					<Model url={`/sculptures/${fm.sculpture}`} position={[-2, 0, 4]} />
+				) : null}
 				{pics}
-				<Room to={fm.linkto} from={fm.linkfrom}/>
+				<Room to={fm.linkto} from={fm.linkfrom} />
 			</Viewport>
 			<HUD />
 		</Page>
