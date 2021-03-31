@@ -17,6 +17,25 @@ $sw: 10px; // screen outline width (padding)
 		max-width: 70ch;
 		padding: 5rem 1em 7em 1em;
 		margin: 0 auto;
+		@include media('>=desktop') {
+			display: grid;
+			gap: 1rem;
+			grid-template-columns: 1fr 70ch;
+			max-width: 1400px;
+
+			& > * {
+				grid-column: 2;
+			}
+
+			.nn-nav {
+				margin: 0;
+			}
+
+			.nn-grid {
+				grid-column: 1;
+				grid-row: 1 / span 6;
+			}
+		}
 	}
 	background: yellow;
 	min-height: 100vh;
