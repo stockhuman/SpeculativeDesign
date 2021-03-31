@@ -1,6 +1,7 @@
 ---
 path: '/projects/mono-orifice'
 title: 'Mono Orifice™'
+room: '#051336'
 linkto: '/projects/deep-time-jam'
 linkfrom: '/projects/drift-workshop'
 images: ['orifice/0.png']
