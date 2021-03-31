@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { navigate, withPrefix } from 'gatsby'
-import { Text, useGLTF } from '@react-three/drei'
+import { useGLTF, Html } from '@react-three/drei'
 import { useFrame } from 'react-three-fiber'
 import { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial'
 /**
@@ -13,11 +13,13 @@ export function LinkedModel({ link = '/', url, ...props }) {
 	const [hovered, setVisibility] = useState(false)
 
 	const scene = gltf.scene.clone(true)
-	let pos = [0, 0, 0]
 	scene.traverse((obj) => {
 		let color = obj.material ? obj.material.color : 'yellow'
-		obj.material = new MeshBasicMaterial({ wireframe: true, visible: hovered, color })
-		pos = obj.position
+		obj.material = new MeshBasicMaterial({
+			wireframe: true,
+			visible: hovered,
+			color,
+		})
 	})
 
 	const group = useRef()
@@ -44,11 +46,19 @@ export function LinkedModel({ link = '/', url, ...props }) {
 		>
 			<primitive object={gltf.scene} />
 			<primitive object={scene} />
-
 			{hovered ? (
-				<Text color="white" position={pos}>
+				<Html
+					transform
+					sprite
+					style={{
+						color: 'white',
+						background: 'black',
+						fontSize: `8px`,
+						pointerEvents: 'none',
+					}}
+				>
 					Navigate to {link}
-				</Text>
+				</Html>
 			) : null}
 		</group>
 	)
@@ -78,17 +88,25 @@ export function Door(props) {
 			</mesh>
 			<mesh geometry={nodes.Door.geometry}>
 				{hovered ? (
-					<meshStandardMaterial color="#d2e63e" />
+					<meshPhysicalMaterial color={'#f2d0ce'} roughness={0.3} />
 				) : (
 					<meshNormalMaterial />
 				)}
 			</mesh>
 			<mesh geometry={nodes.DoorFace.geometry} />
 			{hovered ? (
-				<Text color="white">
-					<meshStandardMaterial depthWrite={false} depthTest={false} side={2} />
+				<Html
+					transform
+					sprite
+					style={{
+						color: 'white',
+						background: 'black',
+						fontSize: `6px`,
+						pointerEvents: 'none',
+					}}
+				>
 					Navigate to {props.link}
-				</Text>
+				</Html>
 			) : null}
 		</group>
 	)
