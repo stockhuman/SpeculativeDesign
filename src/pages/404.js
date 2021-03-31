@@ -11,7 +11,7 @@ import Text from '../components/canvas/Text'
 const NotFoundPage = () => (
 	<Page title="404">
 		<main id="viewport">
-			<Canvas center={[0, 0, 0]}>
+			<Canvas center={[0, 0, 0]} background="#c9534b">
 				<mesh onClick={() => navigate('/')} position={[0, 0, 0]}>
 					<planeBufferGeometry args={[20, 20]} />
 					<meshBasicMaterial visible={false} />
@@ -24,7 +24,7 @@ const NotFoundPage = () => (
 						color: 'white',
 					}}
 					size={30}
-          height={2}
+					height={2}
 					bevelEnabled={true}
 					bevelThickness={3}
 					bevelSize={5}
