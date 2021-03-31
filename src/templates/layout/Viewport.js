@@ -42,7 +42,7 @@ export default function Viewport({
 						</Link>
 					) : null}
 
-					<h1>{title || 'lol'}</h1>
+					<h1>{title}</h1>
 					<div dangerouslySetInnerHTML={{ __html: data.html }} />
 					<div className="nn-grid">
 						{images.map((img) => {
