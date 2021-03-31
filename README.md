@@ -28,6 +28,7 @@ title: 'the page title'
 linkto: '/projects/drift-workshop'
 linkfrom: '/about'
 linkalt: ''
+room: '#hexcod' # optional room background to complement art
 images: [
 	'work/About.png',
 	'work/Break.png',
