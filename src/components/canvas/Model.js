@@ -6,7 +6,7 @@ import { useGLTF } from '@react-three/drei'
  * Drastically simplified Model importer no longer takes custom material parameters
  * @param {string} url The path to a .glb, .gltf file to load
  */
-export default function Model({ url }) {
+export default function Model({ url, ...props }) {
 	const { scene } = useGLTF(withPrefix(url))
 	useMemo(() => {
 		scene.traverse((obj) => {
@@ -16,5 +16,5 @@ export default function Model({ url }) {
 			}
 		})
 	})
-	return <primitive object={scene} />
+	return <primitive object={scene} {...props} />
 }
