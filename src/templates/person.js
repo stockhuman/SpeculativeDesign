@@ -6,6 +6,7 @@ import Page from './layout/Page'
 import Viewport from './layout/Viewport'
 
 import Cadre from '../components/canvas/Cadre'
+import { Door } from '../components/canvas/Link'
 import { Text } from '@react-three/drei'
 
 function stripHTML(html) {
@@ -35,6 +36,16 @@ export default function Template({ data }) {
 					{html}
 				</Text>
 				<Cadre img={person.frontmatter.image} position={[2, 2, 2]} />
+				<Door
+					link={person.frontmatter.linkto}
+					position={[-5, 0, 0.4]}
+					rotation={[Math.random(), Math.random(), Math.random()]}
+				/>
+				<Door
+					link={person.frontmatter.linkfrom}
+					position={[5, 0, 3]}
+					rotation={[Math.random(), Math.random(), Math.random()]}
+				/>
 			</Viewport>
 			<HUD />
 		</Page>
