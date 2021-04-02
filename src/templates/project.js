@@ -30,7 +30,7 @@ export default function Template({ data }) {
 			pics[i] = {
 				src: img,
 				key: i,
-				pos: [rand(-5, 5), rand(-3, 2), -1.5],
+				pos: [rand(-5, 5), rand(-4, 3), -3],
 				rot: [rand(-5, 5), rand(-5, 5), 0],
 				animated: true,
 			}
