@@ -3,6 +3,7 @@ import { navigate, withPrefix } from 'gatsby'
 import { useGLTF, Html } from '@react-three/drei'
 import { useFrame } from 'react-three-fiber'
 import { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial'
+
 /**
  * Creates a navigable link given a path and a GLTF file
  * @param {string} link the page to navigate to
