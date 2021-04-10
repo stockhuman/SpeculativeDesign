@@ -9,10 +9,17 @@ export default function Template({ data, children }) {
 	const copy = data.markdownRemark
 
 	return (
-		<Page title={copy.frontmatter.title}>
-			<Viewport data={copy}>
-				{ children }
-			</Viewport>
+		<Page title={copy.frontmatter.title} force2D>
+			{children ? (
+				<Viewport data={copy}>{children}</Viewport>
+			) : (
+				<main className="page">
+					<article>
+						<h1>{copy.frontmatter.title}</h1>
+						<div dangerouslySetInnerHTML={{ __html: copy.html }} />
+					</article>
+				</main>
+			)}
 			<HUD />
 		</Page>
 	)

@@ -8,10 +8,16 @@ import '../../scss/main.scss'
 
 import Menu from './Menu'
 
-export default function Page({ title, description = '', children }) {
+export default function Page({ title, description = '', force2D, children }) {
 	let pageTitle = title ? `${title} • Speculative Play` : 'Speculative Play'
 
 	const { nonsense } = useNonsense()
+
+	// ignore above value if force2D is defined (used in bibliography via page template),
+	// this removes the fixed viewport, allowing text overflow and thus scrolling,
+	// regardless of the actual nonsense value. Navigating to forced 2D layouts thus
+	// does not interfere with any previous settings upon navigating out.
+	const nnClass = force2D ? 'nn' : nonsense ? '' : 'nn'
 
 	return (
 		<>
@@ -31,7 +37,7 @@ export default function Page({ title, description = '', children }) {
 				<style>{Fonts}</style>
 			</Helmet>
 			<Menu />
-			<div id="viewport-container" className={nonsense ? '' : 'nn'}>
+			<div id="viewport-container" className={nnClass}>
 				{children}
 			</div>
 		</>
