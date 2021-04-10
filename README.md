@@ -54,3 +54,10 @@ npm run build
 ```
 
 Note that `gatsby-config.js` contains the `pathPrefix` field, which should be set if the site is to be hosted in a sub directory.
+
+Permission errors, if any, can usually be resolved by deleting the `.cache` folder at the root of the project.
+
+## Understanding the source
+The entire project is built with modern "[JSX](https://reactjs.org/docs/introducing-jsx.html)", which when developing looks like XML embedded into javascript. Things like `<HUD />` actually represent a number of real HTML entities created in js, componentized for easy reuse.
+
+Additionally, Three.js, the popular 3D library that renders the main viewport, is also expressed declaratively through JSX using [react-three-fiber](https://github.com/pmndrs/react-three-fiber). _r3f_ provides a bridge between the usually imperative code for three and the atomized and decalrative style found in React. Note that all Three objects can be expressed as _r3f_ JSX decalrations, but must exist within the Canvas.
