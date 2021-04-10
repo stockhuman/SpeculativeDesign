@@ -1,5 +1,6 @@
 import React from 'react'
 import { LinkedModel } from '../Link'
+import { Stars } from '@react-three/drei'
 
 export default function AboutScene() {
 	return (
@@ -28,8 +29,9 @@ export default function AboutScene() {
 				link={'/projects/it-is-as-if-you-were-doing-work'}
 				url={'/models/door.glb'}
 				position={[0, 1, -2]}
-				rotation={[0, Math.PI / 2, 0]}
+				rotation={[0, Math.PI / 3, 0]}
 			/>
+			<Stars />
 		</>
 	)
 }
