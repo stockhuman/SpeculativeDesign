@@ -10,15 +10,7 @@ import Cadre from '../components/canvas/Cadre'
 import Model from '../components/canvas/Model'
 import Room from '../components/canvas/scenes/room'
 
-function stripHTML(html) {
-	// Bail out early in SSR environment
-	if (typeof window === 'undefined' || !window.document) {
-		return
-	}
-	let tmp = document.createElement('div')
-	tmp.innerHTML = html
-	return tmp.textContent || tmp.innerText || ''
-}
+import { stripHTML } from './layout/util'
 
 export default function Template({ data }) {
 	const fm = data.markdownRemark.frontmatter
