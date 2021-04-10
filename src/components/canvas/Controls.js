@@ -43,7 +43,7 @@ export function Controls({
 			},
 			onPinch: ({ movement: [y] }) => {
 				const [distance, phi, theta] = props.get()
-				const k = 1 + (Math.sign(y) * Math.min(8 * Math.abs(y), 20)) / (20 + 10)
+				const k = 1 + (Math.sign(y) * Math.min(8 * -Math.abs(y), 20)) / (20 + 10)
 				const d = MathUtils.clamp(k * distance, minDist, maxDist)
 				set({ props: [d, phi, theta] })
 			},
