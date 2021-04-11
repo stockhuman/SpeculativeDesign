@@ -6,7 +6,7 @@ export default function Room({ to, from, alt }) {
 	return (
 		<group>
 			<fog color={'#111'} />
-			<ambientLight intensity={0.3} />
+			<ambientLight intensity={0.7} />
 			<pointLight intensity={1.3} />
 			{to ? (
 				<Door

@@ -8,11 +8,11 @@ import { useGesture } from 'react-use-gesture'
 import { useSpring, a } from '@react-spring/three'
 
 export function Controls({
-	speed = 5,
-	maxDist = 10,
-	minDist = 1.5,
-	distance = 5,
-	phi = Math.PI / 2,
+	speed = 6,
+	maxDist = 11,
+	minDist = 2,
+	distance = 6,
+	phi = Math.PI / 3,
 	theta = 2 * Math.PI,
 }) {
 	const camera = useRef()

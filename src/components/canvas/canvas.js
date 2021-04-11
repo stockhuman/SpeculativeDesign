@@ -41,6 +41,7 @@ export default function Canvas(props) {
 				gl.outputEncoding = 3001 // sRGBEncoding
 				gl.physicallyCorrectLights = true
 			}}
+			shadows
 			concurrent
 		>
 			<Controls
