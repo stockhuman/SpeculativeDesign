@@ -1,6 +1,3 @@
-$br: 10px; // border radius
-$sw: 10px; // screen outline width (padding)
-
 // note that styling is imported on a per-component basis,
 // which enables quicker downloads for essential styling
 @import '../util/util';
@@ -20,6 +17,7 @@ $sw: 10px; // screen outline width (padding)
 		@include media('>=desktop') {
 			display: grid;
 			gap: 1rem;
+			column-gap: 2rem;
 			grid-template-columns: 1fr 70ch;
 			max-width: 1400px;
 
@@ -34,6 +32,11 @@ $sw: 10px; // screen outline width (padding)
 			.nn-grid {
 				grid-column: 1;
 				grid-row: 1 / span 6;
+			}
+
+			a {
+				font-weight: bold;
+				font-style: italic;
 			}
 		}
 	}
