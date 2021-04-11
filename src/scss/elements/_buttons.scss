@@ -3,49 +3,53 @@ input,
 optgroup,
 select,
 textarea {
-  font: inherit;
-  margin: 0;
-}
-optgroup {
-  font-weight: 700;
+	font: inherit;
+	margin: 0;
 }
 button,
 input {
-  overflow: visible;
+	overflow: visible;
 }
 button,
 select {
-  text-transform: none;
+	text-transform: none;
 }
-[type=reset],
-[type=submit],
+[type='reset'],
+[type='submit'],
 button,
-html [type=button] {
-  -webkit-appearance: button;
+html [type='button'] {
+	-webkit-appearance: button;
 }
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner,
 button::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
+	border-style: none;
+	padding: 0;
 }
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring,
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring,
 button:-moz-focusring {
-  outline: 1px dotted ButtonText;
+	outline: 1px dotted ButtonText;
 }
 
-button, .btn {
-	text-decoration: none;
-	padding: 1em;
-	background: blue;
-	color: white;
-	display: block;
-	margin-top: 1em;
+button,
+.btn,
+.nn-nav {
+	border: 2px solid rgb(32, 32, 63);
+	color: black;
 	cursor: pointer;
-  pointer-events: all;
-  margin: 6px;
-  display: inline-block;
+	margin: 0.5rem 0.5rem 1rem 0;
+	padding: 0.5em 1em 0.5em 1em;
+	text-decoration: none;
+	border-radius: $br / 2;
+	display: inline-block;
+	pointer-events: all;
+	&:hover,
+	&:focus {
+		background: rgb(30, 206, 191);
+    border-color: white;
+		color: white;
+	}
 }
