@@ -5,9 +5,6 @@ import { Door } from '../Link'
 export default function Room({ to, from, alt }) {
 	return (
 		<group>
-			{/* <mesh position={[-5, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
-				<planeBufferGeometry args={[100, 100]} />
-			</mesh> */}
 			<fog color={'#111'} />
 			<ambientLight intensity={0.3} />
 			<pointLight intensity={1.3} />
