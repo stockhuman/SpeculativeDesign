@@ -27,8 +27,8 @@ export default function Canvas(props) {
 		: [1, 0, 2]
 
 	// this is a hacky fix for gatsby SSR - where window is not available
-	if (typeof window === 'undefined') {
-		global.window = {}
+	if (typeof window === 'undefined' || !window.document) {
+		return null
 	}
 
 	return (

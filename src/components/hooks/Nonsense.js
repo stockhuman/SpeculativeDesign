@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useCallback } from 'react'
 import { useLocalStorage } from './useLocalStorage'
 
-export const NonsenseContext = createContext()
+export const NonsenseContext = createContext([])
 
 export const NonsenseProvider = props => {
 	const [nonsense, setNonsense] = useLocalStorage('nonsense', true)

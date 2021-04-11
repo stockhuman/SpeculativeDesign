@@ -7,7 +7,7 @@ export const useLocalStorage = (name, initialValue) => {
 			const currentValue = windowGlobal.localStorage.getItem(name)
 			return currentValue ? JSON.parse(currentValue) : initialValue
 		}
-		return initialValue
+		return [initialValue]
 	})
 
 	useEffect(() => {
