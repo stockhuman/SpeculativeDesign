@@ -31,6 +31,17 @@ export default function Viewport({
 		return (
 			<main className="page">
 				<article>
+					<div className="nn-grid">
+						{images.map((img) => {
+							return (
+								<img
+									src={withPrefix(`/img/${img}`)}
+									key={img}
+									className="nn-image"
+								/>
+							)
+						})}
+					</div>
 					{prev ? (
 						<Link to={prev} className="nn-nav">
 							Prev
@@ -44,17 +55,6 @@ export default function Viewport({
 
 					<h1>{title}</h1>
 					<div dangerouslySetInnerHTML={{ __html: data.html }} />
-					<div className="nn-grid">
-						{images.map((img) => {
-							return (
-								<img
-									src={withPrefix(`/img/${img}`)}
-									key={img}
-									className="nn-image"
-								/>
-							)
-						})}
-					</div>
 				</article>
 			</main>
 		)

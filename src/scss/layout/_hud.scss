@@ -18,7 +18,7 @@
 		font-size: 20px;
 		transition: 0.2s ease-in-out color;
 		&:hover {
-			color: rgba(214, 214, 214, 1);
+			color: rgb(156, 156, 156);
 		}
 	}
 }
@@ -26,6 +26,9 @@
 // no-nonsese title on yellow
 .nn #logo .title {
 	color: rgba(31, 31, 31, 0.719);
+	&:hover {
+		color: rgba(31, 31, 31, 1);
+	}
 }
 
 .social-container {
@@ -47,11 +50,11 @@
 	text-decoration: none;
 	padding: 4px;
 	margin-right: 5px;
-	background: rgba(0, 0, 0, 0.103);
+	background: rgba(0, 0, 0, 0.1);
 	&:hover, &:focus {
-		background: black;
+		background: rgb(29, 29, 34);
 		color: white;
-		border-color: blue;
+		border-color: rgb(165, 165, 168);
 	}
 }
 
@@ -60,6 +63,7 @@
 	bottom: $sw *2;
 	left: $sw*2;
 	margin: 0;
+	color: white;
 	border-radius: $br;
 	padding: 0.5rem;
 	background: linear-gradient(15deg, #539986, #0e325e);
@@ -78,13 +82,8 @@
 	100%{background-position:58% 0%}
 }
 
-// no-nonsense buttons
+// no-nonsense buttons, inherits from button
 .nn-nav {
-	@extend button;
-	@extend .nonsense-btn;
+	display: inline-block;
 	position: unset;
-	margin: 1rem 1rem 2rem 0;
-	background: linear-gradient(15deg, #aa2121, #c7a5bd);
-	background-size: 400% 400%;
-	animation: none;
 }

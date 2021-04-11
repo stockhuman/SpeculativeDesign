@@ -12,16 +12,26 @@ import { Text } from '@react-three/drei'
 import { stripHTML } from './layout/util'
 
 export default function Template({ data }) {
-	const person = data.markdownRemark
+	const person = data.markdownRemark.frontmatter
 	const html = stripHTML(data.markdownRemark.html)
 
 	return (
-		<Page title={person.frontmatter.name}>
+		<Page title={person.name}>
 			<Viewport
 				data={data.markdownRemark}
-				images={[person.frontmatter.image]}
+				images={[person.image]}
 				background={'#ebf7f3'}
 			>
+				<Text
+					maxWidth={40}
+					fontSize={8}
+					font={withPrefix('/fonts/UniNeue-HeavyItalic.woff')}
+					position={[0, -15, 0]}
+					rotation={[-1, 0, 0]}
+				>
+					<meshStandardMaterial side={2} color="black" />
+					{person.name}
+				</Text>
 				<Text
 					maxWidth={4.5}
 					fontSize={0.2}
@@ -30,14 +40,14 @@ export default function Template({ data }) {
 				>
 					{html}
 				</Text>
-				<Cadre img={person.frontmatter.image} position={[2, 2, 2]} />
+				<Cadre img={person.image} position={[2, 2, 2]} />
 				<Door
-					link={person.frontmatter.linkto}
+					link={person.linkto}
 					position={[-5, 0, 0.4]}
 					rotation={[Math.random(), Math.random(), Math.random()]}
 				/>
 				<Door
-					link={person.frontmatter.linkfrom}
+					link={person.linkfrom}
 					position={[5, 0, 3]}
 					rotation={[Math.random(), Math.random(), Math.random()]}
 				/>

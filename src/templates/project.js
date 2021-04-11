@@ -47,13 +47,25 @@ export default function Template({ data }) {
 
 	return (
 		<Page title={fm.title} description={html}>
-			<Viewport data={data.markdownRemark} images={fm.images} background={fm.room}>
+			<Viewport
+				data={data.markdownRemark}
+				images={fm.images}
+				background={fm.room}
+			>
+				<Text
+					maxWidth={40}
+					fontSize={8}
+					font={withPrefix('/fonts/UniNeue-HeavyItalic.woff')}
+					position={[0, -15, 0]}
+					rotation={[-1, 0, 0]}
+				>
+					<meshStandardMaterial side={2} color="white"/>
+					{fm.title}
+				</Text>
 				<Text
 					maxWidth={4.5}
 					fontSize={0.2}
-					font={withPrefix(
-						'/fonts/UniNeue-HeavyItalic.woff'
-					)}
+					font={withPrefix('/fonts/UniNeue-HeavyItalic.woff')}
 				>
 					<meshNormalMaterial depthWrite={false} depthTest={false} side={2} />
 					{html}
@@ -62,7 +74,7 @@ export default function Template({ data }) {
 					<Model url={`/sculptures/${fm.sculpture}`} position={[-2, 0, 4]} />
 				) : null}
 				{pics}
-				<Room to={fm.linkto} from={fm.linkfrom} />
+				<Room to={fm.linkto} from={fm.linkfrom} alt={fm.linkalt} />
 			</Viewport>
 			<HUD />
 		</Page>
