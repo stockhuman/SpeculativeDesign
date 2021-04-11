@@ -29,15 +29,11 @@ const IndexPage = () => {
 				<main className="page">
 					<article>
 						<Link to={'/about/'} className="nn-nav">
-							About
-						</Link>
-						<h1>Welcome to Speculative Play!</h1>
-						<div className="nn-grid">
 							<img
 								src={withPrefix('/img/bboard.jpg')}
 								style={{ width: '100%' }}
 							/>
-						</div>
+						</Link>
 					</article>
 				</main>
 				<HUD />
