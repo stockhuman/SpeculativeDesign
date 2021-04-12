@@ -12,7 +12,12 @@ npm install --global gatsby-cli
 
 And run from your CLI in the downloaded project folder
 ```sh
-npm i
+yarn
+yarn start
+```
+or with npm
+```sh
+npm i --legacy-peer-deps
 npm start
 ```
 I've elected to use yarn, but the commands are identical. The site is viewable at http://localhost:8000/ by default.
