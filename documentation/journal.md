@@ -70,3 +70,14 @@ Finally, progress. I had been stuck on a camera movement bug for the longest tim
 Right now (as of mid August) I'm working on a vertical slice, going from index to hallway to generated art room with the side interface (religiosity meter etc. underway).
 
 ![About page](../img/about-00.png)
+
+### Delivery
+And so it's delivered. Version 3, as I've referred to it given the "temporary" site (v1) and my departure from the literal room model (v2), was began development roughly before March break of 2021.
+
+As mentioned right above, my guiding realization throughout v3 was that despite the work I'd put in so far, some of which I rather liked, I was reproducing physical spaces in a way that didn't _mesh_ with the medium I was working in. In effect, the representational space - literally, walls and halls and eclosed rooms - while mapped to segmented content (individual pages mapping to rooms), it was a move away from the immaterial nature of the web. The web as a space, yes, but one without clear boundaries - indeed seemingly infinite - was a direction that ultimately envigorated my design explorations and clarified the site aesthetic.
+
+I'd initially explored, as seen in the original notes, the idea of religiosity on the web. This, unfortunately, I could not neatly map without moving into parody or making it too central to the site at the cost of diminishing its functinality as a portfolio.
+
+User interactivity and permanence, illutrated perhaps as a literalisation of online trackers, while interesting to explore, met the technical constraints of building a static site. Given the technical stack I chose to work with, I erred on not needing an additional layer of complexity and security risk. Perhaps another time.
+
+---
