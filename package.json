@@ -14,7 +14,7 @@
     "gatsby-plugin-sass": "^4.2.0",
     "gatsby-remark-copy-linked-files": "^3.2.0",
     "gatsby-source-filesystem": "^3.2.0",
-    "gatsby-transformer-remark": "^3.2.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "js-yaml": "^4.0.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
